@@ -1,15 +1,10 @@
 package com.hrportal.model;
 
-import java.util.Date;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-
 import org.hibernate.validator.constraints.Length;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 @Entity
 @Table(name = "Candidates")
@@ -18,23 +13,27 @@ public class Candidate extends AbstractMutableEntity{
 	@Id
 	@Length(max = 20)
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
-	
-	@Length(max = 100)
+    private Long id;
+
+    @Column(name = "first_name")
+    @Length(max = 100)
     @NotNull
-	private String first_name;
-	
-	@Length(max = 100)
+    private String firstName;
+
+    @Column(name = "last_name")
+    @Length(max = 100)
     @NotNull
-	private String last_name;
-	
-	@Length(max = 20)
-	private long nationality;
-	private Date birthday;
+    private String lastName;
+
+    @Length(max = 20)
+    private Long nationality;
+    private Date birthday;
 	private String gender;
-	private String marital_status;
-	
-	@Length(max = 100)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "marital_status")
+    private MaritalStatus maritalStatus;
+
+    @Length(max = 100)
 	private String address1;
 	
 	@Length(max = 100)
@@ -47,21 +46,23 @@ public class Candidate extends AbstractMutableEntity{
 	private String country;
 	
 	@Length(max = 20)
-	private long province;
-	
-	@Length(max = 20)
+    private Long province;
+
+    @Length(max = 20)
 	private String postalCode;
 	
 	@Length(max = 200)
 	private String email;
-	
-	@Length(max = 50)
-	private String home_phone;
-	
-	@Length(max = 50)
-	private String mobile_phone;
-	
-	@Length(max = 200)
+
+    @Column(name = "home_phone")
+    @Length(max = 50)
+    private String homePhone;
+
+    @Column(name = "mobile_phone")
+    @Length(max = 50)
+    private String mobilePhone;
+
+    @Length(max = 200)
     @NotNull
 	private String cv_title;
 	
@@ -72,8 +73,9 @@ public class Candidate extends AbstractMutableEntity{
 	
 	@Length(max = 150)
 	private String profileImage;
-	private String head_line;
-	private String objective;
+    @Column(name = "head_line")
+    private String headLine;
+    private String objective;
 	private String work_history;
 	private String education;
 	private String skills;
@@ -97,9 +99,9 @@ public class Candidate extends AbstractMutableEntity{
 	private int expectedSalary;
 	
 	@Length(max = 60)
-	private String preferedJobtype;
-	private String preferedCountries;
-	private String tags;
+    private String preferredJobtype;
+    private String preferredCountries;
+    private String tags;
 	private String notes;
 	private String calls;
 	
@@ -133,36 +135,38 @@ public class Candidate extends AbstractMutableEntity{
 	@Length(max = 50)
 	private String googleProfileId;
 
-	public long getId() {
-		return id;
+    @Override
+    public Long getId() {
+        return id;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+    @Override
+    public void setId(Long id) {
+        this.id = id;
 	}
 
-	public String getFirst_name() {
-		return first_name;
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Long getNationality() {
+        return nationality;
 	}
 
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
-	}
-
-	public String getLast_name() {
-		return last_name;
-	}
-
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
-	}
-
-	public long getNationality() {
-		return nationality;
-	}
-
-	public void setNationality(long nationality) {
-		this.nationality = nationality;
+    public void setNationality(Long nationality) {
+        this.nationality = nationality;
 	}
 
 	public Date getBirthday() {
@@ -181,13 +185,13 @@ public class Candidate extends AbstractMutableEntity{
 		this.gender = gender;
 	}
 
-	public String getMarital_status() {
-		return marital_status;
-	}
+    public MaritalStatus getMaritalStatus() {
+        return maritalStatus;
+    }
 
-	public void setMarital_status(String marital_status) {
-		this.marital_status = marital_status;
-	}
+    public void setMaritalStatus(MaritalStatus maritalStatus) {
+        this.maritalStatus = maritalStatus;
+    }
 
 	public String getAddress1() {
 		return address1;
@@ -221,12 +225,12 @@ public class Candidate extends AbstractMutableEntity{
 		this.country = country;
 	}
 
-	public long getProvince() {
-		return province;
+    public Long getProvince() {
+        return province;
 	}
 
-	public void setProvince(long province) {
-		this.province = province;
+    public void setProvince(Long province) {
+        this.province = province;
 	}
 
 	public String getPostalCode() {
@@ -245,21 +249,21 @@ public class Candidate extends AbstractMutableEntity{
 		this.email = email;
 	}
 
-	public String getHome_phone() {
-		return home_phone;
-	}
+    public String getHomePhone() {
+        return homePhone;
+    }
 
-	public void setHome_phone(String home_phone) {
-		this.home_phone = home_phone;
-	}
+    public void setHomePhone(String homePhone) {
+        this.homePhone = homePhone;
+    }
 
-	public String getMobile_phone() {
-		return mobile_phone;
-	}
+    public String getMobilePhone() {
+        return mobilePhone;
+    }
 
-	public void setMobile_phone(String mobile_phone) {
-		this.mobile_phone = mobile_phone;
-	}
+    public void setMobilePhone(String mobilePhone) {
+        this.mobilePhone = mobilePhone;
+    }
 
 	public String getCv_title() {
 		return cv_title;
@@ -301,13 +305,13 @@ public class Candidate extends AbstractMutableEntity{
 		this.profileImage = profileImage;
 	}
 
-	public String getHead_line() {
-		return head_line;
-	}
+    public String getHeadLine() {
+        return headLine;
+    }
 
-	public void setHead_line(String head_line) {
-		this.head_line = head_line;
-	}
+    public void setHeadLine(String headLine) {
+        this.headLine = headLine;
+    }
 
 	public String getObjective() {
 		return objective;
@@ -405,21 +409,21 @@ public class Candidate extends AbstractMutableEntity{
 		this.expectedSalary = expectedSalary;
 	}
 
-	public String getPreferedJobtype() {
-		return preferedJobtype;
-	}
+    public String getPreferredJobtype() {
+        return preferredJobtype;
+    }
 
-	public void setPreferedJobtype(String preferedJobtype) {
-		this.preferedJobtype = preferedJobtype;
-	}
+    public void setPreferredJobtype(String preferredJobtype) {
+        this.preferredJobtype = preferredJobtype;
+    }
 
-	public String getPreferedCountries() {
-		return preferedCountries;
-	}
+    public String getPreferredCountries() {
+        return preferredCountries;
+    }
 
-	public void setPreferedCountries(String preferedCountries) {
-		this.preferedCountries = preferedCountries;
-	}
+    public void setPreferredCountries(String preferredCountries) {
+        this.preferredCountries = preferredCountries;
+    }
 
 	public String getTags() {
 		return tags;
@@ -524,8 +528,60 @@ public class Candidate extends AbstractMutableEntity{
 	public void setGoogleProfileId(String googleProfileId) {
 		this.googleProfileId = googleProfileId;
 	}
-	
-	
-	
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Candidate{");
+        sb.append("id=").append(id);
+        sb.append(", firstName='").append(firstName).append('\'');
+        sb.append(", lastName='").append(lastName).append('\'');
+        sb.append(", nationality=").append(nationality);
+        sb.append(", birthday=").append(birthday);
+        sb.append(", gender='").append(gender).append('\'');
+        sb.append(", maritalStatus=").append(maritalStatus);
+        sb.append(", address1='").append(address1).append('\'');
+        sb.append(", address2='").append(address2).append('\'');
+        sb.append(", city='").append(city).append('\'');
+        sb.append(", country='").append(country).append('\'');
+        sb.append(", province=").append(province);
+        sb.append(", postalCode='").append(postalCode).append('\'');
+        sb.append(", email='").append(email).append('\'');
+        sb.append(", homePhone='").append(homePhone).append('\'');
+        sb.append(", mobilePhone='").append(mobilePhone).append('\'');
+        sb.append(", cv_title='").append(cv_title).append('\'');
+        sb.append(", cv='").append(cv).append('\'');
+        sb.append(", cvtext='").append(cvtext).append('\'');
+        sb.append(", industry='").append(industry).append('\'');
+        sb.append(", profileImage='").append(profileImage).append('\'');
+        sb.append(", headLine='").append(headLine).append('\'');
+        sb.append(", objective='").append(objective).append('\'');
+        sb.append(", work_history='").append(work_history).append('\'');
+        sb.append(", education='").append(education).append('\'');
+        sb.append(", skills='").append(skills).append('\'');
+        sb.append(", references='").append(references).append('\'');
+        sb.append(", linkedInUrl='").append(linkedInUrl).append('\'');
+        sb.append(", linkedInData='").append(linkedInData).append('\'');
+        sb.append(", totalYearsOfExperience=").append(totalYearsOfExperience);
+        sb.append(", totalMonthsOfExperience=").append(totalMonthsOfExperience);
+        sb.append(", htmlCVData='").append(htmlCVData).append('\'');
+        sb.append(", generatedCVFile='").append(generatedCVFile).append('\'');
+        sb.append(", expectedSalary=").append(expectedSalary);
+        sb.append(", preferredJobtype='").append(preferredJobtype).append('\'');
+        sb.append(", preferredCountries='").append(preferredCountries).append('\'');
+        sb.append(", tags='").append(tags).append('\'');
+        sb.append(", notes='").append(notes).append('\'');
+        sb.append(", calls='").append(calls).append('\'');
+        sb.append(", age=").append(age);
+        sb.append(", hash='").append(hash).append('\'');
+        sb.append(", linkedInProfileLink='").append(linkedInProfileLink).append('\'');
+        sb.append(", linkedInProfileId='").append(linkedInProfileId).append('\'');
+        sb.append(", facebookProfileLink='").append(facebookProfileLink).append('\'');
+        sb.append(", facebookProfileId='").append(facebookProfileId).append('\'');
+        sb.append(", twitterProfileLink='").append(twitterProfileLink).append('\'');
+        sb.append(", twitterProfileId='").append(twitterProfileId).append('\'');
+        sb.append(", googleProfileLink='").append(googleProfileLink).append('\'');
+        sb.append(", googleProfileId='").append(googleProfileId).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

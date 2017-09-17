@@ -1,90 +1,85 @@
 package com.hrportal.model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
-
 import org.hibernate.validator.constraints.Length;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Table(name = "Calls")
 public class Call extends AbstractMutableEntity  {
-	
-	@Id 
-	@NotNull
-	@Length(max = 20)
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long id;
-	
-	@Column(unique=true)
-	@Length(max = 20)
-	private long job;
-	
-	@Column(unique=true)
-	@Length(max = 20)
-	@OneToOne
-	@JoinColumn(table = "Candidates", referencedColumnName = "id")
-	private Candidate candidate;
-	
-	@Length(max = 20)
-	private long phone;
-	
-	@Length(max = 100)
-	private String status;
-	
-	private String notes;
 
-	public long getId() {
-		return id;
-	}
+    @Id
+    @NotNull
+    @Length(max = 20)
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Long id;
 
-	public void setId(long id) {
-		this.id = id;
-	}
+    @Length(max = 20)
+    @OneToOne
+    @JoinColumn(table = "Jobs", referencedColumnName = "id")
+    private Job job;
 
-	public long getJob() {
-		return job;
-	}
+    @Length(max = 20)
+    @OneToOne
+    @JoinColumn(table = "Candidates", referencedColumnName = "id")
+    private Candidate candidate;
 
-	public void setJob(long job) {
-		this.job = job;
-	}
+    @Length(max = 20)
+    private Long phone;
 
-	public Candidate getCandidate() {
-		return candidate;
-	}
+    @Length(max = 100)
+    private String status;
 
-	public void setCandidate(Candidate candidate) {
-		this.candidate = candidate;
-	}
+    private String notes;
 
-	public long getPhone() {
-		return phone;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setPhone(long phone) {
-		this.phone = phone;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getStatus() {
-		return status;
-	}
+    public Job getJob() {
+        return job;
+    }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    public void setJob(Job job) {
+        this.job = job;
+    }
 
-	public String getNotes() {
-		return notes;
-	}
+    public Candidate getCandidate() {
+        return candidate;
+    }
 
-	public void setNotes(String notes) {
-		this.notes = notes;
-	}
-	
-	
-	
+    public void setCandidate(Candidate candidate) {
+        this.candidate = candidate;
+    }
+
+    public Long getPhone() {
+        return phone;
+    }
+
+    public void setPhone(Long phone) {
+        this.phone = phone;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
 
 }

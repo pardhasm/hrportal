@@ -1,123 +1,118 @@
 package com.hrportal.model;
 
-import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
-
 import org.hibernate.validator.constraints.Length;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.Date;
+
+@Entity
+@Table(name = "Interviews")
 public class Interview extends AbstractMutableEntity {
-	
-	@Id 
-	@NotNull
-	@Length(max = 20)
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long id;
-	
-	@Column(unique=true)
-	@Length(max = 20)
-	private long job;
-	
-	@Column(unique=true)
-	@Length(max = 20)
-	@OneToOne
-	@JoinColumn(table = "Candidates", referencedColumnName = "id")
-	private Candidate candidate;
-	
-	@Length(max = 100)
-	private String level;
-	
-	private Date scheduled;
-	
-	@Length(max = 500)
-	private String location;
-	
-	@Length(max = 20)
-	private long mapId;
-	
-	@Length(max = 100)
-	private String status;
-	
-	private String notes;
 
-	public long getId() {
-		return id;
-	}
+    @Id
+    @NotNull
+    @Length(max = 20)
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Long id;
 
-	public void setId(long id) {
-		this.id = id;
-	}
+    @Length(max = 20)
+    @OneToOne
+    @JoinColumn(table = "Jobs", referencedColumnName = "id")
+    private Job job;
 
-	public long getJob() {
-		return job;
-	}
+    @Length(max = 20)
+    @OneToOne
+    @JoinColumn(table = "Candidates", referencedColumnName = "id")
+    private Candidate candidate;
 
-	public void setJob(long job) {
-		this.job = job;
-	}
+    @Length(max = 100)
+    private String level;
 
-	public Candidate getCandidate() {
-		return candidate;
-	}
+    private Date scheduled;
 
-	public void setCandidate(Candidate candidate) {
-		this.candidate = candidate;
-	}
+    @Length(max = 500)
+    private String location;
 
-	public String getLevel() {
-		return level;
-	}
+    @Length(max = 20)
+    private Long mapId;
 
-	public void setLevel(String level) {
-		this.level = level;
-	}
+    @Length(max = 100)
+    private String status;
 
-	public Date getScheduled() {
-		return scheduled;
-	}
+    private String notes;
 
-	public void setScheduled(Date scheduled) {
-		this.scheduled = scheduled;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getLocation() {
-		return location;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setLocation(String location) {
-		this.location = location;
-	}
+    public Job getJob() {
+        return job;
+    }
 
-	public long getMapId() {
-		return mapId;
-	}
+    public void setJob(Job job) {
+        this.job = job;
+    }
 
-	public void setMapId(long mapId) {
-		this.mapId = mapId;
-	}
+    public Candidate getCandidate() {
+        return candidate;
+    }
 
-	public String getStatus() {
-		return status;
-	}
+    public void setCandidate(Candidate candidate) {
+        this.candidate = candidate;
+    }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    public String getLevel() {
+        return level;
+    }
 
-	public String getNotes() {
-		return notes;
-	}
+    public void setLevel(String level) {
+        this.level = level;
+    }
 
-	public void setNotes(String notes) {
-		this.notes = notes;
-	}
-	
-	
+    public Date getScheduled() {
+        return scheduled;
+    }
+
+    public void setScheduled(Date scheduled) {
+        this.scheduled = scheduled;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public Long getMapId() {
+        return mapId;
+    }
+
+    public void setMapId(Long mapId) {
+        this.mapId = mapId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
 
 }
