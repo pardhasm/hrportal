@@ -58,4 +58,14 @@ public class Province extends AbstractMutableEntity {
     public void setCountry(Country country) {
         this.country = country;
     }
+
+    @Override
+    public String toString() {
+        return "Province{" +
+                "id=" + id +
+                ", code='" + code + '\'' +
+                ", name='" + name + '\'' +
+                ", country=" + country +
+                '}';
+    }
 }

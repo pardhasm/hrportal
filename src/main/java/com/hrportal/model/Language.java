@@ -5,11 +5,11 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
 
 /**
- * Created by Lalith leela vishnu on 17-09-2017.
+ * Created by Lalith leela vishnu on 18-09-2017.
  */
 @Entity
-@Table(name = "Nationality")
-public class Nationality extends AbstractMutableEntity {
+@Table(name = "Languages")
+public class Language extends AbstractMutableEntity {
 
     @Id
     @Length(max = 20)
@@ -17,11 +17,15 @@ public class Nationality extends AbstractMutableEntity {
     private Long id;
     @Length(max = 100)
     private String name;
+    @Length(max = 400)
+    private String description;
 
+    @Override
     public Long getId() {
         return id;
     }
 
+    @Override
     public void setId(Long id) {
         this.id = id;
     }
@@ -34,11 +38,20 @@ public class Nationality extends AbstractMutableEntity {
         this.name = name;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
-        return "Nationality{" +
+        return "Language{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 }

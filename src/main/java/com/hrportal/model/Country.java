@@ -79,5 +79,15 @@ public class Country extends AbstractMutableEntity {
         this.numCode = numCode;
     }
 
-
+    @Override
+    public String toString() {
+        return "Country{" +
+                "id=" + id +
+                ", code='" + code + '\'' +
+                ", name='" + name + '\'' +
+                ", nameCap='" + nameCap + '\'' +
+                ", iso3='" + iso3 + '\'' +
+                ", numCode=" + numCode +
+                '}';
+    }
 }

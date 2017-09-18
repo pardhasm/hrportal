@@ -65,4 +65,15 @@ public class JobTitle extends AbstractMutableEntity {
     public void setSpecification(String specification) {
         this.specification = specification;
     }
+
+    @Override
+    public String toString() {
+        return "JobTitle{" +
+                "id=" + id +
+                ", code='" + code + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", specification='" + specification + '\'' +
+                '}';
+    }
 }
