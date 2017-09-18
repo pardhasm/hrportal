@@ -30,9 +30,8 @@ public class Employee {
     @Column(name = "last_name")
     @Length(max = 100)
     private String lastName;
-    @Length(max = 20)           //TODO
+    //TODO
     @ManyToOne
-    @JoinColumn(table = "Nationality", referencedColumnName = "id")
     private Nationality nationality;
     @Column
     private Date birthday;
@@ -53,13 +52,12 @@ public class Employee {
     private Date drivingLicenseExpiryDate;
     @Column(name = "employment_status")
     private Long employmentStatus;
-    @Column(name = "job_title")             //TODO
-    @ManyToOne
-    @JoinColumn(table = "JobTitles", referencedColumnName = "id")
+    @ManyToOne(targetEntity = JobTitle
+            .class)
+    @JoinColumn(referencedColumnName = "id")
     private JobTitle jobTitle;
-    @Column(name = "pay_grade")
     @OneToOne
-    @JoinColumn(table = "PayGrades", referencedColumnName = "id")
+    @JoinColumn(referencedColumnName = "id")
     private PayGrade payGrade;
     @Column(name = "work_station_id")
     private String workStationId;
@@ -70,10 +68,10 @@ public class Employee {
     @Column
     private String city;
     @ManyToOne          //TODO
-    @JoinColumn(table = "Country", referencedColumnName = "code")
+    @JoinColumn(referencedColumnName = "code")
     private Country country;
     @ManyToOne          //TODO
-    @JoinColumn(table = "Province", referencedColumnName = "id")
+    @JoinColumn(referencedColumnName = "id")
     private Province province;
     @Column(name = "postal_code")
     private String postalCode;
@@ -92,12 +90,12 @@ public class Employee {
     @Column(name = "confirmation_date")
     private Date confirmationDate;
     @ManyToOne          //TODO
-    @JoinColumn(table = "Employees", referencedColumnName = "id")
+    @JoinColumn(referencedColumnName = "id")
     private Employee supervisor;
     @Column(name = "indirect_supervisors")
     private String indirectSupervisors;
     @ManyToOne          //TODO
-    @JoinColumn(table = "CompanyStructures", referencedColumnName = "id")
+    @JoinColumn(referencedColumnName = "id")
     private CompanyStructure department;
     @Column
     private String custom1;

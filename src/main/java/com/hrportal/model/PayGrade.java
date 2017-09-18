@@ -17,10 +17,11 @@ public class PayGrade extends AbstractMutableEntity {
     private Long id;
     @Length(max = 100)
     private String name;
-    @Length(max = 3)
-    @OneToOne               //TODO
-    @JoinColumn(table = "CurrencyTypes", referencedColumnName = "code")
+    //@Length(max = 3)
+    @OneToOne            //TODO
+    @JoinColumn(referencedColumnName = "code") //table = "CurrencyTypes",
     private CurrencyType currency;
+
     @Column(name = "min_salary")
     private Double minSalary;   //TODO
     @Column(name = "max_salary")

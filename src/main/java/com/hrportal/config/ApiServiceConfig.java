@@ -20,8 +20,6 @@ import java.util.TimeZone;
 
 @Configuration
 @ComponentScan(basePackages = "com.hrportal")
-//@Import({ MediaConfig.class, CatalogueConfig.class, CommonConfig.class, CommonOpsConfig.class, OfferConfig.class,
-//        ZomatoConfig.class, VotingServicesConfig.class}) //,
 public class ApiServiceConfig {
     @Bean
     public RestTemplate buildRestTemplate() {

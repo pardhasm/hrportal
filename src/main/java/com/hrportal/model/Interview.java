@@ -16,14 +16,12 @@ public class Interview extends AbstractMutableEntity {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
-    @Length(max = 20)
     @OneToOne
-    @JoinColumn(table = "Jobs", referencedColumnName = "id")
+    @JoinColumn(referencedColumnName = "id")
     private Job job;
 
-    @Length(max = 20)
     @OneToOne
-    @JoinColumn(table = "Candidates", referencedColumnName = "id")
+    @JoinColumn(referencedColumnName = "id")
     private Candidate candidate;
 
     @Length(max = 100)

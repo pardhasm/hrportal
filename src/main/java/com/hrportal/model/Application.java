@@ -18,12 +18,11 @@ public class Application extends AbstractMutableEntity {
 
     @Length(max = 20)
     @OneToOne
-    @JoinColumn(table = "Jobs", referencedColumnName = "id")
-    private Job job;
+	@JoinColumn(referencedColumnName = "id")
+	private Job job;
 
-    @Length(max = 20)
 	@OneToOne
-	@JoinColumn(table = "Candidates", referencedColumnName = "id")
+	@JoinColumn(referencedColumnName = "id")
 	private Candidate candidate;
 	
 	private Date created;

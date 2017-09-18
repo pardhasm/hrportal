@@ -1,0 +1,23 @@
+mainModelPackages: "com.hrportal.model"
+spring:
+  profiles: default
+  datasource:
+    url: jdbc:mysql://localhost/hrportal
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    test-while-idle: true
+    max-idle: 10
+    min-idle: 10
+    initial-size: 1
+    test-on-borrow: true
+    validation-query: SELECT 1;
+    maxActive: 20
+  jpa:
+    database: MYSQL
+    show-sql: false
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.MySQL5Dialect
+      naming_strategy: org.hibernate.cfg.ImprovedNamingStrategy
