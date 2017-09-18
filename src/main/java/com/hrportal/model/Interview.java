@@ -2,7 +2,6 @@ package com.hrportal.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.Date;
 
 
@@ -29,7 +28,7 @@ public class Interview implements Serializable {
     @Column(length = 500)
     private String location;
 
-    private BigInteger mapId;
+    private Long mapId;
 
     @Lob
     private String notes;
@@ -88,11 +87,11 @@ public class Interview implements Serializable {
         this.location = location;
     }
 
-    public BigInteger getMapId() {
+    public Long getMapId() {
         return this.mapId;
     }
 
-    public void setMapId(BigInteger mapId) {
+    public void setMapId(Long mapId) {
         this.mapId = mapId;
     }
 

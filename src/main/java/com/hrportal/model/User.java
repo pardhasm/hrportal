@@ -1,9 +1,8 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
-import java.math.BigInteger;
 import java.util.Set;
 
 
@@ -26,7 +25,7 @@ public class User implements Serializable {
 	private Date created;
 
 	@Column(name="default_module")
-	private BigInteger defaultModule;
+    private Long defaultModule;
 
 	@Column(length=100)
 	private String email;
@@ -100,12 +99,12 @@ public class User implements Serializable {
 		this.created = created;
 	}
 
-	public BigInteger getDefaultModule() {
-		return this.defaultModule;
+    public Long getDefaultModule() {
+        return this.defaultModule;
 	}
 
-	public void setDefaultModule(BigInteger defaultModule) {
-		this.defaultModule = defaultModule;
+    public void setDefaultModule(Long defaultModule) {
+        this.defaultModule = defaultModule;
 	}
 
 	public String getEmail() {

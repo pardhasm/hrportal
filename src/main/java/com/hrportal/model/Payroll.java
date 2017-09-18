@@ -2,7 +2,6 @@ package com.hrportal.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.Date;
 import java.util.Set;
 
@@ -22,7 +21,7 @@ public class Payroll implements Serializable {
     private Long id;
 
     @Column(name = "column_template")
-    private BigInteger columnTemplate;
+    private Long columnTemplate;
 
     @Column(length = 500)
     private String columns;
@@ -36,15 +35,15 @@ public class Payroll implements Serializable {
     private Date dateStart;
 
     @Column(nullable = false)
-    private BigInteger department;
+    private Long department;
 
     @Column(length = 200)
     private String name;
 
     @Column(name = "pay_period", nullable = false)
-    private BigInteger payPeriod;
+    private Long payPeriod;
 
-    private BigInteger payslipTemplate;
+    private Long payslipTemplate;
 
     @Column(length = 20)
     private String status;
@@ -64,11 +63,11 @@ public class Payroll implements Serializable {
         this.id = id;
     }
 
-    public BigInteger getColumnTemplate() {
+    public Long getColumnTemplate() {
         return this.columnTemplate;
     }
 
-    public void setColumnTemplate(BigInteger columnTemplate) {
+    public void setColumnTemplate(Long columnTemplate) {
         this.columnTemplate = columnTemplate;
     }
 
@@ -96,11 +95,11 @@ public class Payroll implements Serializable {
         this.dateStart = dateStart;
     }
 
-    public BigInteger getDepartment() {
+    public Long getDepartment() {
         return this.department;
     }
 
-    public void setDepartment(BigInteger department) {
+    public void setDepartment(Long department) {
         this.department = department;
     }
 
@@ -112,19 +111,19 @@ public class Payroll implements Serializable {
         this.name = name;
     }
 
-    public BigInteger getPayPeriod() {
+    public Long getPayPeriod() {
         return this.payPeriod;
     }
 
-    public void setPayPeriod(BigInteger payPeriod) {
+    public void setPayPeriod(Long payPeriod) {
         this.payPeriod = payPeriod;
     }
 
-    public BigInteger getPayslipTemplate() {
+    public Long getPayslipTemplate() {
         return this.payslipTemplate;
     }
 
-    public void setPayslipTemplate(BigInteger payslipTemplate) {
+    public void setPayslipTemplate(Long payslipTemplate) {
         this.payslipTemplate = payslipTemplate;
     }
 

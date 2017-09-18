@@ -1,9 +1,9 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
-import java.math.BigInteger;
+
 
 
 /**
@@ -28,7 +28,7 @@ public class ArchivedEmployee implements Serializable {
 	@Lob
 	private String data;
 
-	private BigInteger department;
+    private Long department;
 
 	@Column(name="employee_id", length=50)
 	private String employeeId;
@@ -56,12 +56,12 @@ public class ArchivedEmployee implements Serializable {
 	private String otherId;
 
 	@Column(name="ref_id", nullable=false)
-	private BigInteger refId;
+    private Long refId;
 
 	@Column(name="ssn_num", length=100)
 	private String ssnNum;
 
-	private BigInteger supervisor;
+    private Long supervisor;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="termination_date")
@@ -97,12 +97,12 @@ public class ArchivedEmployee implements Serializable {
 		this.data = data;
 	}
 
-	public BigInteger getDepartment() {
-		return this.department;
+    public Long getDepartment() {
+        return this.department;
 	}
 
-	public void setDepartment(BigInteger department) {
-		this.department = department;
+    public void setDepartment(Long department) {
+        this.department = department;
 	}
 
 	public String getEmployeeId() {
@@ -169,12 +169,12 @@ public class ArchivedEmployee implements Serializable {
 		this.otherId = otherId;
 	}
 
-	public BigInteger getRefId() {
-		return this.refId;
+    public Long getRefId() {
+        return this.refId;
 	}
 
-	public void setRefId(BigInteger refId) {
-		this.refId = refId;
+    public void setRefId(Long refId) {
+        this.refId = refId;
 	}
 
 	public String getSsnNum() {
@@ -185,12 +185,12 @@ public class ArchivedEmployee implements Serializable {
 		this.ssnNum = ssnNum;
 	}
 
-	public BigInteger getSupervisor() {
-		return this.supervisor;
+    public Long getSupervisor() {
+        return this.supervisor;
 	}
 
-	public void setSupervisor(BigInteger supervisor) {
-		this.supervisor = supervisor;
+    public void setSupervisor(Long supervisor) {
+        this.supervisor = supervisor;
 	}
 
 	public Date getTerminationDate() {

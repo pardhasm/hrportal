@@ -1,9 +1,9 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
-import java.math.BigInteger;
+
 
 
 /**
@@ -24,11 +24,11 @@ public class Notification implements Serializable {
 	@Lob
 	private String action;
 
-	private BigInteger employee;
+    private Long employee;
 
-	private BigInteger fromEmployee;
+    private Long fromEmployee;
 
-	private BigInteger fromUser;
+    private Long fromUser;
 
 	@Column(length=500)
 	private String image;
@@ -69,28 +69,28 @@ public class Notification implements Serializable {
 		this.action = action;
 	}
 
-	public BigInteger getEmployee() {
-		return this.employee;
+    public Long getEmployee() {
+        return this.employee;
 	}
 
-	public void setEmployee(BigInteger employee) {
-		this.employee = employee;
+    public void setEmployee(Long employee) {
+        this.employee = employee;
 	}
 
-	public BigInteger getFromEmployee() {
-		return this.fromEmployee;
+    public Long getFromEmployee() {
+        return this.fromEmployee;
 	}
 
-	public void setFromEmployee(BigInteger fromEmployee) {
-		this.fromEmployee = fromEmployee;
+    public void setFromEmployee(Long fromEmployee) {
+        this.fromEmployee = fromEmployee;
 	}
 
-	public BigInteger getFromUser() {
-		return this.fromUser;
+    public Long getFromUser() {
+        return this.fromUser;
 	}
 
-	public void setFromUser(BigInteger fromUser) {
-		this.fromUser = fromUser;
+    public void setFromUser(Long fromUser) {
+        this.fromUser = fromUser;
 	}
 
 	public String getImage() {

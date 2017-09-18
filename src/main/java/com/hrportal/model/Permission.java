@@ -1,8 +1,8 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
-import java.math.BigInteger;
+import java.io.Serializable;
+
 
 
 /**
@@ -24,7 +24,7 @@ public class Permission implements Serializable {
 	private String meta;
 
 	@Column(name="module_id", nullable=false)
-	private BigInteger moduleId;
+    private Long moduleId;
 
 	@Column(length=200)
 	private String permission;
@@ -54,12 +54,12 @@ public class Permission implements Serializable {
 		this.meta = meta;
 	}
 
-	public BigInteger getModuleId() {
-		return this.moduleId;
+    public Long getModuleId() {
+        return this.moduleId;
 	}
 
-	public void setModuleId(BigInteger moduleId) {
-		this.moduleId = moduleId;
+    public void setModuleId(Long moduleId) {
+        this.moduleId = moduleId;
 	}
 
 	public String getPermission() {

@@ -1,8 +1,8 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
-import java.math.BigInteger;
+import java.io.Serializable;
+
 
 
 /**
@@ -20,7 +20,7 @@ public class File implements Serializable {
 	@Column(unique=true, nullable=false)
 	private Long id;
 
-	private BigInteger employee;
+    private Long employee;
 
 	@Column(name="file_group", nullable=false, length=100)
 	private String fileGroup;
@@ -31,7 +31,7 @@ public class File implements Serializable {
 	@Column(nullable=false, length=100)
 	private String name;
 
-	private BigInteger size;
+    private Long size;
 
 	@Column(name="size_text", length=20)
 	private String sizeText;
@@ -47,12 +47,12 @@ public class File implements Serializable {
 		this.id = id;
 	}
 
-	public BigInteger getEmployee() {
-		return this.employee;
+    public Long getEmployee() {
+        return this.employee;
 	}
 
-	public void setEmployee(BigInteger employee) {
-		this.employee = employee;
+    public void setEmployee(Long employee) {
+        this.employee = employee;
 	}
 
 	public String getFileGroup() {
@@ -79,12 +79,12 @@ public class File implements Serializable {
 		this.name = name;
 	}
 
-	public BigInteger getSize() {
-		return this.size;
+    public Long getSize() {
+        return this.size;
 	}
 
-	public void setSize(BigInteger size) {
-		this.size = size;
+    public void setSize(Long size) {
+        this.size = size;
 	}
 
 	public String getSizeText() {

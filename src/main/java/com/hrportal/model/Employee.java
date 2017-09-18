@@ -2,7 +2,6 @@ package com.hrportal.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.Date;
 import java.util.Set;
 
@@ -28,11 +27,11 @@ public class Employee implements Serializable {
     @Column(length = 100)
     private String address2;
 
-    private BigInteger approver1;
+    private Long approver1;
 
-    private BigInteger approver2;
+    private Long approver2;
 
-    private BigInteger approver3;
+    private Long approver3;
 
     @Temporal(TemporalType.DATE)
     private Date birthday;
@@ -84,7 +83,7 @@ public class Employee implements Serializable {
     @Column(name = "employee_id", length = 50)
     private String employeeId;
 
-    private BigInteger ethnicity;
+    private Long ethnicity;
 
     @Column(name = "first_name", nullable = false, length = 100)
     private String firstName;
@@ -96,7 +95,7 @@ public class Employee implements Serializable {
     private String homePhone;
 
     @Column(name = "immigration_status")
-    private BigInteger immigrationStatus;
+    private Long immigrationStatus;
 
     @Column(name = "indirect_supervisors", length = 250)
     private String indirectSupervisors;
@@ -334,27 +333,27 @@ public class Employee implements Serializable {
         this.address2 = address2;
     }
 
-    public BigInteger getApprover1() {
+    public Long getApprover1() {
         return this.approver1;
     }
 
-    public void setApprover1(BigInteger approver1) {
+    public void setApprover1(Long approver1) {
         this.approver1 = approver1;
     }
 
-    public BigInteger getApprover2() {
+    public Long getApprover2() {
         return this.approver2;
     }
 
-    public void setApprover2(BigInteger approver2) {
+    public void setApprover2(Long approver2) {
         this.approver2 = approver2;
     }
 
-    public BigInteger getApprover3() {
+    public Long getApprover3() {
         return this.approver3;
     }
 
-    public void setApprover3(BigInteger approver3) {
+    public void setApprover3(Long approver3) {
         this.approver3 = approver3;
     }
 
@@ -486,11 +485,11 @@ public class Employee implements Serializable {
         this.employeeId = employeeId;
     }
 
-    public BigInteger getEthnicity() {
+    public Long getEthnicity() {
         return this.ethnicity;
     }
 
-    public void setEthnicity(BigInteger ethnicity) {
+    public void setEthnicity(Long ethnicity) {
         this.ethnicity = ethnicity;
     }
 
@@ -518,11 +517,11 @@ public class Employee implements Serializable {
         this.homePhone = homePhone;
     }
 
-    public BigInteger getImmigrationStatus() {
+    public Long getImmigrationStatus() {
         return this.immigrationStatus;
     }
 
-    public void setImmigrationStatus(BigInteger immigrationStatus) {
+    public void setImmigrationStatus(Long immigrationStatus) {
         this.immigrationStatus = immigrationStatus;
     }
 

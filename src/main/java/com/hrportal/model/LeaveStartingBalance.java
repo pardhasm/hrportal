@@ -3,7 +3,6 @@ package com.hrportal.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.Date;
 
 
@@ -27,13 +26,13 @@ public class LeaveStartingBalance implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
 
-    private BigInteger employee;
+    private Long employee;
 
     @Column(name = "leave_period", nullable = false)
-    private BigInteger leavePeriod;
+    private Long leavePeriod;
 
     @Column(name = "leave_type", nullable = false)
-    private BigInteger leaveType;
+    private Long leaveType;
 
     @Lob
     private String note;
@@ -68,27 +67,27 @@ public class LeaveStartingBalance implements Serializable {
         this.created = created;
     }
 
-    public BigInteger getEmployee() {
+    public Long getEmployee() {
         return this.employee;
     }
 
-    public void setEmployee(BigInteger employee) {
+    public void setEmployee(Long employee) {
         this.employee = employee;
     }
 
-    public BigInteger getLeavePeriod() {
+    public Long getLeavePeriod() {
         return this.leavePeriod;
     }
 
-    public void setLeavePeriod(BigInteger leavePeriod) {
+    public void setLeavePeriod(Long leavePeriod) {
         this.leavePeriod = leavePeriod;
     }
 
-    public BigInteger getLeaveType() {
+    public Long getLeaveType() {
         return this.leaveType;
     }
 
-    public void setLeaveType(BigInteger leaveType) {
+    public void setLeaveType(Long leaveType) {
         this.leaveType = leaveType;
     }
 

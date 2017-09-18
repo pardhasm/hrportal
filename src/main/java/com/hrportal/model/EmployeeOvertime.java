@@ -2,7 +2,6 @@ package com.hrportal.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.Date;
 
 
@@ -30,7 +29,7 @@ public class EmployeeOvertime implements Serializable {
     @Lob
     private String notes;
 
-    private BigInteger project;
+    private Long project;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "start_time")
@@ -87,11 +86,11 @@ public class EmployeeOvertime implements Serializable {
         this.notes = notes;
     }
 
-    public BigInteger getProject() {
+    public Long getProject() {
         return this.project;
     }
 
-    public void setProject(BigInteger project) {
+    public void setProject(Long project) {
         this.project = project;
     }
 

@@ -2,7 +2,7 @@ package com.hrportal.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.math.BigInteger;
+
 
 
 /**
@@ -23,7 +23,7 @@ public class PayrollData implements Serializable {
     private String amount;
 
     @Column(nullable = false)
-    private BigInteger employee;
+    private Long employee;
 
     @Column(name = "payroll_item", nullable = false)
     private int payrollItem;
@@ -52,11 +52,11 @@ public class PayrollData implements Serializable {
         this.amount = amount;
     }
 
-    public BigInteger getEmployee() {
+    public Long getEmployee() {
         return this.employee;
     }
 
-    public void setEmployee(BigInteger employee) {
+    public void setEmployee(Long employee) {
         this.employee = employee;
     }
 

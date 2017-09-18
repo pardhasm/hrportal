@@ -1,10 +1,10 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.math.BigInteger;
+
 
 
 /**
@@ -25,7 +25,7 @@ public class EmployeeCompanyLoan implements Serializable {
 	@Column(nullable=false, precision=10, scale=2)
 	private BigDecimal amount;
 
-	private BigInteger currency;
+    private Long currency;
 
 	@Lob
 	private String details;
@@ -38,7 +38,7 @@ public class EmployeeCompanyLoan implements Serializable {
 	private BigDecimal monthlyInstallment;
 
 	@Column(name="period_months")
-	private BigInteger periodMonths;
+    private Long periodMonths;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="start_date", nullable=false)
@@ -76,12 +76,12 @@ public class EmployeeCompanyLoan implements Serializable {
 		this.amount = amount;
 	}
 
-	public BigInteger getCurrency() {
-		return this.currency;
+    public Long getCurrency() {
+        return this.currency;
 	}
 
-	public void setCurrency(BigInteger currency) {
-		this.currency = currency;
+    public void setCurrency(Long currency) {
+        this.currency = currency;
 	}
 
 	public String getDetails() {
@@ -108,12 +108,12 @@ public class EmployeeCompanyLoan implements Serializable {
 		this.monthlyInstallment = monthlyInstallment;
 	}
 
-	public BigInteger getPeriodMonths() {
-		return this.periodMonths;
+    public Long getPeriodMonths() {
+        return this.periodMonths;
 	}
 
-	public void setPeriodMonths(BigInteger periodMonths) {
-		this.periodMonths = periodMonths;
+    public void setPeriodMonths(Long periodMonths) {
+        this.periodMonths = periodMonths;
 	}
 
 	public Date getStartDate() {

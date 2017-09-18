@@ -1,9 +1,9 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
-import java.math.BigInteger;
+
 
 
 /**
@@ -28,7 +28,7 @@ public class StatusChangeLog implements Serializable {
 	private String data;
 
 	@Column(nullable=false)
-	private BigInteger element;
+    private Long element;
 
 	@Column(name="status_from", length=20)
 	private String statusFrom;
@@ -40,7 +40,7 @@ public class StatusChangeLog implements Serializable {
 	private String type;
 
 	@Column(name="user_id")
-	private BigInteger userId;
+    private Long userId;
 
 	public StatusChangeLog() {
 	}
@@ -69,12 +69,12 @@ public class StatusChangeLog implements Serializable {
 		this.data = data;
 	}
 
-	public BigInteger getElement() {
-		return this.element;
+    public Long getElement() {
+        return this.element;
 	}
 
-	public void setElement(BigInteger element) {
-		this.element = element;
+    public void setElement(Long element) {
+        this.element = element;
 	}
 
 	public String getStatusFrom() {
@@ -101,12 +101,12 @@ public class StatusChangeLog implements Serializable {
 		this.type = type;
 	}
 
-	public BigInteger getUserId() {
-		return this.userId;
+    public Long getUserId() {
+        return this.userId;
 	}
 
-	public void setUserId(BigInteger userId) {
-		this.userId = userId;
+    public void setUserId(Long userId) {
+        this.userId = userId;
 	}
 
 }

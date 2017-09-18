@@ -2,7 +2,6 @@ package com.hrportal.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.Date;
 import java.util.Set;
 
@@ -33,11 +32,11 @@ public class Job implements Serializable {
     @Column(length = 20)
     private String code;
 
-    private BigInteger company;
+    private Long company;
 
-    private BigInteger country;
+    private Long country;
 
-    private BigInteger currency;
+    private Long currency;
 
     @Column(length = 100)
     private String department;
@@ -48,27 +47,27 @@ public class Job implements Serializable {
     @Column(nullable = false, length = 200)
     private String display;
 
-    private BigInteger educationLevel;
+    private Long educationLevel;
 
-    private BigInteger employementType;
+    private Long employementType;
 
-    private BigInteger experienceLevel;
+    private Long experienceLevel;
 
-    private BigInteger industry;
+    private Long industry;
 
-    private BigInteger jobFunction;
+    private Long jobFunction;
 
     @Lob
     private String keywords;
 
-    private BigInteger postedBy;
+    private Long postedBy;
 
     @Lob
     private String requirements;
 
-    private BigInteger salaryMax;
+    private Long salaryMax;
 
-    private BigInteger salaryMin;
+    private Long salaryMin;
 
     @Lob
     private String shortDescription;
@@ -137,27 +136,27 @@ public class Job implements Serializable {
         this.code = code;
     }
 
-    public BigInteger getCompany() {
+    public Long getCompany() {
         return this.company;
     }
 
-    public void setCompany(BigInteger company) {
+    public void setCompany(Long company) {
         this.company = company;
     }
 
-    public BigInteger getCountry() {
+    public Long getCountry() {
         return this.country;
     }
 
-    public void setCountry(BigInteger country) {
+    public void setCountry(Long country) {
         this.country = country;
     }
 
-    public BigInteger getCurrency() {
+    public Long getCurrency() {
         return this.currency;
     }
 
-    public void setCurrency(BigInteger currency) {
+    public void setCurrency(Long currency) {
         this.currency = currency;
     }
 
@@ -185,43 +184,43 @@ public class Job implements Serializable {
         this.display = display;
     }
 
-    public BigInteger getEducationLevel() {
+    public Long getEducationLevel() {
         return this.educationLevel;
     }
 
-    public void setEducationLevel(BigInteger educationLevel) {
+    public void setEducationLevel(Long educationLevel) {
         this.educationLevel = educationLevel;
     }
 
-    public BigInteger getEmployementType() {
+    public Long getEmployementType() {
         return this.employementType;
     }
 
-    public void setEmployementType(BigInteger employementType) {
+    public void setEmployementType(Long employementType) {
         this.employementType = employementType;
     }
 
-    public BigInteger getExperienceLevel() {
+    public Long getExperienceLevel() {
         return this.experienceLevel;
     }
 
-    public void setExperienceLevel(BigInteger experienceLevel) {
+    public void setExperienceLevel(Long experienceLevel) {
         this.experienceLevel = experienceLevel;
     }
 
-    public BigInteger getIndustry() {
+    public Long getIndustry() {
         return this.industry;
     }
 
-    public void setIndustry(BigInteger industry) {
+    public void setIndustry(Long industry) {
         this.industry = industry;
     }
 
-    public BigInteger getJobFunction() {
+    public Long getJobFunction() {
         return this.jobFunction;
     }
 
-    public void setJobFunction(BigInteger jobFunction) {
+    public void setJobFunction(Long jobFunction) {
         this.jobFunction = jobFunction;
     }
 
@@ -233,11 +232,11 @@ public class Job implements Serializable {
         this.keywords = keywords;
     }
 
-    public BigInteger getPostedBy() {
+    public Long getPostedBy() {
         return this.postedBy;
     }
 
-    public void setPostedBy(BigInteger postedBy) {
+    public void setPostedBy(Long postedBy) {
         this.postedBy = postedBy;
     }
 
@@ -249,19 +248,19 @@ public class Job implements Serializable {
         this.requirements = requirements;
     }
 
-    public BigInteger getSalaryMax() {
+    public Long getSalaryMax() {
         return this.salaryMax;
     }
 
-    public void setSalaryMax(BigInteger salaryMax) {
+    public void setSalaryMax(Long salaryMax) {
         this.salaryMax = salaryMax;
     }
 
-    public BigInteger getSalaryMin() {
+    public Long getSalaryMin() {
         return this.salaryMin;
     }
 
-    public void setSalaryMin(BigInteger salaryMin) {
+    public void setSalaryMin(Long salaryMin) {
         this.salaryMin = salaryMin;
     }
 

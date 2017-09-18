@@ -3,7 +3,7 @@ package com.hrportal.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.math.BigInteger;
+
 
 
 /**
@@ -24,7 +24,7 @@ public class EmployeeSalary implements Serializable {
     private BigDecimal amount;
 
     @Column(nullable = false)
-    private BigInteger component;
+    private Long component;
 
     @Lob
     private String details;
@@ -61,11 +61,11 @@ public class EmployeeSalary implements Serializable {
         this.amount = amount;
     }
 
-    public BigInteger getComponent() {
+    public Long getComponent() {
         return this.component;
     }
 
-    public void setComponent(BigInteger component) {
+    public void setComponent(Long component) {
         this.component = component;
     }
 

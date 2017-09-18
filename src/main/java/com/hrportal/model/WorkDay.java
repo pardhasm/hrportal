@@ -1,8 +1,8 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
-import java.math.BigInteger;
+import java.io.Serializable;
+
 
 
 /**
@@ -20,7 +20,7 @@ public class WorkDay implements Serializable {
 	@Column(unique=true, nullable=false)
 	private Long id;
 
-	private BigInteger country;
+    private Long country;
 
 	@Column(nullable=false, length=100)
 	private String name;
@@ -39,12 +39,12 @@ public class WorkDay implements Serializable {
 		this.id = id;
 	}
 
-	public BigInteger getCountry() {
-		return this.country;
+    public Long getCountry() {
+        return this.country;
 	}
 
-	public void setCountry(BigInteger country) {
-		this.country = country;
+    public void setCountry(Long country) {
+        this.country = country;
 	}
 
 	public String getName() {

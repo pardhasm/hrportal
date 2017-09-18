@@ -1,10 +1,10 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.math.BigInteger;
+
 
 
 /**
@@ -37,7 +37,7 @@ public class EmployeeExpens implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date created;
 
-	private BigInteger currency;
+    private Long currency;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="expense_date")
@@ -124,12 +124,12 @@ public class EmployeeExpens implements Serializable {
 		this.created = created;
 	}
 
-	public BigInteger getCurrency() {
-		return this.currency;
+    public Long getCurrency() {
+        return this.currency;
 	}
 
-	public void setCurrency(BigInteger currency) {
-		this.currency = currency;
+    public void setCurrency(Long currency) {
+        this.currency = currency;
 	}
 
 	public Date getExpenseDate() {

@@ -1,9 +1,9 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
-import java.math.BigInteger;
+
 
 
 /**
@@ -23,13 +23,13 @@ public class EmployeeApproval implements Serializable {
 
 	private int active;
 
-	private BigInteger approver;
+    private Long approver;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date created;
 
 	@Column(nullable=false)
-	private BigInteger element;
+    private Long element;
 
 	private int level;
 
@@ -60,12 +60,12 @@ public class EmployeeApproval implements Serializable {
 		this.active = active;
 	}
 
-	public BigInteger getApprover() {
-		return this.approver;
+    public Long getApprover() {
+        return this.approver;
 	}
 
-	public void setApprover(BigInteger approver) {
-		this.approver = approver;
+    public void setApprover(Long approver) {
+        this.approver = approver;
 	}
 
 	public Date getCreated() {
@@ -76,12 +76,12 @@ public class EmployeeApproval implements Serializable {
 		this.created = created;
 	}
 
-	public BigInteger getElement() {
-		return this.element;
+    public Long getElement() {
+        return this.element;
 	}
 
-	public void setElement(BigInteger element) {
-		this.element = element;
+    public void setElement(Long element) {
+        this.element = element;
 	}
 
 	public int getLevel() {

@@ -1,9 +1,9 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
-import java.math.BigInteger;
+
 
 
 /**
@@ -36,25 +36,25 @@ public class LeaveRule implements Serializable {
 	@Column(name="default_per_year", nullable=false, precision=10, scale=3)
 	private BigDecimal defaultPerYear;
 
-	private BigInteger employee;
+    private Long employee;
 
 	@Column(name="employee_can_apply", length=20)
 	private String employeeCanApply;
 
 	@Column(name="employment_status")
-	private BigInteger employmentStatus;
+    private Long employmentStatus;
 
 	@Column(name="job_title")
-	private BigInteger jobTitle;
+    private Long jobTitle;
 
 	@Column(name="leave_accrue", length=20)
 	private String leaveAccrue;
 
 	@Column(name="leave_group")
-	private BigInteger leaveGroup;
+    private Long leaveGroup;
 
 	@Column(name="leave_type", nullable=false)
-	private BigInteger leaveType;
+    private Long leaveType;
 
 	@Column(name="max_carried_forward_amount")
 	private int maxCarriedForwardAmount;
@@ -116,12 +116,12 @@ public class LeaveRule implements Serializable {
 		this.defaultPerYear = defaultPerYear;
 	}
 
-	public BigInteger getEmployee() {
-		return this.employee;
+    public Long getEmployee() {
+        return this.employee;
 	}
 
-	public void setEmployee(BigInteger employee) {
-		this.employee = employee;
+    public void setEmployee(Long employee) {
+        this.employee = employee;
 	}
 
 	public String getEmployeeCanApply() {
@@ -132,20 +132,20 @@ public class LeaveRule implements Serializable {
 		this.employeeCanApply = employeeCanApply;
 	}
 
-	public BigInteger getEmploymentStatus() {
-		return this.employmentStatus;
+    public Long getEmploymentStatus() {
+        return this.employmentStatus;
 	}
 
-	public void setEmploymentStatus(BigInteger employmentStatus) {
-		this.employmentStatus = employmentStatus;
+    public void setEmploymentStatus(Long employmentStatus) {
+        this.employmentStatus = employmentStatus;
 	}
 
-	public BigInteger getJobTitle() {
-		return this.jobTitle;
+    public Long getJobTitle() {
+        return this.jobTitle;
 	}
 
-	public void setJobTitle(BigInteger jobTitle) {
-		this.jobTitle = jobTitle;
+    public void setJobTitle(Long jobTitle) {
+        this.jobTitle = jobTitle;
 	}
 
 	public String getLeaveAccrue() {
@@ -156,20 +156,20 @@ public class LeaveRule implements Serializable {
 		this.leaveAccrue = leaveAccrue;
 	}
 
-	public BigInteger getLeaveGroup() {
-		return this.leaveGroup;
+    public Long getLeaveGroup() {
+        return this.leaveGroup;
 	}
 
-	public void setLeaveGroup(BigInteger leaveGroup) {
-		this.leaveGroup = leaveGroup;
+    public void setLeaveGroup(Long leaveGroup) {
+        this.leaveGroup = leaveGroup;
 	}
 
-	public BigInteger getLeaveType() {
-		return this.leaveType;
+    public Long getLeaveType() {
+        return this.leaveType;
 	}
 
-	public void setLeaveType(BigInteger leaveType) {
-		this.leaveType = leaveType;
+    public void setLeaveType(Long leaveType) {
+        this.leaveType = leaveType;
 	}
 
 	public int getMaxCarriedForwardAmount() {

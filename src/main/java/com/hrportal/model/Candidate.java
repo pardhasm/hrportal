@@ -2,7 +2,6 @@ package com.hrportal.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.Date;
 import java.util.Set;
 
@@ -119,7 +118,7 @@ public class Candidate implements Serializable {
     @Column(name = "mobile_phone", length = 50)
     private String mobilePhone;
 
-    private BigInteger nationality;
+    private Long nationality;
 
     @Lob
     private String notes;
@@ -142,7 +141,7 @@ public class Candidate implements Serializable {
     @Column(length = 150)
     private String profileImage;
 
-    private BigInteger province;
+    private Long province;
 
     @Lob
     private String referees;
@@ -457,11 +456,11 @@ public class Candidate implements Serializable {
         this.mobilePhone = mobilePhone;
     }
 
-    public BigInteger getNationality() {
+    public Long getNationality() {
         return this.nationality;
     }
 
-    public void setNationality(BigInteger nationality) {
+    public void setNationality(Long nationality) {
         this.nationality = nationality;
     }
 
@@ -521,11 +520,11 @@ public class Candidate implements Serializable {
         this.profileImage = profileImage;
     }
 
-    public BigInteger getProvince() {
+    public Long getProvince() {
         return this.province;
     }
 
-    public void setProvince(BigInteger province) {
+    public void setProvince(Long province) {
         this.province = province;
     }
 

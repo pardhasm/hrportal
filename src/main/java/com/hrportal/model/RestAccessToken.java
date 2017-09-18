@@ -1,9 +1,9 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
-import java.math.BigInteger;
+
 
 
 /**
@@ -34,7 +34,7 @@ public class RestAccessToken implements Serializable {
 	private Date updated;
 
 	@Column(nullable=false)
-	private BigInteger userId;
+    private Long userId;
 
 	public RestAccessToken() {
 	}
@@ -79,12 +79,12 @@ public class RestAccessToken implements Serializable {
 		this.updated = updated;
 	}
 
-	public BigInteger getUserId() {
-		return this.userId;
+    public Long getUserId() {
+        return this.userId;
 	}
 
-	public void setUserId(BigInteger userId) {
-		this.userId = userId;
+    public void setUserId(Long userId) {
+        this.userId = userId;
 	}
 
 }

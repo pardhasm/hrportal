@@ -1,9 +1,9 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
-import java.math.BigInteger;
+
 
 
 /**
@@ -27,7 +27,7 @@ public class ReportFile implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date created;
 
-	private BigInteger employee;
+    private Long employee;
 
 	@Column(nullable=false, length=100)
 	private String name;
@@ -59,12 +59,12 @@ public class ReportFile implements Serializable {
 		this.created = created;
 	}
 
-	public BigInteger getEmployee() {
-		return this.employee;
+    public Long getEmployee() {
+        return this.employee;
 	}
 
-	public void setEmployee(BigInteger employee) {
-		this.employee = employee;
+    public void setEmployee(Long employee) {
+        this.employee = employee;
 	}
 
 	public String getName() {

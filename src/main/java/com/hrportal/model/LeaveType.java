@@ -1,9 +1,8 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.Set;
 
 
@@ -47,7 +46,7 @@ public class LeaveType implements Serializable {
 	private String leaveColor;
 
 	@Column(name="leave_group")
-	private BigInteger leaveGroup;
+    private Long leaveGroup;
 
 	@Column(name="max_carried_forward_amount")
 	private int maxCarriedForwardAmount;
@@ -143,12 +142,12 @@ public class LeaveType implements Serializable {
 		this.leaveColor = leaveColor;
 	}
 
-	public BigInteger getLeaveGroup() {
-		return this.leaveGroup;
+    public Long getLeaveGroup() {
+        return this.leaveGroup;
 	}
 
-	public void setLeaveGroup(BigInteger leaveGroup) {
-		this.leaveGroup = leaveGroup;
+    public void setLeaveGroup(Long leaveGroup) {
+        this.leaveGroup = leaveGroup;
 	}
 
 	public int getMaxCarriedForwardAmount() {

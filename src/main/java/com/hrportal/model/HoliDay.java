@@ -1,9 +1,9 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
-import java.math.BigInteger;
+
 
 
 /**
@@ -21,7 +21,7 @@ public class HoliDay implements Serializable {
 	@Column(unique=true, nullable=false)
 	private Long id;
 
-	private BigInteger country;
+	private Long country;
 
 	@Temporal(TemporalType.DATE)
 	private Date dateh;
@@ -43,11 +43,11 @@ public class HoliDay implements Serializable {
 		this.id = id;
 	}
 
-	public BigInteger getCountry() {
+	public Long getCountry() {
 		return this.country;
 	}
 
-	public void setCountry(BigInteger country) {
+	public void setCountry(Long country) {
 		this.country = country;
 	}
 

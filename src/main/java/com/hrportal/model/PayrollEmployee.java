@@ -1,8 +1,8 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
-import java.math.BigInteger;
+import java.io.Serializable;
+
 
 
 /**
@@ -20,7 +20,7 @@ public class PayrollEmployee implements Serializable {
 	@Column(unique=true, nullable=false)
 	private Long id;
 
-	private BigInteger currency;
+    private Long currency;
 
 	@Column(name="deduction_allowed", length=250)
 	private String deductionAllowed;
@@ -52,12 +52,12 @@ public class PayrollEmployee implements Serializable {
 		this.id = id;
 	}
 
-	public BigInteger getCurrency() {
-		return this.currency;
+    public Long getCurrency() {
+        return this.currency;
 	}
 
-	public void setCurrency(BigInteger currency) {
-		this.currency = currency;
+    public void setCurrency(Long currency) {
+        this.currency = currency;
 	}
 
 	public String getDeductionAllowed() {
