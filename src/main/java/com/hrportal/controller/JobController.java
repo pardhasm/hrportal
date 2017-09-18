@@ -48,7 +48,7 @@ public class JobController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Job> UpdateCall(@PathVariable("id") Long id) {
+    public ResponseEntity<Job> update(@PathVariable("id") Long id) {
         try {
             return ResponseEntity.ok(jobService.delete(id));
         } catch (NotFoundException e) {

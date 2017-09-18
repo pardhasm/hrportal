@@ -1,6 +1,5 @@
 package com.hrportal.controller;
 
-import com.hrportal.model.Call;
 import com.hrportal.model.Candidate;
 import com.hrportal.service.ICandidateService;
 import javassist.NotFoundException;
@@ -45,7 +44,7 @@ public class CandidateController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Candidate> UpdateCall(@PathVariable("id") Long id) {
+    public ResponseEntity<Candidate> delete(@PathVariable("id") Long id) {
         try {
             return ResponseEntity.ok(candidateService.delete(id));
         } catch (NotFoundException e) {

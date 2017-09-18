@@ -1,7 +1,6 @@
 package com.hrportal.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -43,8 +42,6 @@ public class EmployeeCompanyLoan extends AbstractMutableEntity{
 	@Temporal(TemporalType.DATE)
 	@Column(name="start_date", nullable=false)
 	private Date startDate;
-
-	@Column(length=20)
 
 
 	//bi-directional many-to-one association to CompanyLoan

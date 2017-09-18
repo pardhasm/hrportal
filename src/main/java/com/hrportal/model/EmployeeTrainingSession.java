@@ -1,6 +1,5 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
 
 
@@ -24,8 +23,6 @@ public class EmployeeTrainingSession extends AbstractMutableEntity{
 
 	@Column(length=300)
 	private String proof;
-
-	@Column(length=20)
 
 
 	//bi-directional many-to-one association to Employee

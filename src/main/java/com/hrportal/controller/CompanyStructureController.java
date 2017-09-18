@@ -38,7 +38,7 @@ public class CompanyStructureController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<CompanyStructure> UpdateCompanyStructure(@PathVariable("id") Long id, @RequestBody CompanyStructure companyStructure) {
+    public ResponseEntity<CompanyStructure> updateCompanyStructure(@PathVariable("id") Long id, @RequestBody CompanyStructure companyStructure) {
         try {
             return ResponseEntity.ok(companyStructureService.update(id, companyStructure));
         } catch (NotFoundException e) {
@@ -47,7 +47,7 @@ public class CompanyStructureController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<CompanyStructure> DeleteCompanyStructure(@PathVariable("id") Long id) {
+    public ResponseEntity<CompanyStructure> deleteCompanyStructure(@PathVariable("id") Long id) {
         try {
             return ResponseEntity.ok(companyStructureService.delete(id));
         } catch (NotFoundException e) {

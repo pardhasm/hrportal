@@ -1,6 +1,5 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
 
@@ -27,8 +26,6 @@ public class EmployeeAttendanceSheet extends AbstractMutableEntity{
 	@Temporal(TemporalType.DATE)
 	@Column(name="date_start", nullable=false)
 	private Date dateStart;
-
-	@Column(length=20)
 
 
 	//bi-directional many-to-one association to Employee

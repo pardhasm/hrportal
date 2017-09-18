@@ -41,7 +41,7 @@ public class EmployeeEducationServiceImpl implements IEmployeeEducationService {
     @Override
     public EmployeeEducation update(Long id, EmployeeEducation employeeEducation) throws NotFoundException {
         if (!employeeEducationRepository.exists(employeeEducation.getId())) {
-            throw new NotFoundException("Candidate Not found with given id : " + employeeEducation.getId());
+            throw new NotFoundException("Employee Education Not found with given id : " + employeeEducation.getId());
         }
         return employeeEducationRepository.save(employeeEducation);
     }

@@ -39,7 +39,7 @@ public class CallController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Call> UpdateCall(@PathVariable("id") Long id, @RequestBody Call call) {
+    public ResponseEntity<Call> update(@PathVariable("id") Long id, @RequestBody Call call) {
         try {
             return ResponseEntity.ok(callService.update(id, call));
         } catch (NotFoundException e) {
@@ -48,7 +48,7 @@ public class CallController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Call> UpdateCall(@PathVariable("id") Long id) {
+    public ResponseEntity<Call> update(@PathVariable("id") Long id) {
         try {
             return ResponseEntity.ok(callService.delete(id));
         } catch (NotFoundException e) {
