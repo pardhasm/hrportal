@@ -30,7 +30,8 @@ public class Permission implements Serializable {
 	private String permission;
 
 	@Column(name="user_level", length=20)
-	private String userLevel;
+	@Enumerated(EnumType.STRING)
+	private UserLevel userLevel;
 
 	@Column(length=200)
 	private String value;
@@ -70,11 +71,11 @@ public class Permission implements Serializable {
 		this.permission = permission;
 	}
 
-	public String getUserLevel() {
+	public UserLevel getUserLevel() {
 		return this.userLevel;
 	}
 
-	public void setUserLevel(String userLevel) {
+	public void setUserLevel(UserLevel userLevel) {
 		this.userLevel = userLevel;
 	}
 

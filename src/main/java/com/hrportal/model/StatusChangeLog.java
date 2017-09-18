@@ -31,10 +31,12 @@ public class StatusChangeLog implements Serializable {
     private Long element;
 
 	@Column(name="status_from", length=20)
-	private String statusFrom;
+	@Enumerated(EnumType.STRING)
+	private Approval statusFrom;
 
 	@Column(name="status_to", length=20)
-	private String statusTo;
+	@Enumerated(EnumType.STRING)
+	private Approval statusTo;
 
 	@Column(nullable=false, length=100)
 	private String type;
@@ -77,19 +79,19 @@ public class StatusChangeLog implements Serializable {
         this.element = element;
 	}
 
-	public String getStatusFrom() {
+	public Approval getStatusFrom() {
 		return this.statusFrom;
 	}
 
-	public void setStatusFrom(String statusFrom) {
+	public void setStatusFrom(Approval statusFrom) {
 		this.statusFrom = statusFrom;
 	}
 
-	public String getStatusTo() {
+	public Approval getStatusTo() {
 		return this.statusTo;
 	}
 
-	public void setStatusTo(String statusTo) {
+	public void setStatusTo(Approval statusTo) {
 		this.statusTo = statusTo;
 	}
 

@@ -73,7 +73,8 @@ public class Job implements Serializable {
     private String shortDescription;
 
     @Column(length = 20)
-    private String showSalary;
+    @Enumerated(EnumType.STRING)
+    private Polar showSalary;
 
     @Column(length = 20)
     private String status;
@@ -272,11 +273,11 @@ public class Job implements Serializable {
         this.shortDescription = shortDescription;
     }
 
-    public String getShowSalary() {
+    public Polar getShowSalary() {
         return this.showSalary;
     }
 
-    public void setShowSalary(String showSalary) {
+    public void setShowSalary(Polar showSalary) {
         this.showSalary = showSalary;
     }
 

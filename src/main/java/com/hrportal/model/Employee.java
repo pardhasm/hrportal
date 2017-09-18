@@ -89,7 +89,8 @@ public class Employee implements Serializable {
     private String firstName;
 
     @Column(length = 20)
-    private String gender;
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
 
     @Column(name = "home_phone", length = 50)
     private String homePhone;
@@ -108,7 +109,8 @@ public class Employee implements Serializable {
     private String lastName;
 
     @Column(name = "marital_status", length = 20)
-    private String maritalStatus;
+    @Enumerated(EnumType.STRING)
+    private MaritalStatus maritalStatus;
 
     @Column(name = "middle_name", length = 100)
     private String middleName;
@@ -501,11 +503,11 @@ public class Employee implements Serializable {
         this.firstName = firstName;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return this.gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
@@ -549,11 +551,11 @@ public class Employee implements Serializable {
         this.lastName = lastName;
     }
 
-    public String getMaritalStatus() {
+    public MaritalStatus getMaritalStatus() {
         return this.maritalStatus;
     }
 
-    public void setMaritalStatus(String maritalStatus) {
+    public void setMaritalStatus(MaritalStatus maritalStatus) {
         this.maritalStatus = maritalStatus;
     }
 

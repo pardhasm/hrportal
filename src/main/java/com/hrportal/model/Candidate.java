@@ -70,7 +70,8 @@ public class Candidate implements Serializable {
     private String firstName;
 
     @Column(length = 20)
-    private String gender;
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
 
     @Column(length = 150)
     private String generatedCVFile;
@@ -113,7 +114,8 @@ public class Candidate implements Serializable {
     private String linkedInUrl;
 
     @Column(name = "marital_status", length = 20)
-    private String maritalStatus;
+    @Enumerated(EnumType.STRING)
+    private MaritalStatus maritalStatus;
 
     @Column(name = "mobile_phone", length = 50)
     private String mobilePhone;
@@ -328,14 +330,6 @@ public class Candidate implements Serializable {
         this.firstName = firstName;
     }
 
-    public String getGender() {
-        return this.gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
     public String getGeneratedCVFile() {
         return this.generatedCVFile;
     }
@@ -438,14 +432,6 @@ public class Candidate implements Serializable {
 
     public void setLinkedInUrl(String linkedInUrl) {
         this.linkedInUrl = linkedInUrl;
-    }
-
-    public String getMaritalStatus() {
-        return this.maritalStatus;
-    }
-
-    public void setMaritalStatus(String maritalStatus) {
-        this.maritalStatus = maritalStatus;
     }
 
     public String getMobilePhone() {
@@ -666,4 +652,19 @@ public class Candidate implements Serializable {
         return interview;
     }
 
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public MaritalStatus getMaritalStatus() {
+        return maritalStatus;
+    }
+
+    public void setMaritalStatus(MaritalStatus maritalStatus) {
+        this.maritalStatus = maritalStatus;
+    }
 }

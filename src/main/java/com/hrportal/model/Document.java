@@ -1,7 +1,7 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -28,22 +28,27 @@ public class Document implements Serializable {
 	private String details;
 
 	@Column(name="expire_notification", length=20)
-	private String expireNotification;
+	@Enumerated(EnumType.STRING)
+	private Polar expireNotification;
 
 	@Column(name="expire_notification_day", length=20)
-	private String expireNotificationDay;
+	@Enumerated(EnumType.STRING)
+	private Polar expireNotificationDay;
 
 	@Column(name="expire_notification_month", length=20)
-	private String expireNotificationMonth;
+	@Enumerated(EnumType.STRING)
+	private Polar expireNotificationMonth;
 
 	@Column(name="expire_notification_week", length=20)
-	private String expireNotificationWeek;
+	@Enumerated(EnumType.STRING)
+	private Polar expireNotificationWeek;
 
 	@Column(nullable=false, length=100)
 	private String name;
 
 	@Column(length=20)
-	private String sign;
+	@Enumerated(EnumType.STRING)
+	private Polar sign;
 
 	@Column(name="sign_label", length=500)
 	private String signLabel;
@@ -82,38 +87,6 @@ public class Document implements Serializable {
 		this.details = details;
 	}
 
-	public String getExpireNotification() {
-		return this.expireNotification;
-	}
-
-	public void setExpireNotification(String expireNotification) {
-		this.expireNotification = expireNotification;
-	}
-
-	public String getExpireNotificationDay() {
-		return this.expireNotificationDay;
-	}
-
-	public void setExpireNotificationDay(String expireNotificationDay) {
-		this.expireNotificationDay = expireNotificationDay;
-	}
-
-	public String getExpireNotificationMonth() {
-		return this.expireNotificationMonth;
-	}
-
-	public void setExpireNotificationMonth(String expireNotificationMonth) {
-		this.expireNotificationMonth = expireNotificationMonth;
-	}
-
-	public String getExpireNotificationWeek() {
-		return this.expireNotificationWeek;
-	}
-
-	public void setExpireNotificationWeek(String expireNotificationWeek) {
-		this.expireNotificationWeek = expireNotificationWeek;
-	}
-
 	public String getName() {
 		return this.name;
 	}
@@ -122,11 +95,11 @@ public class Document implements Serializable {
 		this.name = name;
 	}
 
-	public String getSign() {
+	public Polar getSign() {
 		return this.sign;
 	}
 
-	public void setSign(String sign) {
+	public void setSign(Polar sign) {
 		this.sign = sign;
 	}
 
@@ -168,4 +141,39 @@ public class Document implements Serializable {
 		return employeeDocument;
 	}
 
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
+	public Polar getExpireNotification() {
+		return expireNotification;
+	}
+
+	public void setExpireNotification(Polar expireNotification) {
+		this.expireNotification = expireNotification;
+	}
+
+	public Polar getExpireNotificationDay() {
+		return expireNotificationDay;
+	}
+
+	public void setExpireNotificationDay(Polar expireNotificationDay) {
+		this.expireNotificationDay = expireNotificationDay;
+	}
+
+	public Polar getExpireNotificationMonth() {
+		return expireNotificationMonth;
+	}
+
+	public void setExpireNotificationMonth(Polar expireNotificationMonth) {
+		this.expireNotificationMonth = expireNotificationMonth;
+	}
+
+	public Polar getExpireNotificationWeek() {
+		return expireNotificationWeek;
+	}
+
+	public void setExpireNotificationWeek(Polar expireNotificationWeek) {
+		this.expireNotificationWeek = expireNotificationWeek;
+	}
 }

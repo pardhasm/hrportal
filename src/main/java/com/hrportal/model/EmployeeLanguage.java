@@ -1,7 +1,7 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 
 
 /**
@@ -10,7 +10,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="EmployeeLanguages")
-//@NamedQuery(name="EmployeeLanguage.findAll", query="SELECT e FROM EmployeeLanguage e")
+
 public class EmployeeLanguage implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -20,16 +20,20 @@ public class EmployeeLanguage implements Serializable {
 	private Long id;
 
 	@Column(length=100)
-	private String reading;
+	@Enumerated(EnumType.STRING)
+	private Proficiency reading;
 
 	@Column(length=100)
-	private String speaking;
+	@Enumerated(EnumType.STRING)
+	private Proficiency speaking;
 
 	@Column(length=100)
-	private String understanding;
+	@Enumerated(EnumType.STRING)
+	private Proficiency understanding;
 
 	@Column(length=100)
-	private String writing;
+	@Enumerated(EnumType.STRING)
+	private Proficiency writing;
 
 	//bi-directional many-to-one association to Employee
 	@ManyToOne
@@ -52,35 +56,39 @@ public class EmployeeLanguage implements Serializable {
 		this.id = id;
 	}
 
-	public String getReading() {
-		return this.reading;
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
 	}
 
-	public void setReading(String reading) {
+	public Proficiency getReading() {
+		return reading;
+	}
+
+	public void setReading(Proficiency reading) {
 		this.reading = reading;
 	}
 
-	public String getSpeaking() {
-		return this.speaking;
+	public Proficiency getSpeaking() {
+		return speaking;
 	}
 
-	public void setSpeaking(String speaking) {
+	public void setSpeaking(Proficiency speaking) {
 		this.speaking = speaking;
 	}
 
-	public String getUnderstanding() {
-		return this.understanding;
+	public Proficiency getUnderstanding() {
+		return understanding;
 	}
 
-	public void setUnderstanding(String understanding) {
+	public void setUnderstanding(Proficiency understanding) {
 		this.understanding = understanding;
 	}
 
-	public String getWriting() {
+	public Proficiency getWriting() {
 		return this.writing;
 	}
 
-	public void setWriting(String writing) {
+	public void setWriting(Proficiency writing) {
 		this.writing = writing;
 	}
 

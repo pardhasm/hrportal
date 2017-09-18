@@ -1,7 +1,7 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 
@@ -27,7 +27,8 @@ public class CustomField implements Serializable {
 	private String data;
 
 	@Column(length=20)
-	private String display;
+	@Enumerated(EnumType.STRING)
+	private Display display;
 
 	@Column(name="display_order")
 	private int displayOrder;
@@ -83,11 +84,11 @@ public class CustomField implements Serializable {
 		this.data = data;
 	}
 
-	public String getDisplay() {
+	public Display getDisplay() {
 		return this.display;
 	}
 
-	public void setDisplay(String display) {
+	public void setDisplay(Display display) {
 		this.display = display;
 	}
 

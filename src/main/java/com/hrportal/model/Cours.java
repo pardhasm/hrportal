@@ -1,7 +1,7 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
@@ -41,7 +41,8 @@ public class Cours implements Serializable {
 	private String name;
 
 	@Column(length=20)
-	private String paymentType;
+	@Enumerated(EnumType.STRING)
+	private PaymentType paymentType;
 
 	@Column(length=20)
 	private String status;
@@ -124,11 +125,11 @@ public class Cours implements Serializable {
 		this.name = name;
 	}
 
-	public String getPaymentType() {
+	public PaymentType getPaymentType() {
 		return this.paymentType;
 	}
 
-	public void setPaymentType(String paymentType) {
+	public void setPaymentType(PaymentType paymentType) {
 		this.paymentType = paymentType;
 	}
 

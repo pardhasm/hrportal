@@ -1,7 +1,7 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -25,7 +25,8 @@ public class TrainingSession implements Serializable {
 	private String attachment;
 
 	@Column(length=20)
-	private String attendanceType;
+	@Enumerated(EnumType.STRING)
+	private AttendanceType attendanceType;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date created;
@@ -34,7 +35,7 @@ public class TrainingSession implements Serializable {
 	private String deliveryLocation;
 
 	@Column(length=20)
-	private String deliveryMethod;
+	private DeliveryMethod deliveryMethod;
 
 	@Lob
 	private String description;
@@ -46,7 +47,8 @@ public class TrainingSession implements Serializable {
 	private String name;
 
 	@Column(length=20)
-	private String requireProof;
+	@Enumerated(EnumType.STRING)
+	private Polar requireProof;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date scheduled;
@@ -85,14 +87,6 @@ public class TrainingSession implements Serializable {
 		this.attachment = attachment;
 	}
 
-	public String getAttendanceType() {
-		return this.attendanceType;
-	}
-
-	public void setAttendanceType(String attendanceType) {
-		this.attendanceType = attendanceType;
-	}
-
 	public Date getCreated() {
 		return this.created;
 	}
@@ -107,14 +101,6 @@ public class TrainingSession implements Serializable {
 
 	public void setDeliveryLocation(String deliveryLocation) {
 		this.deliveryLocation = deliveryLocation;
-	}
-
-	public String getDeliveryMethod() {
-		return this.deliveryMethod;
-	}
-
-	public void setDeliveryMethod(String deliveryMethod) {
-		this.deliveryMethod = deliveryMethod;
 	}
 
 	public String getDescription() {
@@ -141,11 +127,11 @@ public class TrainingSession implements Serializable {
 		this.name = name;
 	}
 
-	public String getRequireProof() {
+	public Polar getRequireProof() {
 		return this.requireProof;
 	}
 
-	public void setRequireProof(String requireProof) {
+	public void setRequireProof(Polar requireProof) {
 		this.requireProof = requireProof;
 	}
 
@@ -203,4 +189,19 @@ public class TrainingSession implements Serializable {
 		this.cours = cours;
 	}
 
+	public AttendanceType getAttendanceType() {
+		return attendanceType;
+	}
+
+	public void setAttendanceType(AttendanceType attendanceType) {
+		this.attendanceType = attendanceType;
+	}
+
+	public DeliveryMethod getDeliveryMethod() {
+		return deliveryMethod;
+	}
+
+	public void setDeliveryMethod(DeliveryMethod deliveryMethod) {
+		this.deliveryMethod = deliveryMethod;
+	}
 }

@@ -1,7 +1,7 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 
 
 /**
@@ -40,10 +40,12 @@ public class PayrollColumn implements Serializable {
 	private String defaultValue;
 
 	@Column(length=20)
-	private String editable;
+	@Enumerated(EnumType.STRING)
+	private Polar editable;
 
 	@Column(length=20)
-	private String enabled;
+	@Enumerated(EnumType.STRING)
+	private Polar enabled;
 
 	@Column(length=50)
 	private String name;
@@ -121,19 +123,19 @@ public class PayrollColumn implements Serializable {
 		this.defaultValue = defaultValue;
 	}
 
-	public String getEditable() {
+	public Polar getEditable() {
 		return this.editable;
 	}
 
-	public void setEditable(String editable) {
+	public void setEditable(Polar editable) {
 		this.editable = editable;
 	}
 
-	public String getEnabled() {
+	public Polar getEnabled() {
 		return this.enabled;
 	}
 
-	public void setEnabled(String enabled) {
+	public void setEnabled(Polar enabled) {
 		this.enabled = enabled;
 	}
 

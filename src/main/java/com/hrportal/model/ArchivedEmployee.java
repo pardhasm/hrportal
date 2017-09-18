@@ -37,7 +37,8 @@ public class ArchivedEmployee implements Serializable {
 	private String firstName;
 
 	@Column(length=20)
-	private String gender;
+	@Enumerated(EnumType.STRING)
+	private Gender gender;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="joined_date")
@@ -121,11 +122,11 @@ public class ArchivedEmployee implements Serializable {
 		this.firstName = firstName;
 	}
 
-	public String getGender() {
+	public Gender getGender() {
 		return this.gender;
 	}
 
-	public void setGender(String gender) {
+	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
 

@@ -22,10 +22,12 @@ public class LeaveRule implements Serializable {
 	private Long id;
 
 	@Column(name="apply_beyond_current", length=20)
-	private String applyBeyondCurrent;
+    @Enumerated(EnumType.STRING)
+	private Polar applyBeyondCurrent;
 
 	@Column(name="carried_forward", length=20)
-	private String carriedForward;
+    @Enumerated(EnumType.STRING)
+	private Polar carriedForward;
 
 	@Column(name="carried_forward_leave_availability")
 	private int carriedForwardLeaveAvailability;
@@ -39,7 +41,8 @@ public class LeaveRule implements Serializable {
     private Long employee;
 
 	@Column(name="employee_can_apply", length=20)
-	private String employeeCanApply;
+    @Enumerated(EnumType.STRING)
+	private Polar employeeCanApply;
 
 	@Column(name="employment_status")
     private Long employmentStatus;
@@ -48,7 +51,8 @@ public class LeaveRule implements Serializable {
     private Long jobTitle;
 
 	@Column(name="leave_accrue", length=20)
-	private String leaveAccrue;
+    @Enumerated(EnumType.STRING)
+	private Polar leaveAccrue;
 
 	@Column(name="leave_group")
     private Long leaveGroup;
@@ -60,10 +64,12 @@ public class LeaveRule implements Serializable {
 	private int maxCarriedForwardAmount;
 
 	@Column(name="propotionate_on_joined_date", length=20)
-	private String propotionateOnJoinedDate;
+    @Enumerated(EnumType.STRING)
+	private Polar propotionateOnJoinedDate;
 
 	@Column(name="supervisor_leave_assign", length=20)
-	private String supervisorLeaveAssign;
+    @Enumerated(EnumType.STRING)
+	private Polar supervisorLeaveAssign;
 
 	public LeaveRule() {
 	}
@@ -76,21 +82,7 @@ public class LeaveRule implements Serializable {
 		this.id = id;
 	}
 
-	public String getApplyBeyondCurrent() {
-		return this.applyBeyondCurrent;
-	}
 
-	public void setApplyBeyondCurrent(String applyBeyondCurrent) {
-		this.applyBeyondCurrent = applyBeyondCurrent;
-	}
-
-	public String getCarriedForward() {
-		return this.carriedForward;
-	}
-
-	public void setCarriedForward(String carriedForward) {
-		this.carriedForward = carriedForward;
-	}
 
 	public int getCarriedForwardLeaveAvailability() {
 		return this.carriedForwardLeaveAvailability;
@@ -124,15 +116,7 @@ public class LeaveRule implements Serializable {
         this.employee = employee;
 	}
 
-	public String getEmployeeCanApply() {
-		return this.employeeCanApply;
-	}
-
-	public void setEmployeeCanApply(String employeeCanApply) {
-		this.employeeCanApply = employeeCanApply;
-	}
-
-    public Long getEmploymentStatus() {
+	public Long getEmploymentStatus() {
         return this.employmentStatus;
 	}
 
@@ -148,15 +132,7 @@ public class LeaveRule implements Serializable {
         this.jobTitle = jobTitle;
 	}
 
-	public String getLeaveAccrue() {
-		return this.leaveAccrue;
-	}
-
-	public void setLeaveAccrue(String leaveAccrue) {
-		this.leaveAccrue = leaveAccrue;
-	}
-
-    public Long getLeaveGroup() {
+	public Long getLeaveGroup() {
         return this.leaveGroup;
 	}
 
@@ -180,20 +156,55 @@ public class LeaveRule implements Serializable {
 		this.maxCarriedForwardAmount = maxCarriedForwardAmount;
 	}
 
-	public String getPropotionateOnJoinedDate() {
-		return this.propotionateOnJoinedDate;
-	}
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
-	public void setPropotionateOnJoinedDate(String propotionateOnJoinedDate) {
-		this.propotionateOnJoinedDate = propotionateOnJoinedDate;
-	}
+    public Polar getApplyBeyondCurrent() {
+        return applyBeyondCurrent;
+    }
 
-	public String getSupervisorLeaveAssign() {
-		return this.supervisorLeaveAssign;
-	}
+    public void setApplyBeyondCurrent(Polar applyBeyondCurrent) {
+        this.applyBeyondCurrent = applyBeyondCurrent;
+    }
 
-	public void setSupervisorLeaveAssign(String supervisorLeaveAssign) {
-		this.supervisorLeaveAssign = supervisorLeaveAssign;
-	}
+    public Polar getCarriedForward() {
+        return carriedForward;
+    }
 
+    public void setCarriedForward(Polar carriedForward) {
+        this.carriedForward = carriedForward;
+    }
+
+    public Polar getEmployeeCanApply() {
+        return employeeCanApply;
+    }
+
+    public void setEmployeeCanApply(Polar employeeCanApply) {
+        this.employeeCanApply = employeeCanApply;
+    }
+
+    public Polar getLeaveAccrue() {
+        return leaveAccrue;
+    }
+
+    public void setLeaveAccrue(Polar leaveAccrue) {
+        this.leaveAccrue = leaveAccrue;
+    }
+
+    public Polar getPropotionateOnJoinedDate() {
+        return propotionateOnJoinedDate;
+    }
+
+    public void setPropotionateOnJoinedDate(Polar propotionateOnJoinedDate) {
+        this.propotionateOnJoinedDate = propotionateOnJoinedDate;
+    }
+
+    public Polar getSupervisorLeaveAssign() {
+        return supervisorLeaveAssign;
+    }
+
+    public void setSupervisorLeaveAssign(Polar supervisorLeaveAssign) {
+        this.supervisorLeaveAssign = supervisorLeaveAssign;
+    }
 }

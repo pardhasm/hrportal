@@ -1,7 +1,7 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -28,7 +28,8 @@ public class ExpensesCategory implements Serializable {
 	private String name;
 
 	@Column(name="pre_approve", length=20)
-	private String preApprove;
+	@Enumerated(EnumType.STRING)
+	private Polar preApprove;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updated;
@@ -64,11 +65,11 @@ public class ExpensesCategory implements Serializable {
 		this.name = name;
 	}
 
-	public String getPreApprove() {
+	public Polar getPreApprove() {
 		return this.preApprove;
 	}
 
-	public void setPreApprove(String preApprove) {
+	public void setPreApprove(Polar preApprove) {
 		this.preApprove = preApprove;
 	}
 

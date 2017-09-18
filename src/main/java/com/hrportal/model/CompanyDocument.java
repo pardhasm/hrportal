@@ -1,7 +1,7 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 
@@ -30,7 +30,8 @@ public class CompanyDocument implements Serializable {
 	private String name;
 
 	@Column(name="notify_employees", length=20)
-	private String notifyEmployees;
+	@Enumerated(EnumType.STRING)
+	private Polar notifyEmployees;
 
 	@Column(name="share_departments", length=100)
 	private String shareDepartments;
@@ -83,11 +84,11 @@ public class CompanyDocument implements Serializable {
 		this.name = name;
 	}
 
-	public String getNotifyEmployees() {
+	public Polar getNotifyEmployees() {
 		return this.notifyEmployees;
 	}
 
-	public void setNotifyEmployees(String notifyEmployees) {
+	public void setNotifyEmployees(Polar notifyEmployees) {
 		this.notifyEmployees = notifyEmployees;
 	}
 

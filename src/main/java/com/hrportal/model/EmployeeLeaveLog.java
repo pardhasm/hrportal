@@ -26,10 +26,12 @@ public class EmployeeLeaveLog implements Serializable {
     private String data;
 
     @Column(name = "status_from", length = 20)
-    private String statusFrom;
+    @Enumerated(EnumType.STRING)
+    private Approval statusFrom;
 
     @Column(name = "status_to", length = 20)
-    private String statusTo;
+    @Enumerated(EnumType.STRING)
+    private Approval statusTo;
 
     //bi-directional many-to-one association to EmployeeLeave
     @ManyToOne
@@ -68,22 +70,6 @@ public class EmployeeLeaveLog implements Serializable {
         this.data = data;
     }
 
-    public String getStatusFrom() {
-        return this.statusFrom;
-    }
-
-    public void setStatusFrom(String statusFrom) {
-        this.statusFrom = statusFrom;
-    }
-
-    public String getStatusTo() {
-        return this.statusTo;
-    }
-
-    public void setStatusTo(String statusTo) {
-        this.statusTo = statusTo;
-    }
-
     public EmployeeLeave getEmployeeLeaveBean() {
         return this.employeeLeaveBean;
     }
@@ -100,4 +86,23 @@ public class EmployeeLeaveLog implements Serializable {
         this.user = user;
     }
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Approval getStatusFrom() {
+        return statusFrom;
+    }
+
+    public void setStatusFrom(Approval statusFrom) {
+        this.statusFrom = statusFrom;
+    }
+
+    public Approval getStatusTo() {
+        return statusTo;
+    }
+
+    public void setStatusTo(Approval statusTo) {
+        this.statusTo = statusTo;
+    }
 }

@@ -41,7 +41,8 @@ public class CompanyStructure implements Serializable {
 	private String title;
 
 	@Column(length = 50)
-	private String type;
+	@Enumerated(EnumType.STRING)
+	private Type type;
 
 	//bi-directional many-to-one association to CompanyStructure
 	@ManyToOne
@@ -115,11 +116,11 @@ public class CompanyStructure implements Serializable {
 		this.title = title;
 	}
 
-	public String getType() {
+	public Type getType() {
 		return this.type;
 	}
 
-	public void setType(String type) {
+	public void setType(Type type) {
 		this.type = type;
 	}
 

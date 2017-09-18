@@ -2,7 +2,6 @@ package com.hrportal.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Set;
 
 
@@ -12,7 +11,6 @@ import java.util.Set;
  */
 @Entity
 @Table(name="LeaveTypes")
-//@NamedQuery(name="LeaveType.findAll", query="SELECT l FROM LeaveType l")
 public class LeaveType implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -22,10 +20,11 @@ public class LeaveType implements Serializable {
 	private Long id;
 
 	@Column(name="apply_beyond_current", length=20)
-	private String applyBeyondCurrent;
+	private Polar applyBeyondCurrent;
 
 	@Column(name="carried_forward", length=20)
-	private String carriedForward;
+    @Enumerated(EnumType.STRING)
+	private Polar carriedForward;
 
 	@Column(name="carried_forward_leave_availability")
 	private int carriedForwardLeaveAvailability;
@@ -34,13 +33,16 @@ public class LeaveType implements Serializable {
 	private int carriedForwardPercentage;
 
 	@Column(name="default_per_year", nullable=false, precision=10, scale=3)
-	private BigDecimal defaultPerYear;
+	@Enumerated(EnumType.STRING)
+	private Polar defaultPerYear;
 
 	@Column(name="employee_can_apply", length=20)
-	private String employeeCanApply;
+	@Enumerated(EnumType.STRING)
+	private Polar employeeCanApply;
 
 	@Column(name="leave_accrue", length=20)
-	private String leaveAccrue;
+	@Enumerated(EnumType.STRING)
+	private Polar leaveAccrue;
 
 	@Column(name="leave_color", length=10)
 	private String leaveColor;
@@ -55,13 +57,15 @@ public class LeaveType implements Serializable {
 	private String name;
 
 	@Column(name="propotionate_on_joined_date", length=20)
-	private String propotionateOnJoinedDate;
+	@Enumerated(EnumType.STRING)
+	private Polar propotionateOnJoinedDate;
 
 	@Column(name="send_notification_emails", length=20)
-	private String sendNotificationEmails;
+	@Enumerated(EnumType.STRING)
+	private Polar sendNotificationEmails;
 
 	@Column(name="supervisor_leave_assign", length=20)
-	private String supervisorLeaveAssign;
+	private Polar supervisorLeaveAssign;
 
 	//bi-directional many-to-one association to EmployeeLeave
 	@OneToMany(mappedBy="leaveTypeBean", fetch=FetchType.EAGER)
@@ -78,22 +82,6 @@ public class LeaveType implements Serializable {
 		this.id = id;
 	}
 
-	public String getApplyBeyondCurrent() {
-		return this.applyBeyondCurrent;
-	}
-
-	public void setApplyBeyondCurrent(String applyBeyondCurrent) {
-		this.applyBeyondCurrent = applyBeyondCurrent;
-	}
-
-	public String getCarriedForward() {
-		return this.carriedForward;
-	}
-
-	public void setCarriedForward(String carriedForward) {
-		this.carriedForward = carriedForward;
-	}
-
 	public int getCarriedForwardLeaveAvailability() {
 		return this.carriedForwardLeaveAvailability;
 	}
@@ -108,30 +96,6 @@ public class LeaveType implements Serializable {
 
 	public void setCarriedForwardPercentage(int carriedForwardPercentage) {
 		this.carriedForwardPercentage = carriedForwardPercentage;
-	}
-
-	public BigDecimal getDefaultPerYear() {
-		return this.defaultPerYear;
-	}
-
-	public void setDefaultPerYear(BigDecimal defaultPerYear) {
-		this.defaultPerYear = defaultPerYear;
-	}
-
-	public String getEmployeeCanApply() {
-		return this.employeeCanApply;
-	}
-
-	public void setEmployeeCanApply(String employeeCanApply) {
-		this.employeeCanApply = employeeCanApply;
-	}
-
-	public String getLeaveAccrue() {
-		return this.leaveAccrue;
-	}
-
-	public void setLeaveAccrue(String leaveAccrue) {
-		this.leaveAccrue = leaveAccrue;
 	}
 
 	public String getLeaveColor() {
@@ -166,30 +130,6 @@ public class LeaveType implements Serializable {
 		this.name = name;
 	}
 
-	public String getPropotionateOnJoinedDate() {
-		return this.propotionateOnJoinedDate;
-	}
-
-	public void setPropotionateOnJoinedDate(String propotionateOnJoinedDate) {
-		this.propotionateOnJoinedDate = propotionateOnJoinedDate;
-	}
-
-	public String getSendNotificationEmails() {
-		return this.sendNotificationEmails;
-	}
-
-	public void setSendNotificationEmails(String sendNotificationEmails) {
-		this.sendNotificationEmails = sendNotificationEmails;
-	}
-
-	public String getSupervisorLeaveAssign() {
-		return this.supervisorLeaveAssign;
-	}
-
-	public void setSupervisorLeaveAssign(String supervisorLeaveAssign) {
-		this.supervisorLeaveAssign = supervisorLeaveAssign;
-	}
-
 	public Set<EmployeeLeave> getEmployeeLeaves() {
 		return this.employeeLeaves;
 	}
@@ -203,6 +143,74 @@ public class LeaveType implements Serializable {
 		employeeLeave.setLeaveTypeBean(this);
 
 		return employeeLeave;
+	}
+
+	public Polar getApplyBeyondCurrent() {
+		return applyBeyondCurrent;
+	}
+
+	public void setApplyBeyondCurrent(Polar applyBeyondCurrent) {
+		this.applyBeyondCurrent = applyBeyondCurrent;
+	}
+
+	public Polar getCarriedForward() {
+		return carriedForward;
+	}
+
+	public void setCarriedForward(Polar carriedForward) {
+		this.carriedForward = carriedForward;
+	}
+
+	public Polar getDefaultPerYear() {
+		return defaultPerYear;
+	}
+
+	public void setDefaultPerYear(Polar defaultPerYear) {
+		this.defaultPerYear = defaultPerYear;
+	}
+
+	public Polar getEmployeeCanApply() {
+		return employeeCanApply;
+	}
+
+	public void setEmployeeCanApply(Polar employeeCanApply) {
+		this.employeeCanApply = employeeCanApply;
+	}
+
+	public Polar getLeaveAccrue() {
+		return leaveAccrue;
+	}
+
+	public void setLeaveAccrue(Polar leaveAccrue) {
+		this.leaveAccrue = leaveAccrue;
+	}
+
+	public Polar getPropotionateOnJoinedDate() {
+		return propotionateOnJoinedDate;
+	}
+
+	public void setPropotionateOnJoinedDate(Polar propotionateOnJoinedDate) {
+		this.propotionateOnJoinedDate = propotionateOnJoinedDate;
+	}
+
+	public Polar getSendNotificationEmails() {
+		return sendNotificationEmails;
+	}
+
+	public void setSendNotificationEmails(Polar sendNotificationEmails) {
+		this.sendNotificationEmails = sendNotificationEmails;
+	}
+
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
+	public Polar getSupervisorLeaveAssign() {
+		return supervisorLeaveAssign;
+	}
+
+	public void setSupervisorLeaveAssign(Polar supervisorLeaveAssign) {
+		this.supervisorLeaveAssign = supervisorLeaveAssign;
 	}
 
 	public EmployeeLeave removeEmployeeLeave(EmployeeLeave employeeLeave) {

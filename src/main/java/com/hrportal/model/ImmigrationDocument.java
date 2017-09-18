@@ -1,7 +1,7 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -25,10 +25,12 @@ public class ImmigrationDocument implements Serializable {
 	private int alertBeforeDayNumber;
 
 	@Column(name="alert_before_expiry", length=20)
-	private String alertBeforeExpiry;
+	@Enumerated(EnumType.STRING)
+	private Polar alertBeforeExpiry;
 
 	@Column(name="alert_on_missing", length=20)
-	private String alertOnMissing;
+	@Enumerated(EnumType.STRING)
+	private Polar alertOnMissing;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date created;
@@ -40,7 +42,8 @@ public class ImmigrationDocument implements Serializable {
 	private String name;
 
 	@Column(length=20)
-	private String required;
+	@Enumerated(EnumType.STRING)
+	private Polar required;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updated;
@@ -68,22 +71,6 @@ public class ImmigrationDocument implements Serializable {
 		this.alertBeforeDayNumber = alertBeforeDayNumber;
 	}
 
-	public String getAlertBeforeExpiry() {
-		return this.alertBeforeExpiry;
-	}
-
-	public void setAlertBeforeExpiry(String alertBeforeExpiry) {
-		this.alertBeforeExpiry = alertBeforeExpiry;
-	}
-
-	public String getAlertOnMissing() {
-		return this.alertOnMissing;
-	}
-
-	public void setAlertOnMissing(String alertOnMissing) {
-		this.alertOnMissing = alertOnMissing;
-	}
-
 	public Date getCreated() {
 		return this.created;
 	}
@@ -108,20 +95,36 @@ public class ImmigrationDocument implements Serializable {
 		this.name = name;
 	}
 
-	public String getRequired() {
-		return this.required;
-	}
-
-	public void setRequired(String required) {
-		this.required = required;
-	}
-
 	public Date getUpdated() {
 		return this.updated;
 	}
 
 	public void setUpdated(Date updated) {
 		this.updated = updated;
+	}
+
+	public Polar getAlertBeforeExpiry() {
+		return alertBeforeExpiry;
+	}
+
+	public void setAlertBeforeExpiry(Polar alertBeforeExpiry) {
+		this.alertBeforeExpiry = alertBeforeExpiry;
+	}
+
+	public Polar getAlertOnMissing() {
+		return alertOnMissing;
+	}
+
+	public void setAlertOnMissing(Polar alertOnMissing) {
+		this.alertOnMissing = alertOnMissing;
+	}
+
+	public Polar getRequired() {
+		return required;
+	}
+
+	public void setRequired(Polar required) {
+		this.required = required;
 	}
 
 	public Set<EmployeeImmigration> getEmployeeImmigrations() {

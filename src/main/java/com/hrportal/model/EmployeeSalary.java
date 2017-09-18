@@ -30,7 +30,8 @@ public class EmployeeSalary implements Serializable {
     private String details;
 
     @Column(name = "pay_frequency", length = 20)
-    private String payFrequency;
+    @Enumerated(EnumType.STRING)
+    private PayFrequency payFrequency;
 
     //bi-directional many-to-one association to CurrencyType
     @ManyToOne
@@ -77,11 +78,11 @@ public class EmployeeSalary implements Serializable {
         this.details = details;
     }
 
-    public String getPayFrequency() {
+    public PayFrequency getPayFrequency() {
         return this.payFrequency;
     }
 
-    public void setPayFrequency(String payFrequency) {
+    public void setPayFrequency(PayFrequency payFrequency) {
         this.payFrequency = payFrequency;
     }
 

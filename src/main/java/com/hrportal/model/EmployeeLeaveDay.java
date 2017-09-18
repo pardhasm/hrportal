@@ -1,7 +1,7 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 
@@ -25,7 +25,8 @@ public class EmployeeLeaveDay implements Serializable {
 	private Date leaveDate;
 
 	@Column(name="leave_type", nullable=false, length=200)
-	private String leaveType;
+	@Enumerated(EnumType.STRING)
+	private LeaveTypes leaveType;
 
 	//bi-directional many-to-one association to EmployeeLeave
 	@ManyToOne
@@ -51,11 +52,11 @@ public class EmployeeLeaveDay implements Serializable {
 		this.leaveDate = leaveDate;
 	}
 
-	public String getLeaveType() {
+	public LeaveTypes getLeaveType() {
 		return this.leaveType;
 	}
 
-	public void setLeaveType(String leaveType) {
+	public void setLeaveType(LeaveTypes leaveType) {
 		this.leaveType = leaveType;
 	}
 

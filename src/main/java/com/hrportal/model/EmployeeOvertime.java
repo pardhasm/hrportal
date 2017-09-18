@@ -36,7 +36,8 @@ public class EmployeeOvertime implements Serializable {
     private Date startTime;
 
     @Column(length = 20)
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private Approval status;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date updated;
@@ -102,11 +103,11 @@ public class EmployeeOvertime implements Serializable {
         this.startTime = startTime;
     }
 
-    public String getStatus() {
+    public Approval getStatus() {
         return this.status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Approval status) {
         this.status = status;
     }
 

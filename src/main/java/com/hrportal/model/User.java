@@ -45,7 +45,8 @@ public class User implements Serializable {
 	private String password;
 
 	@Column(name="user_level", length=20)
-	private String userLevel;
+	@Enumerated(EnumType.STRING)
+	private UserLevel userLevel;
 
 	@Lob
 	@Column(name="user_roles")
@@ -147,11 +148,11 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public String getUserLevel() {
+	public UserLevel getUserLevel() {
 		return this.userLevel;
 	}
 
-	public void setUserLevel(String userLevel) {
+	public void setUserLevel(UserLevel userLevel) {
 		this.userLevel = userLevel;
 	}
 

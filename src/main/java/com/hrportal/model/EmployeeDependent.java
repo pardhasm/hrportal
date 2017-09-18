@@ -1,7 +1,7 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 
@@ -30,7 +30,8 @@ public class EmployeeDependent implements Serializable {
 	private String name;
 
 	@Column(length=20)
-	private String relationship;
+	@Enumerated(EnumType.STRING)
+	private Relationship relationship;
 
 	//bi-directional many-to-one association to Employee
 	@ManyToOne
@@ -72,11 +73,11 @@ public class EmployeeDependent implements Serializable {
 		this.name = name;
 	}
 
-	public String getRelationship() {
+	public Relationship getRelationship() {
 		return this.relationship;
 	}
 
-	public void setRelationship(String relationship) {
+	public void setRelationship(Relationship relationship) {
 		this.relationship = relationship;
 	}
 
