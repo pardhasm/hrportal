@@ -50,7 +50,7 @@ public class EmployeeOvertime implements Serializable {
     //bi-directional many-to-one association to OvertimeCategory
     @ManyToOne
     @JoinColumn(name = "category", nullable = false)
-    private OvertimeCategory overtimeCategory;
+    private OverTimeCategory overtimeCategory;
 
     public EmployeeOvertime() {
     }
@@ -127,11 +127,11 @@ public class EmployeeOvertime implements Serializable {
         this.employeeBean = employeeBean;
     }
 
-    public OvertimeCategory getOvertimeCategory() {
+    public OverTimeCategory getOvertimeCategory() {
         return this.overtimeCategory;
     }
 
-    public void setOvertimeCategory(OvertimeCategory overtimeCategory) {
+    public void setOverTimeCategory(OverTimeCategory overtimeCategory) {
         this.overtimeCategory = overtimeCategory;
     }
 

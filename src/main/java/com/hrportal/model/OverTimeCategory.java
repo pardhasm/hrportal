@@ -13,7 +13,7 @@ import java.util.Set;
 @Entity
 @Table(name = "OvertimeCategories")
 //@NamedQuery(name="OvertimeCategory.findAll", query="SELECT o FROM OvertimeCategory o")
-public class OvertimeCategory implements Serializable {
+public class OverTimeCategory implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -34,7 +34,7 @@ public class OvertimeCategory implements Serializable {
     @OneToMany(mappedBy = "overtimeCategory", fetch = FetchType.EAGER)
     private Set<EmployeeOvertime> employeeOvertimes;
 
-    public OvertimeCategory() {
+    public OverTimeCategory() {
     }
 
     public Long getId() {
@@ -79,14 +79,14 @@ public class OvertimeCategory implements Serializable {
 
     public EmployeeOvertime addEmployeeOvertime(EmployeeOvertime employeeOvertime) {
         getEmployeeOvertimes().add(employeeOvertime);
-        employeeOvertime.setOvertimeCategory(this);
+        employeeOvertime.setOverTimeCategory(this);
 
         return employeeOvertime;
     }
 
     public EmployeeOvertime removeEmployeeOvertime(EmployeeOvertime employeeOvertime) {
         getEmployeeOvertimes().remove(employeeOvertime);
-        employeeOvertime.setOvertimeCategory(null);
+        employeeOvertime.setOverTimeCategory(null);
 
         return employeeOvertime;
     }
