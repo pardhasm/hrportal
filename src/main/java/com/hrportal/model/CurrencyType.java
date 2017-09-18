@@ -9,28 +9,26 @@ import javax.validation.constraints.NotNull;
  * Created by Lalith leela vishnu on 18-09-2017.
  */
 @Entity
-@Table(name = "Province")
-public class Province extends AbstractMutableEntity {
+@Table(name = "CurrencyTypes")
+public class CurrencyType extends AbstractMutableEntity {
 
     @Id
     @Length(max = 20)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Length(max = 2)
+    @Length(max = 3)
     @NotNull
     private String code;
-    @Length(max = 40)
+    @Length(max = 70)
     @NotNull
     private String name;
-    @Length(max = 20)
-    @OneToOne               //TODO
-    @JoinColumn(table = "Country", referencedColumnName = "code")
-    private Country country;
 
+    @Override
     public Long getId() {
         return id;
     }
 
+    @Override
     public void setId(Long id) {
         this.id = id;
     }
@@ -51,11 +49,12 @@ public class Province extends AbstractMutableEntity {
         this.name = name;
     }
 
-    public Country getCountry() {
-        return country;
-    }
-
-    public void setCountry(Country country) {
-        this.country = country;
+    @Override
+    public String toString() {
+        return "CurrencyType{" +
+                "id=" + id +
+                ", code='" + code + '\'' +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
