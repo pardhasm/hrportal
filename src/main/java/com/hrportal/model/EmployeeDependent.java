@@ -1,0 +1,91 @@
+package com.hrportal.model;
+
+import java.io.Serializable;
+import javax.persistence.*;
+import java.util.Date;
+
+
+/**
+ * The persistent class for the EmployeeDependents database table.
+ * 
+ */
+@Entity
+@Table(name="EmployeeDependents")
+//@NamedQuery(name="EmployeeDependent.findAll", query="SELECT e FROM EmployeeDependent e")
+public class EmployeeDependent implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(unique=true, nullable=false)
+	private Long id;
+
+	@Temporal(TemporalType.DATE)
+	private Date dob;
+
+	@Column(name="id_number", length=25)
+	private String idNumber;
+
+	@Column(nullable=false, length=100)
+	private String name;
+
+	@Column(length=20)
+	private String relationship;
+
+	//bi-directional many-to-one association to Employee
+	@ManyToOne
+	@JoinColumn(name="employee", nullable=false)
+	private Employee employeeBean;
+
+	public EmployeeDependent() {
+	}
+
+	public Long getId() {
+		return this.id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Date getDob() {
+		return this.dob;
+	}
+
+	public void setDob(Date dob) {
+		this.dob = dob;
+	}
+
+	public String getIdNumber() {
+		return this.idNumber;
+	}
+
+	public void setIdNumber(String idNumber) {
+		this.idNumber = idNumber;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getRelationship() {
+		return this.relationship;
+	}
+
+	public void setRelationship(String relationship) {
+		this.relationship = relationship;
+	}
+
+	public Employee getEmployeeBean() {
+		return this.employeeBean;
+	}
+
+	public void setEmployeeBean(Employee employeeBean) {
+		this.employeeBean = employeeBean;
+	}
+
+}
