@@ -1,57 +1,82 @@
 package com.hrportal.model;
 
-import org.hibernate.validator.constraints.Length;
-
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Set;
+
 
 /**
- * Created by Lalith leela vishnu on 18-09-2017.
+ * The persistent class for the SupportedLanguages database table.
+ *
  */
 @Entity
 @Table(name = "SupportedLanguages")
-public class SupportedLanguage extends AbstractMutableEntity {
+//@NamedQuery(name="SupportedLanguage.findAll", query="SELECT s FROM SupportedLanguage s")
+public class SupportedLanguage implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
-    @Length(max = 20)
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(unique = true, nullable = false)
     private Long id;
-    @Length(max = 100)
-    private String name;
-    @Length(max = 100)
+
+    @Column(length = 100)
     private String description;
 
-    @Override
-    public Long getId() {
-        return id;
+    @Column(length = 100)
+    private String name;
+
+    //bi-directional many-to-one association to User
+    @OneToMany(mappedBy = "supportedLanguage", fetch = FetchType.EAGER)
+    private Set<User> users;
+
+    public SupportedLanguage() {
     }
 
-    @Override
+    public Long getId() {
+        return this.id;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    @Override
-    public String toString() {
-        return "SupportedLanguage{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+    public String getName() {
+        return this.name;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<User> getUsers() {
+        return this.users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
+
+    public User addUser(User user) {
+        getUsers().add(user);
+        user.setSupportedLanguage(this);
+
+        return user;
+    }
+
+    public User removeUser(User user) {
+        getUsers().remove(user);
+        user.setSupportedLanguage(null);
+
+        return user;
+    }
+
 }

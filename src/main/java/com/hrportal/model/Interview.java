@@ -1,116 +1,147 @@
 package com.hrportal.model;
 
-import org.hibernate.validator.constraints.Length;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.Date;
 
+
+/**
+ * The persistent class for the Interviews database table.
+ */
 @Entity
 @Table(name = "Interviews")
-public class Interview extends AbstractMutableEntity {
+//@NamedQuery(name="Interview.findAll", query="SELECT i FROM Interview i")
+public class Interview implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
-    @NotNull
-    @Length(max = 20)
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(unique = true, nullable = false)
     private Long id;
 
-    @OneToOne
-    @JoinColumn(referencedColumnName = "id")
-    private Job job;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date created;
 
-    @OneToOne
-    @JoinColumn(referencedColumnName = "id")
-    private Candidate candidate;
-
-    @Length(max = 100)
+    @Column(length = 100)
     private String level;
 
-    private Date scheduled;
-
-    @Length(max = 500)
+    @Column(length = 500)
     private String location;
 
-    @Length(max = 20)
-    private Long mapId;
+    private BigInteger mapId;
 
-    @Length(max = 100)
-    private String status;
-
+    @Lob
     private String notes;
 
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date scheduled;
+
+    @Column(length = 100)
+    private String status;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updated;
+
+    //bi-directional many-to-one association to Candidate
+    @ManyToOne
+    @JoinColumn(name = "candidate")
+    private Candidate candidateBean;
+
+    //bi-directional many-to-one association to Job
+    @ManyToOne
+    @JoinColumn(name = "job", nullable = false)
+    private Job jobBean;
+
+    public Interview() {
+    }
+
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public Job getJob() {
-        return job;
+    public Date getCreated() {
+        return this.created;
     }
 
-    public void setJob(Job job) {
-        this.job = job;
-    }
-
-    public Candidate getCandidate() {
-        return candidate;
-    }
-
-    public void setCandidate(Candidate candidate) {
-        this.candidate = candidate;
+    public void setCreated(Date created) {
+        this.created = created;
     }
 
     public String getLevel() {
-        return level;
+        return this.level;
     }
 
     public void setLevel(String level) {
         this.level = level;
     }
 
-    public Date getScheduled() {
-        return scheduled;
-    }
-
-    public void setScheduled(Date scheduled) {
-        this.scheduled = scheduled;
-    }
-
     public String getLocation() {
-        return location;
+        return this.location;
     }
 
     public void setLocation(String location) {
         this.location = location;
     }
 
-    public Long getMapId() {
-        return mapId;
+    public BigInteger getMapId() {
+        return this.mapId;
     }
 
-    public void setMapId(Long mapId) {
+    public void setMapId(BigInteger mapId) {
         this.mapId = mapId;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public String getNotes() {
-        return notes;
+        return this.notes;
     }
 
     public void setNotes(String notes) {
         this.notes = notes;
     }
 
+    public Date getScheduled() {
+        return this.scheduled;
+    }
+
+    public void setScheduled(Date scheduled) {
+        this.scheduled = scheduled;
+    }
+
+    public String getStatus() {
+        return this.status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Date getUpdated() {
+        return this.updated;
+    }
+
+    public void setUpdated(Date updated) {
+        this.updated = updated;
+    }
+
+    public Candidate getCandidateBean() {
+        return this.candidateBean;
+    }
+
+    public void setCandidateBean(Candidate candidateBean) {
+        this.candidateBean = candidateBean;
+    }
+
+    public Job getJobBean() {
+        return this.jobBean;
+    }
+
+    public void setJobBean(Job jobBean) {
+        this.jobBean = jobBean;
+    }
 
 }

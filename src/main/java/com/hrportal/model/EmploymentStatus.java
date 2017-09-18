@@ -1,55 +1,82 @@
 package com.hrportal.model;
 
-import org.hibernate.validator.constraints.Length;
-
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Set;
+
 
 /**
- * Created by Lalith leela vishnu on 18-09-2017.
+ * The persistent class for the EmploymentStatus database table.
+ *
  */
 @Entity
 @Table(name = "EmploymentStatus")
-public class EmploymentStatus extends AbstractMutableEntity {
+//@NamedQuery(name="EmploymentStatus.findAll", query="SELECT e FROM EmploymentStatus e")
+public class EmploymentStatus implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
-    @Length(max = 20)
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(unique = true, nullable = false)
     private Long id;
-    @Length(max = 100)
-    private String name;
-    @Length(max = 400)
+
+    @Column(length = 400)
     private String description;
 
+    @Column(length = 100)
+    private String name;
+
+    //bi-directional many-to-one association to Employee
+    @OneToMany(mappedBy = "employmentStatusBean", fetch = FetchType.EAGER)
+    private Set<Employee> employees;
+
+    public EmploymentStatus() {
+    }
+
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    @Override
-    public String toString() {
-        return "EmploymentStatus{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+    public String getName() {
+        return this.name;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<Employee> getEmployees() {
+        return this.employees;
+    }
+
+    public void setEmployees(Set<Employee> employees) {
+        this.employees = employees;
+    }
+
+    public Employee addEmployee(Employee employee) {
+        getEmployees().add(employee);
+        employee.setEmploymentStatusBean(this);
+
+        return employee;
+    }
+
+    public Employee removeEmployee(Employee employee) {
+        getEmployees().remove(employee);
+        employee.setEmploymentStatusBean(null);
+
+        return employee;
+    }
+
 }

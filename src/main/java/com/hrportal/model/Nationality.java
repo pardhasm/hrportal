@@ -1,25 +1,37 @@
 package com.hrportal.model;
 
-import org.hibernate.validator.constraints.Length;
-
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Set;
+
 
 /**
- * Created by Lalith leela vishnu on 17-09-2017.
+ * The persistent class for the Nationality database table.
+ *
  */
 @Entity
 @Table(name = "Nationality")
-public class Nationality extends AbstractMutableEntity {
+//@NamedQuery(name="Nationality.findAll", query="SELECT n FROM Nationality n")
+public class Nationality implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
-    @Length(max = 20)
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(unique = true, nullable = false)
     private Long id;
-    @Length(max = 100)
+
+    @Column(length = 100)
     private String name;
 
+    //bi-directional many-to-one association to Employee
+    @OneToMany(mappedBy = "nationalityBean", fetch = FetchType.EAGER)
+    private Set<Employee> employees;
+
+    public Nationality() {
+    }
+
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Long id) {
@@ -27,18 +39,33 @@ public class Nationality extends AbstractMutableEntity {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "Nationality{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+    public Set<Employee> getEmployees() {
+        return this.employees;
     }
+
+    public void setEmployees(Set<Employee> employees) {
+        this.employees = employees;
+    }
+
+    public Employee addEmployee(Employee employee) {
+        getEmployees().add(employee);
+        employee.setNationalityBean(this);
+
+        return employee;
+    }
+
+    public Employee removeEmployee(Employee employee) {
+        getEmployees().remove(employee);
+        employee.setNationalityBean(null);
+
+        return employee;
+    }
+
 }

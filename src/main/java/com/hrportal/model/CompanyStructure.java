@@ -1,130 +1,178 @@
 package com.hrportal.model;
 
-import org.hibernate.validator.constraints.Length;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.util.Set;
+
 
 /**
- * Created by Lalith leela vishnu on 18-09-2017.
+ * The persistent class for the CompanyStructures database table.
+ *
  */
 @Entity
 @Table(name = "CompanyStructures")
-public class CompanyStructure extends AbstractMutableEntity {
+//@NamedQuery(name="CompanyStructure.findAll", query="SELECT c FROM CompanyStructure c")
+public class CompanyStructure implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @Length(max = 20)
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    @Column
-    @NotNull
-    private String title;
-    @Column
-    @NotNull
-    private String description;
-    @Column
-    private String address;
-    @Column
-    private Type type;
-    @Column
-    @NotNull
-    @Length(max = 2)
-    private String country;
-    @OneToOne           //TODO
-    @JoinColumn(table = "CompanyStructures", referencedColumnName = "id")
-    private CompanyStructure parent;
-    @Column(name = "timezone")
-    @NotNull
-    private String timeZone;
-    @Column
-    private String heads;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(unique = true, nullable = false)
+	private Long id;
 
-    @Override
-    public Long getId() {
-        return id;
-    }
+	@Lob
+	private String address;
 
-    @Override
-    public void setId(Long id) {
-        this.id = id;
-    }
+	@Column(nullable = false, length = 2)
+	private String country;
 
-    public String getTitle() {
-        return title;
-    }
+	@Lob
+	@Column(nullable = false)
+	private String description;
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+	@Column(length = 255)
+	private String heads;
 
-    public String getDescription() {
-        return description;
-    }
+	@Column(nullable = false, length = 100)
+	private String timezone;
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	@Lob
+	@Column(nullable = false)
+	private String title;
 
-    public String getAddress() {
-        return address;
-    }
+	@Column(length = 50)
+	private String type;
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+	//bi-directional many-to-one association to CompanyStructure
+	@ManyToOne
+	@JoinColumn(name = "parent")
+	private CompanyStructure companyStructure;
 
-    public Type getType() {
-        return type;
-    }
+	//bi-directional many-to-one association to CompanyStructure
+	@OneToMany(mappedBy = "companyStructure", fetch = FetchType.EAGER)
+	private Set<CompanyStructure> companyStructures;
 
-    public void setType(Type type) {
-        this.type = type;
-    }
+	//bi-directional many-to-one association to Employee
+	@OneToMany(mappedBy = "companyStructure", fetch = FetchType.EAGER)
+	private Set<Employee> employees;
 
-    public String getCountry() {
-        return country;
-    }
+	public CompanyStructure() {
+	}
 
-    public void setCountry(String country) {
-        this.country = country;
-    }
+	public Long getId() {
+		return this.id;
+	}
 
-    public CompanyStructure getParent() {
-        return parent;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setParent(CompanyStructure parent) {
-        this.parent = parent;
-    }
+	public String getAddress() {
+		return this.address;
+	}
 
-    public String getTimeZone() {
-        return timeZone;
-    }
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
-    public void setTimeZone(String timeZone) {
-        this.timeZone = timeZone;
-    }
+	public String getCountry() {
+		return this.country;
+	}
 
-    public String getHeads() {
-        return heads;
-    }
+	public void setCountry(String country) {
+		this.country = country;
+	}
 
-    public void setHeads(String heads) {
-        this.heads = heads;
-    }
+	public String getDescription() {
+		return this.description;
+	}
 
-    @Override
-    public String toString() {
-        return "CompanyStructure{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", address='" + address + '\'' +
-                ", type=" + type +
-                ", country='" + country + '\'' +
-                ", parent=" + parent +
-                ", timeZone='" + timeZone + '\'' +
-                ", heads='" + heads + '\'' +
-                '}';
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getHeads() {
+		return this.heads;
+	}
+
+	public void setHeads(String heads) {
+		this.heads = heads;
+	}
+
+	public String getTimezone() {
+		return this.timezone;
+	}
+
+	public void setTimezone(String timezone) {
+		this.timezone = timezone;
+	}
+
+	public String getTitle() {
+		return this.title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getType() {
+		return this.type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public CompanyStructure getCompanyStructure() {
+		return this.companyStructure;
+	}
+
+	public void setCompanyStructure(CompanyStructure companyStructure) {
+		this.companyStructure = companyStructure;
+	}
+
+	public Set<CompanyStructure> getCompanyStructures() {
+		return this.companyStructures;
+	}
+
+	public void setCompanyStructures(Set<CompanyStructure> companyStructures) {
+		this.companyStructures = companyStructures;
+	}
+
+	public CompanyStructure addCompanyStructure(CompanyStructure companyStructure) {
+		getCompanyStructures().add(companyStructure);
+		companyStructure.setCompanyStructure(this);
+
+		return companyStructure;
+	}
+
+	public CompanyStructure removeCompanyStructure(CompanyStructure companyStructure) {
+		getCompanyStructures().remove(companyStructure);
+		companyStructure.setCompanyStructure(null);
+
+		return companyStructure;
+	}
+
+	public Set<Employee> getEmployees() {
+		return this.employees;
+	}
+
+	public void setEmployees(Set<Employee> employees) {
+		this.employees = employees;
+	}
+
+	public Employee addEmployee(Employee employee) {
+		getEmployees().add(employee);
+		employee.setCompanyStructure(this);
+
+		return employee;
+	}
+
+	public Employee removeEmployee(Employee employee) {
+		getEmployees().remove(employee);
+		employee.setCompanyStructure(null);
+
+		return employee;
+	}
+
 }

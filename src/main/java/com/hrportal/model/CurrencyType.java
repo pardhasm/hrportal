@@ -1,40 +1,52 @@
 package com.hrportal.model;
 
-import org.hibernate.validator.constraints.Length;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.util.Set;
+
 
 /**
- * Created by Lalith leela vishnu on 18-09-2017.
+ * The persistent class for the CurrencyTypes database table.
+ *
  */
 @Entity
 @Table(name = "CurrencyTypes")
-public class CurrencyType extends AbstractMutableEntity {
+//@NamedQuery(name="CurrencyType.findAll", query="SELECT c FROM CurrencyType c")
+public class CurrencyType implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
-    @Length(max = 20)
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(unique = true, nullable = false)
     private Long id;
-    @Length(max = 3)
-    @NotNull
+
+    @Column(nullable = false, length = 3)
     private String code;
-    @Length(max = 70)
-    @NotNull
+
+    @Column(nullable = false, length = 70)
     private String name;
 
-    @Override
-    public Long getId() {
-        return id;
+    //bi-directional many-to-one association to EmployeeSalary
+    @OneToMany(mappedBy = "currencyType", fetch = FetchType.EAGER)
+    private Set<EmployeeSalary> employeeSalaries;
+
+    //bi-directional many-to-one association to PayGrade
+    @OneToMany(mappedBy = "currencyType", fetch = FetchType.EAGER)
+    private Set<PayGrade> payGrades;
+
+    public CurrencyType() {
     }
 
-    @Override
+    public Long getId() {
+        return this.id;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
 
     public String getCode() {
-        return code;
+        return this.code;
     }
 
     public void setCode(String code) {
@@ -42,19 +54,55 @@ public class CurrencyType extends AbstractMutableEntity {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "CurrencyType{" +
-                "id=" + id +
-                ", code='" + code + '\'' +
-                ", name='" + name + '\'' +
-                '}';
+    public Set<EmployeeSalary> getEmployeeSalaries() {
+        return this.employeeSalaries;
     }
+
+    public void setEmployeeSalaries(Set<EmployeeSalary> employeeSalaries) {
+        this.employeeSalaries = employeeSalaries;
+    }
+
+    public EmployeeSalary addEmployeeSalary(EmployeeSalary employeeSalary) {
+        getEmployeeSalaries().add(employeeSalary);
+        employeeSalary.setCurrencyType(this);
+
+        return employeeSalary;
+    }
+
+    public EmployeeSalary removeEmployeeSalary(EmployeeSalary employeeSalary) {
+        getEmployeeSalaries().remove(employeeSalary);
+        employeeSalary.setCurrencyType(null);
+
+        return employeeSalary;
+    }
+
+    public Set<PayGrade> getPayGrades() {
+        return this.payGrades;
+    }
+
+    public void setPayGrades(Set<PayGrade> payGrades) {
+        this.payGrades = payGrades;
+    }
+
+    public PayGrade addPayGrade(PayGrade payGrade) {
+        getPayGrades().add(payGrade);
+        payGrade.setCurrencyType(this);
+
+        return payGrade;
+    }
+
+    public PayGrade removePayGrade(PayGrade payGrade) {
+        getPayGrades().remove(payGrade);
+        payGrade.setCurrencyType(null);
+
+        return payGrade;
+    }
+
 }

@@ -1,47 +1,44 @@
 package com.hrportal.model;
 
-import org.hibernate.validator.constraints.Length;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+
 
 /**
- * Created by Lalith leela vishnu on 18-09-2017.
+ * The persistent class for the PayFrequency database table.
+ * 
  */
-
 @Entity
 @Table(name = "PayFrequency")
-public class PayFrequency extends AbstractMutableEntity {
+//@NamedQuery(name="PayFrequency.findAll", query="SELECT p FROM PayFrequency p")
+public class PayFrequency implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
-    @Length(max = 11)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    @Length(max = 200)
-    @NotNull
+    @Column(unique = true, nullable = false)
+    private int id;
+
+    @Column(nullable = false, length = 200)
     private String name;
 
-    public Long getId() {
-        return id;
+    public PayFrequency() {
     }
 
-    public void setId(Long id) {
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
         this.id = id;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "PayFrequency{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
 }

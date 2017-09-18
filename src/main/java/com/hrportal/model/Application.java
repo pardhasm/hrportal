@@ -1,77 +1,91 @@
 package com.hrportal.model;
 
-import org.hibernate.validator.constraints.Length;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Date;
 
+
+/**
+ * The persistent class for the Applications database table.
+ */
 @Entity
 @Table(name = "Applications")
-public class Application extends AbstractMutableEntity {
+public class Application implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-	@Id 
-	@NotNull
-	@Length(max = 20)
+	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-    private Long id;
+	@Column(unique = true, nullable = false)
+	private Long id;
 
-    @Length(max = 20)
-    @OneToOne
-	@JoinColumn(referencedColumnName = "id")
-	private Job job;
-
-	@OneToOne
-	@JoinColumn(referencedColumnName = "id")
-	private Candidate candidate;
-	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date created;
-	
-	@Length(max = 200)
-	private String referredByEmail;
+
+	@Lob
 	private String notes;
 
-    public Long getId() {
-        return id;
+	@Column(length = 200)
+	private String referredByEmail;
+
+	//bi-directional many-to-one association to Candidate
+	@ManyToOne
+	@JoinColumn(name = "candidate")
+	private Candidate candidateBean;
+
+	//bi-directional many-to-one association to Job
+	@ManyToOne
+	@JoinColumn(name = "job", nullable = false)
+	private Job jobBean;
+
+	public Application() {
 	}
 
-    public void setId(Long id) {
-        this.id = id;
+	public Long getId() {
+		return this.id;
 	}
 
-    public Job getJob() {
-        return job;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-    public void setJob(Job job) {
-        this.job = job;
-	}
-
-    public Candidate getCandidate() {
-		return candidate;
-	}
-	public void setCandidate(Candidate candidate) {
-		this.candidate = candidate;
-	}
 	public Date getCreated() {
-		return created;
+		return this.created;
 	}
+
 	public void setCreated(Date created) {
 		this.created = created;
 	}
-	public String getReferredByEmail() {
-		return referredByEmail;
-	}
-	public void setReferredByEmail(String referredByEmail) {
-		this.referredByEmail = referredByEmail;
-	}
+
 	public String getNotes() {
-		return notes;
+		return this.notes;
 	}
+
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
-	
-	
-	
+
+	public String getReferredByEmail() {
+		return this.referredByEmail;
+	}
+
+	public void setReferredByEmail(String referredByEmail) {
+		this.referredByEmail = referredByEmail;
+	}
+
+	public Candidate getCandidateBean() {
+		return this.candidateBean;
+	}
+
+	public void setCandidateBean(Candidate candidateBean) {
+		this.candidateBean = candidateBean;
+	}
+
+	public Job getJobBean() {
+		return this.jobBean;
+	}
+
+	public void setJobBean(Job jobBean) {
+		this.jobBean = jobBean;
+	}
+
 }

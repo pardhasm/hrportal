@@ -1,38 +1,52 @@
 package com.hrportal.model;
 
-import org.hibernate.validator.constraints.Length;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.util.Set;
+
 
 /**
- * Created by Lalith leela vishnu on 18-09-2017.
+ * The persistent class for the Country database table.
+ *
  */
 @Entity
 @Table(name = "Country")
-public class Country extends AbstractMutableEntity {
+//@NamedQuery(name="Country.findAll", query="SELECT c FROM Country c")
+public class Country implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
-    @Length(max = 20)
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(unique = true, nullable = false)
     private Long id;
-    @Length(max = 2)
-    @NotNull
+
+    @Column(nullable = false, length = 2)
     private String code;
-    @Length(max = 80)
-    @NotNull
-    private String name;
-    @Column(name = "namecap")
-    @Length(max = 80)
-    private String nameCap;
-    @Length(max = 3)
+
+    @Column(length = 3)
     private String iso3;
-    @Column(name = "numcode")
-    @Length(max = 6)
-    private int numCode;
+
+    @Column(nullable = false, length = 80)
+    private String name;
+
+    @Column(length = 80)
+    private String namecap;
+
+    private short numcode;
+
+    //bi-directional many-to-one association to Employee
+    @OneToMany(mappedBy = "countryBean", fetch = FetchType.EAGER)
+    private Set<Employee> employees;
+
+    //bi-directional many-to-one association to Province
+    @OneToMany(mappedBy = "countryBean", fetch = FetchType.EAGER)
+    private Set<Province> provinces;
+
+    public Country() {
+    }
 
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Long id) {
@@ -40,54 +54,87 @@ public class Country extends AbstractMutableEntity {
     }
 
     public String getCode() {
-        return code;
+        return this.code;
     }
 
     public void setCode(String code) {
         this.code = code;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getNameCap() {
-        return nameCap;
-    }
-
-    public void setNameCap(String nameCap) {
-        this.nameCap = nameCap;
-    }
-
     public String getIso3() {
-        return iso3;
+        return this.iso3;
     }
 
     public void setIso3(String iso3) {
         this.iso3 = iso3;
     }
 
-    public int getNumCode() {
-        return numCode;
+    public String getName() {
+        return this.name;
     }
 
-    public void setNumCode(int numCode) {
-        this.numCode = numCode;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "Country{" +
-                "id=" + id +
-                ", code='" + code + '\'' +
-                ", name='" + name + '\'' +
-                ", nameCap='" + nameCap + '\'' +
-                ", iso3='" + iso3 + '\'' +
-                ", numCode=" + numCode +
-                '}';
+    public String getNamecap() {
+        return this.namecap;
     }
+
+    public void setNamecap(String namecap) {
+        this.namecap = namecap;
+    }
+
+    public short getNumcode() {
+        return this.numcode;
+    }
+
+    public void setNumcode(short numcode) {
+        this.numcode = numcode;
+    }
+
+    public Set<Employee> getEmployees() {
+        return this.employees;
+    }
+
+    public void setEmployees(Set<Employee> employees) {
+        this.employees = employees;
+    }
+
+    public Employee addEmployee(Employee employee) {
+        getEmployees().add(employee);
+        employee.setCountryBean(this);
+
+        return employee;
+    }
+
+    public Employee removeEmployee(Employee employee) {
+        getEmployees().remove(employee);
+        employee.setCountryBean(null);
+
+        return employee;
+    }
+
+    public Set<Province> getProvinces() {
+        return this.provinces;
+    }
+
+    public void setProvinces(Set<Province> provinces) {
+        this.provinces = provinces;
+    }
+
+    public Province addProvince(Province province) {
+        getProvinces().add(province);
+        province.setCountryBean(this);
+
+        return province;
+    }
+
+    public Province removeProvince(Province province) {
+        getProvinces().remove(province);
+        province.setCountryBean(null);
+
+        return province;
+    }
+
 }

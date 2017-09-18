@@ -1,27 +1,32 @@
 package com.hrportal.model;
 
-import org.hibernate.validator.constraints.Length;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+
 
 /**
- * Created by Lalith leela vishnu on 18-09-2017.
+ * The persistent class for the ExperienceLevel database table.
+ * 
  */
 @Entity
 @Table(name = "ExperienceLevel")
-public class ExperienceLevel extends AbstractMutableEntity {
+//@NamedQuery(name="ExperienceLevel.findAll", query="SELECT e FROM ExperienceLevel e")
+public class ExperienceLevel implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
-    @Length(max = 20)
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(unique = true, nullable = false)
     private Long id;
-    @Length(max = 250)
-    @NotNull
+
+    @Column(nullable = false, length = 250)
     private String name;
 
+    public ExperienceLevel() {
+    }
+
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Long id) {
@@ -29,18 +34,11 @@ public class ExperienceLevel extends AbstractMutableEntity {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "ExperienceLevel{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
 }

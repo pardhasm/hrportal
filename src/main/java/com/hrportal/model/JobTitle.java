@@ -1,79 +1,104 @@
 package com.hrportal.model;
 
-import org.hibernate.validator.constraints.Length;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.util.Set;
+
 
 /**
- * Created by Lalith leela vishnu on 17-09-2017.
+ * The persistent class for the JobTitles database table.
+ *
  */
 @Entity
 @Table(name = "JobTitles")
-public class JobTitle extends AbstractMutableEntity {
+//@NamedQuery(name="JobTitle.findAll", query="SELECT j FROM JobTitle j")
+public class JobTitle implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
-    @Length(max = 20)
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(unique = true, nullable = false)
     private Long id;
-    @Length(max = 10)
-    @NotNull
+
+    @Column(nullable = false, length = 10)
     private String code;
-    @Length(max = 100)
-    private String name;
-    @Length(max = 200)
+
+    @Column(length = 200)
     private String description;
-    @Length(max = 400)
+
+    @Column(length = 100)
+    private String name;
+
+    @Column(length = 400)
     private String specification;
 
-    public String getCode() {
-        return code;
-    }
+    //bi-directional many-to-one association to Employee
+    @OneToMany(mappedBy = "jobTitleBean", fetch = FetchType.EAGER)
+    private Set<Employee> employees;
 
-    public void setCode(String code) {
-        this.code = code;
+    public JobTitle() {
     }
 
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getCode() {
+        return this.code;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getSpecification() {
-        return specification;
+        return this.specification;
     }
 
     public void setSpecification(String specification) {
         this.specification = specification;
     }
 
-    @Override
-    public String toString() {
-        return "JobTitle{" +
-                "id=" + id +
-                ", code='" + code + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", specification='" + specification + '\'' +
-                '}';
+    public Set<Employee> getEmployees() {
+        return this.employees;
     }
+
+    public void setEmployees(Set<Employee> employees) {
+        this.employees = employees;
+    }
+
+    public Employee addEmployee(Employee employee) {
+        getEmployees().add(employee);
+        employee.setJobTitleBean(this);
+
+        return employee;
+    }
+
+    public Employee removeEmployee(Employee employee) {
+        getEmployees().remove(employee);
+        employee.setJobTitleBean(null);
+
+        return employee;
+    }
+
 }

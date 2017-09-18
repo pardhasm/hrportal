@@ -1,82 +1,107 @@
 package com.hrportal.model;
 
-import org.hibernate.validator.constraints.Length;
-
 import javax.persistence.*;
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Set;
+
 
 /**
- * Created by Lalith leela vishnu on 18-09-2017.
+ * The persistent class for the PayGrades database table.
+ *
  */
 @Entity
 @Table(name = "PayGrades")
-public class PayGrade extends AbstractMutableEntity {
+//@NamedQuery(name="PayGrade.findAll", query="SELECT p FROM PayGrade p")
+public class PayGrade implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
-    @Length(max = 20)
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(unique = true, nullable = false)
     private Long id;
-    @Length(max = 100)
+
+    @Column(name = "max_salary", precision = 10, scale = 2)
+    private BigDecimal maxSalary;
+
+    @Column(name = "min_salary", precision = 10, scale = 2)
+    private BigDecimal minSalary;
+
+    @Column(length = 100)
     private String name;
-    //@Length(max = 3)
-    @OneToOne            //TODO
-    @JoinColumn(referencedColumnName = "code") //table = "CurrencyTypes",
-    private CurrencyType currency;
 
-    @Column(name = "min_salary")
-    private Double minSalary;   //TODO
-    @Column(name = "max_salary")
-    private Double maxSalary;
+    //bi-directional many-to-one association to Employee
+    @OneToMany(mappedBy = "payGradeBean", fetch = FetchType.EAGER)
+    private Set<Employee> employees;
 
-    @Override
-    public Long getId() {
-        return id;
+    //bi-directional many-to-one association to CurrencyType
+    @ManyToOne
+    @JoinColumn(name = "currency", nullable = false)
+    private CurrencyType currencyType;
+
+    public PayGrade() {
     }
 
-    @Override
+    public Long getId() {
+        return this.id;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
 
+    public BigDecimal getMaxSalary() {
+        return this.maxSalary;
+    }
+
+    public void setMaxSalary(BigDecimal maxSalary) {
+        this.maxSalary = maxSalary;
+    }
+
+    public BigDecimal getMinSalary() {
+        return this.minSalary;
+    }
+
+    public void setMinSalary(BigDecimal minSalary) {
+        this.minSalary = minSalary;
+    }
+
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public CurrencyType getCurrency() {
-        return currency;
+    public Set<Employee> getEmployees() {
+        return this.employees;
     }
 
-    public void setCurrency(CurrencyType currency) {
-        this.currency = currency;
+    public void setEmployees(Set<Employee> employees) {
+        this.employees = employees;
     }
 
-    public Double getMinSalary() {
-        return minSalary;
+    public Employee addEmployee(Employee employee) {
+        getEmployees().add(employee);
+        employee.setPayGradeBean(this);
+
+        return employee;
     }
 
-    public void setMinSalary(Double minSalary) {
-        this.minSalary = minSalary;
+    public Employee removeEmployee(Employee employee) {
+        getEmployees().remove(employee);
+        employee.setPayGradeBean(null);
+
+        return employee;
     }
 
-    public Double getMaxSalary() {
-        return maxSalary;
+    public CurrencyType getCurrencyType() {
+        return this.currencyType;
     }
 
-    public void setMaxSalary(Double maxSalary) {
-        this.maxSalary = maxSalary;
+    public void setCurrencyType(CurrencyType currencyType) {
+        this.currencyType = currencyType;
     }
 
-    @Override
-    public String toString() {
-        return "PayGrade{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", currency=" + currency +
-                ", minSalary=" + minSalary +
-                ", maxSalary=" + maxSalary +
-                '}';
-    }
 }

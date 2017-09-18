@@ -1,46 +1,94 @@
 package com.hrportal.model;
 
-import org.hibernate.validator.constraints.Length;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.util.Date;
+import java.util.Set;
+
 
 /**
- * Created by Lalith leela vishnu on 18-09-2017.
+ * The persistent class for the OvertimeCategories database table.
+ *
  */
 @Entity
 @Table(name = "OvertimeCategories")
-public class OverTimeCategory extends AbstractMutableEntity {
+//@NamedQuery(name="OvertimeCategory.findAll", query="SELECT o FROM OvertimeCategory o")
+public class OvertimeCategory implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
-    @Length(max = 20)
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(unique = true, nullable = false)
     private Long id;
-    @Length(max = 500)
-    @NotNull
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date created;
+
+    @Column(nullable = false, length = 500)
     private String name;
 
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updated;
+
+    //bi-directional many-to-one association to EmployeeOvertime
+    @OneToMany(mappedBy = "overtimeCategory", fetch = FetchType.EAGER)
+    private Set<EmployeeOvertime> employeeOvertimes;
+
+    public OvertimeCategory() {
+    }
+
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
+    public Date getCreated() {
+        return this.created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "OverTimeCategory{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+    public Date getUpdated() {
+        return this.updated;
     }
+
+    public void setUpdated(Date updated) {
+        this.updated = updated;
+    }
+
+    public Set<EmployeeOvertime> getEmployeeOvertimes() {
+        return this.employeeOvertimes;
+    }
+
+    public void setEmployeeOvertimes(Set<EmployeeOvertime> employeeOvertimes) {
+        this.employeeOvertimes = employeeOvertimes;
+    }
+
+    public EmployeeOvertime addEmployeeOvertime(EmployeeOvertime employeeOvertime) {
+        getEmployeeOvertimes().add(employeeOvertime);
+        employeeOvertime.setOvertimeCategory(this);
+
+        return employeeOvertime;
+    }
+
+    public EmployeeOvertime removeEmployeeOvertime(EmployeeOvertime employeeOvertime) {
+        getEmployeeOvertimes().remove(employeeOvertime);
+        employeeOvertime.setOvertimeCategory(null);
+
+        return employeeOvertime;
+    }
+
 }

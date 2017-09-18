@@ -1,57 +1,82 @@
 package com.hrportal.model;
 
-import org.hibernate.validator.constraints.Length;
-
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Set;
+
 
 /**
- * Created by Lalith leela vishnu on 18-09-2017.
+ * The persistent class for the Educations database table.
+ *
  */
 @Entity
 @Table(name = "Educations")
-public class Education extends AbstractMutableEntity {
+//@NamedQuery(name="Education.findAll", query="SELECT e FROM Education e")
+public class Education implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
-    @Length(max = 20)
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(unique = true, nullable = false)
     private Long id;
-    @Length(max = 100)
-    private String name;
-    @Length(max = 400)
+
+    @Column(length = 400)
     private String description;
 
-    @Override
-    public Long getId() {
-        return id;
+    @Column(length = 100)
+    private String name;
+
+    //bi-directional many-to-one association to EmployeeEducation
+    @OneToMany(mappedBy = "education", fetch = FetchType.EAGER)
+    private Set<EmployeeEducation> employeeEducations;
+
+    public Education() {
     }
 
-    @Override
+    public Long getId() {
+        return this.id;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    @Override
-    public String toString() {
-        return "Education{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+    public String getName() {
+        return this.name;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<EmployeeEducation> getEmployeeEducations() {
+        return this.employeeEducations;
+    }
+
+    public void setEmployeeEducations(Set<EmployeeEducation> employeeEducations) {
+        this.employeeEducations = employeeEducations;
+    }
+
+    public EmployeeEducation addEmployeeEducation(EmployeeEducation employeeEducation) {
+        getEmployeeEducations().add(employeeEducation);
+        employeeEducation.setEducation(this);
+
+        return employeeEducation;
+    }
+
+    public EmployeeEducation removeEmployeeEducation(EmployeeEducation employeeEducation) {
+        getEmployeeEducations().remove(employeeEducation);
+        employeeEducation.setEducation(null);
+
+        return employeeEducation;
+    }
+
 }

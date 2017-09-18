@@ -1,46 +1,44 @@
 package com.hrportal.model;
 
-import org.hibernate.validator.constraints.Length;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+
 
 /**
- * Created by Lalith leela vishnu on 18-09-2017.
+ * The persistent class for the Benifits database table.
+ * 
  */
 @Entity
 @Table(name = "Benifits")
-public class Benifit extends AbstractMutableEntity {
+//@NamedQuery(name="Benifit.findAll", query="SELECT b FROM Benifit b")
+public class Benifit implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @Length(max = 20)
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    @Length(max = 250)
-    @NotNull
-    private String name;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(unique = true, nullable = false)
+	private Long id;
 
-    public Long getId() {
-        return id;
-    }
+	@Column(nullable = false, length = 250)
+	private String name;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Benifit() {
+	}
 
-    public String getName() {
-        return name;
-    }
+	public Long getId() {
+		return this.id;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    @Override
-    public String toString() {
-        return "Benifit{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
+	public String getName() {
+		return this.name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 }

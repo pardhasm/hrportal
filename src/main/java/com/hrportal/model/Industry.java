@@ -1,27 +1,32 @@
 package com.hrportal.model;
 
-import org.hibernate.validator.constraints.Length;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+
 
 /**
- * Created by Lalith leela vishnu on 18-09-2017.
+ * The persistent class for the Industry database table.
+ * 
  */
 @Entity
 @Table(name = "Industry")
-public class Industry extends AbstractMutableEntity {
+//@NamedQuery(name="Industry.findAll", query="SELECT i FROM Industry i")
+public class Industry implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
-    @Length(max = 20)
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(unique = true, nullable = false)
     private Long id;
-    @Length(max = 250)
-    @NotNull
+
+    @Column(nullable = false, length = 250)
     private String name;
 
+    public Industry() {
+    }
+
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Long id) {
@@ -29,18 +34,11 @@ public class Industry extends AbstractMutableEntity {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "Industry{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
 }

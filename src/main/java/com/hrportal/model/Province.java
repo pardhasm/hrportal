@@ -1,34 +1,45 @@
 package com.hrportal.model;
 
-import org.hibernate.validator.constraints.Length;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.util.Set;
+
 
 /**
- * Created by Lalith leela vishnu on 18-09-2017.
+ * The persistent class for the Province database table.
+ *
  */
 @Entity
 @Table(name = "Province")
-public class Province extends AbstractMutableEntity {
+//@NamedQuery(name="Province.findAll", query="SELECT p FROM Province p")
+public class Province implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
-    @Length(max = 20)
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(unique = true, nullable = false)
     private Long id;
-    @Length(max = 2)
-    @NotNull
+
+    @Column(nullable = false, length = 2)
     private String code;
-    @Length(max = 40)
-    @NotNull
+
+    @Column(nullable = false, length = 40)
     private String name;
-    @Length(max = 20)
-    @OneToOne               //TODO
-    @JoinColumn(table = "Country", referencedColumnName = "code")
-    private Country country;
+
+    //bi-directional many-to-one association to Employee
+    @OneToMany(mappedBy = "provinceBean", fetch = FetchType.EAGER)
+    private Set<Employee> employees;
+
+    //bi-directional many-to-one association to Country
+    @ManyToOne
+    @JoinColumn(name = "country", nullable = false)
+    private Country countryBean;
+
+    public Province() {
+    }
 
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Long id) {
@@ -36,7 +47,7 @@ public class Province extends AbstractMutableEntity {
     }
 
     public String getCode() {
-        return code;
+        return this.code;
     }
 
     public void setCode(String code) {
@@ -44,28 +55,41 @@ public class Province extends AbstractMutableEntity {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public Country getCountry() {
-        return country;
+    public Set<Employee> getEmployees() {
+        return this.employees;
     }
 
-    public void setCountry(Country country) {
-        this.country = country;
+    public void setEmployees(Set<Employee> employees) {
+        this.employees = employees;
     }
 
-    @Override
-    public String toString() {
-        return "Province{" +
-                "id=" + id +
-                ", code='" + code + '\'' +
-                ", name='" + name + '\'' +
-                ", country=" + country +
-                '}';
+    public Employee addEmployee(Employee employee) {
+        getEmployees().add(employee);
+        employee.setProvinceBean(this);
+
+        return employee;
     }
+
+    public Employee removeEmployee(Employee employee) {
+        getEmployees().remove(employee);
+        employee.setProvinceBean(null);
+
+        return employee;
+    }
+
+    public Country getCountryBean() {
+        return this.countryBean;
+    }
+
+    public void setCountryBean(Country countryBean) {
+        this.countryBean = countryBean;
+    }
+
 }
