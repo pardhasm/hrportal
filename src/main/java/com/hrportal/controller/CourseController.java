@@ -1,33 +1,30 @@
 package com.hrportal.controller;
 
-import com.hrportal.model.Job;
-import com.hrportal.service.IJobService;
+import com.hrportal.model.Course;
+import com.hrportal.service.ICourseService;
 import javassist.NotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * Created by Lalith leela vishnu on 17-09-2017.
+ * Created by Lalith leela vishnu on 19-09-2017.
  */
-
 @RestController
-@RequestMapping("/job")
-public class JobController {
+@RequestMapping("/course")
+public class CourseController {
 
-    @Autowired
-    private IJobService jobService;
+    private ICourseService courseService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ResponseEntity getAll() {
-        return ResponseEntity.ok(jobService.getAll());
+        return ResponseEntity.ok(courseService.getAll());
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity get(@PathVariable("id") Long id) {
         try {
-            return ResponseEntity.ok(jobService.get(id));
+            return ResponseEntity.ok(courseService.get(id));
         } catch (NotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
@@ -35,26 +32,28 @@ public class JobController {
 
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public Job insert(@RequestBody Job job) {
-        return jobService.save(job);
+    public Course insert(@RequestBody Course course) {
+        return courseService.save(course);
 
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Job> update(@PathVariable("id") Long id, @RequestBody Job job) {
+    public ResponseEntity<Course> update(@PathVariable("id") Long id, @RequestBody Course course) {
         try {
-            return ResponseEntity.ok(jobService.update(id, job));
+            return ResponseEntity.ok(courseService.update(id, course));
         } catch (NotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Job> delete(@PathVariable("id") Long id) {
+    public ResponseEntity<Course> delete(@PathVariable("id") Long id) {
         try {
-            return ResponseEntity.ok(jobService.delete(id));
+            return ResponseEntity.ok(courseService.delete(id));
         } catch (NotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
+
+
 }

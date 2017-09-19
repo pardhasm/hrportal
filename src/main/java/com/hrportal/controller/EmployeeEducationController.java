@@ -19,12 +19,12 @@ public class EmployeeEducationController {
     private IEmployeeEducationService employeeEducationService;
 
     @RequestMapping(value="/",method=RequestMethod.GET)
-    public ResponseEntity getAllCandidates() {
+    public ResponseEntity getAll() {
         return ResponseEntity.ok(employeeEducationService.getAll());
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity getEmployeeEducationDetails(@PathVariable("id") Long id) {
+    public ResponseEntity get(@PathVariable("id") Long id) {
         try {
             return ResponseEntity.ok(employeeEducationService.get(id));
         } catch (NotFoundException e) {
@@ -34,13 +34,13 @@ public class EmployeeEducationController {
 
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public EmployeeEducation insertEmployeeEducation(@RequestBody EmployeeEducation employeeEducation) {
+    public EmployeeEducation insert(@RequestBody EmployeeEducation employeeEducation) {
         return employeeEducationService.save(employeeEducation);
 
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<EmployeeEducation> UpdateEmployeeEducation(@PathVariable("id") Long id, @RequestBody EmployeeEducation employeeEducation) {
+    public ResponseEntity<EmployeeEducation> update(@PathVariable("id") Long id, @RequestBody EmployeeEducation employeeEducation) {
         try {
             return ResponseEntity.ok(employeeEducationService.update(id, employeeEducation));
         } catch (NotFoundException e) {
@@ -49,7 +49,7 @@ public class EmployeeEducationController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<EmployeeEducation> DeleteEmployeeEducation(@PathVariable("id") Long id) {
+    public ResponseEntity<EmployeeEducation> Delete(@PathVariable("id") Long id) {
         try {
             return ResponseEntity.ok(employeeEducationService.delete(id));
         } catch (NotFoundException e) {

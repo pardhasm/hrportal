@@ -18,12 +18,12 @@ public class CallController {
     private ICallService callService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ResponseEntity getAllCalls() {
+    public ResponseEntity getAll() {
         return ResponseEntity.ok(callService.getAll());
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity getCallDetails(@PathVariable("id") Long id) {
+    public ResponseEntity get(@PathVariable("id") Long id) {
         try {
             return ResponseEntity.ok(callService.get(id));
         } catch (NotFoundException e) {
@@ -33,7 +33,7 @@ public class CallController {
 
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public Call insertCall(@RequestBody Call call) {
+    public Call insert(@RequestBody Call call) {
         return callService.save(call);
 
     }
@@ -48,7 +48,7 @@ public class CallController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Call> update(@PathVariable("id") Long id) {
+    public ResponseEntity<Call> delete(@PathVariable("id") Long id) {
         try {
             return ResponseEntity.ok(callService.delete(id));
         } catch (NotFoundException e) {

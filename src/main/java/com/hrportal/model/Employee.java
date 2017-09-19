@@ -165,7 +165,7 @@ public class Employee extends AbstractMutableEntity{
     @OneToMany(mappedBy = "employeeBean", fetch = FetchType.EAGER)
     private Set<EmployeeAttendanceSheet> employeeAttendanceSheets;
 
-    //bi-directional many-to-one association to EmployeeCertification
+    //bi-directional many-to-one association to EmployeeCertificationRepository
     @OneToMany(mappedBy = "employeeBean", fetch = FetchType.EAGER)
     private Set<EmployeeCertification> employeeCertifications;
 

@@ -19,12 +19,12 @@ public class EmployeeSkillController {
     private IEmployeeSkillService employeeSkillService;
 
     @RequestMapping(value="/",method=RequestMethod.GET)
-    public ResponseEntity getAllEmployeeSkills() {
+    public ResponseEntity getAll() {
         return ResponseEntity.ok(employeeSkillService.getAll());
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity getEmployeeDetails(@PathVariable("id") Long id) {
+    public ResponseEntity get(@PathVariable("id") Long id) {
         try {
             return ResponseEntity.ok(employeeSkillService.get(id));
         } catch (NotFoundException e) {
@@ -34,13 +34,13 @@ public class EmployeeSkillController {
 
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public EmployeeSkill insertCandidate(@RequestBody EmployeeSkill employeeSkill) {
+    public EmployeeSkill insert(@RequestBody EmployeeSkill employeeSkill) {
         return employeeSkillService.save(employeeSkill);
 
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<EmployeeSkill> UpdateCandidate(@PathVariable("id") Long id, @RequestBody EmployeeSkill employeeSkill) {
+    public ResponseEntity<EmployeeSkill> update(@PathVariable("id") Long id, @RequestBody EmployeeSkill employeeSkill) {
         try {
             return ResponseEntity.ok(employeeSkillService.update(id, employeeSkill));
         } catch (NotFoundException e) {
@@ -49,7 +49,7 @@ public class EmployeeSkillController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<EmployeeSkill> DeleteEmployeeSkill(@PathVariable("id") Long id) {
+    public ResponseEntity<EmployeeSkill> Delete(@PathVariable("id") Long id) {
         try {
             return ResponseEntity.ok(employeeSkillService.delete(id));
         } catch (NotFoundException e) {

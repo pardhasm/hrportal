@@ -1,7 +1,6 @@
 package com.hrportal.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Set;
 
 
@@ -26,7 +25,7 @@ public class Certification extends AbstractMutableEntity{
     @Column(length = 100)
     private String name;
 
-    //bi-directional many-to-one association to EmployeeCertification
+    //bi-directional many-to-one association to EmployeeCertificationRepository
     @OneToMany(mappedBy = "certification", fetch = FetchType.EAGER)
     private Set<EmployeeCertification> employeeCertifications;
 
