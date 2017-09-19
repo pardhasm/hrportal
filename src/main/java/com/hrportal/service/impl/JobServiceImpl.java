@@ -1,6 +1,7 @@
 package com.hrportal.service.impl;
 
 import com.hrportal.model.Job;
+import com.hrportal.model.RecordStatus;
 import com.hrportal.repository.JobRepository;
 import com.hrportal.service.IJobService;
 import javassist.NotFoundException;
@@ -19,12 +20,12 @@ public class JobServiceImpl implements IJobService {
 
 
     @Override
-    public List<Job> getAllJobs() {
+    public List<Job> getAll() {
         return jobRepository.findAll();
     }
 
     @Override
-    public Job getJob(long id) throws NotFoundException {
+    public Job get(Long id) throws NotFoundException {
         Job job = jobRepository.findOne(id);
         if (Objects.isNull(job)) {
             throw new NotFoundException("Job Not found with given id : " + id);
@@ -38,10 +39,20 @@ public class JobServiceImpl implements IJobService {
     }
 
     @Override
-    public Job updateJob(long id, Job job) throws NotFoundException {
+    public Job update(Long id, Job job) throws NotFoundException {
         if (!jobRepository.exists(job.getId())) {
             throw new NotFoundException("Job Not found with given id : " + job.getId());
         }
+        return jobRepository.save(job);
+    }
+
+    @Override
+    public Job delete(Long id) throws NotFoundException {
+        Job job = jobRepository.findOne(id);
+        if (!Objects.isNull(job)) {
+            throw new NotFoundException("Call Not found with given id : " + id);
+        }
+        job.setRecordStatus(RecordStatus.INACTIVE);
         return jobRepository.save(job);
     }
 

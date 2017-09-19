@@ -1,5 +1,6 @@
 package com.hrportal.controller;
 
+import com.hrportal.model.Call;
 import com.hrportal.model.Employee;
 import com.hrportal.service.IEmployeeService;
 import javassist.NotFoundException;
@@ -18,13 +19,13 @@ public class EmployeeController {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ResponseEntity getAllEmployees() {
-        return ResponseEntity.ok(employeeService.getAllEmployees());
+        return ResponseEntity.ok(employeeService.getAll());
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity getEmployeeDetails(@PathVariable("id") long id) {
+    public ResponseEntity getEmployeeDetails(@PathVariable("id") Long id) {
         try {
-            return ResponseEntity.ok(employeeService.getEmployee(id));
+            return ResponseEntity.ok(employeeService.get(id));
         } catch (NotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
@@ -38,9 +39,18 @@ public class EmployeeController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Employee> UpdateEmployee(@PathVariable("id") long id, @RequestBody Employee employee) {
+    public ResponseEntity<Employee> UpdateEmployee(@PathVariable("id") Long id, @RequestBody Employee employee) {
         try {
-            return ResponseEntity.ok(employeeService.updateEmployee(id, employee));
+            return ResponseEntity.ok(employeeService.update(id, employee));
+        } catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Employee> UpdateCall(@PathVariable("id") Long id) {
+        try {
+            return ResponseEntity.ok(employeeService.delete(id));
         } catch (NotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }

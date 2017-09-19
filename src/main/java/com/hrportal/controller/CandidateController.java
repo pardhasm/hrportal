@@ -1,5 +1,6 @@
 package com.hrportal.controller;
 
+import com.hrportal.model.Call;
 import com.hrportal.model.Candidate;
 import com.hrportal.service.ICandidateService;
 import javassist.NotFoundException;
@@ -15,13 +16,13 @@ public class CandidateController {
 
     @RequestMapping(value="/all",method=RequestMethod.GET)
     public ResponseEntity getAllCandidates() {
-        return ResponseEntity.ok(candidateService.getAllCandidates());
+        return ResponseEntity.ok(candidateService.getAll());
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity getCandidateDetails(@PathVariable("id") long id) {
+    public ResponseEntity getCandidateDetails(@PathVariable("id") Long id) {
         try {
-            return ResponseEntity.ok(candidateService.getCandidate(id));
+            return ResponseEntity.ok(candidateService.get(id));
         } catch (NotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
@@ -35,13 +36,20 @@ public class CandidateController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Candidate> UpdateCandidate(@PathVariable("id") long id, @RequestBody Candidate candidate) {
+    public ResponseEntity<Candidate> UpdateCandidate(@PathVariable("id") Long id, @RequestBody Candidate candidate) {
         try {
-            return ResponseEntity.ok(candidateService.updateCandidate(id, candidate));
+            return ResponseEntity.ok(candidateService.update(id, candidate));
         } catch (NotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
-	
-	
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Candidate> UpdateCall(@PathVariable("id") Long id) {
+        try {
+            return ResponseEntity.ok(candidateService.delete(id));
+        } catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
 }

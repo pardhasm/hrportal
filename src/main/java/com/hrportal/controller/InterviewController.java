@@ -18,13 +18,13 @@ public class InterviewController {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ResponseEntity getAllInterviews() {
-        return ResponseEntity.ok(interviewService.getAllInterviews());
+        return ResponseEntity.ok(interviewService.getAll());
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity getCallDetails(@PathVariable("id") long id) {
+    public ResponseEntity getCallDetails(@PathVariable("id") Long id) {
         try {
-            return ResponseEntity.ok(interviewService.getInterview(id));
+            return ResponseEntity.ok(interviewService.get(id));
         } catch (NotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
@@ -38,9 +38,17 @@ public class InterviewController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Interview> UpdateCall(@PathVariable("id") long id, @RequestBody Interview interview) {
+    public ResponseEntity<Interview> UpdateCall(@PathVariable("id") Long id, @RequestBody Interview interview) {
         try {
-            return ResponseEntity.ok(interviewService.updateInterview(id, interview));
+            return ResponseEntity.ok(interviewService.update(id, interview));
+        } catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Interview> UpdateCall(@PathVariable("id") Long id) {
+        try {
+            return ResponseEntity.ok(interviewService.delete(id));
         } catch (NotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }

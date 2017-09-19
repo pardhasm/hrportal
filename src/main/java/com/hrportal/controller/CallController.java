@@ -19,13 +19,13 @@ public class CallController {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ResponseEntity getAllCalls() {
-        return ResponseEntity.ok(callService.getAllCalls());
+        return ResponseEntity.ok(callService.getAll());
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity getCallDetails(@PathVariable("id") long id) {
+    public ResponseEntity getCallDetails(@PathVariable("id") Long id) {
         try {
-            return ResponseEntity.ok(callService.getCall(id));
+            return ResponseEntity.ok(callService.get(id));
         } catch (NotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
@@ -39,9 +39,18 @@ public class CallController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Call> UpdateCall(@PathVariable("id") long id, @RequestBody Call call) {
+    public ResponseEntity<Call> UpdateCall(@PathVariable("id") Long id, @RequestBody Call call) {
         try {
-            return ResponseEntity.ok(callService.updateCall(id, call));
+            return ResponseEntity.ok(callService.update(id, call));
+        } catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Call> UpdateCall(@PathVariable("id") Long id) {
+        try {
+            return ResponseEntity.ok(callService.delete(id));
         } catch (NotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }

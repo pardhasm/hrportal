@@ -10,11 +10,13 @@ import java.util.List;
  */
 public interface IJobService {
 
-    List<Job> getAllJobs();
+    List<Job> getAll();
 
-    Job getJob(long id) throws NotFoundException;
+    Job get(Long id) throws NotFoundException;
 
     Job save(Job job);
 
-    Job updateJob(long id, Job job) throws NotFoundException;
+    Job update(Long id, Job job) throws NotFoundException;
+
+    Job delete(Long id) throws NotFoundException;
 }

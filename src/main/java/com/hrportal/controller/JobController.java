@@ -19,13 +19,13 @@ public class JobController {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ResponseEntity getAllJobs() {
-        return ResponseEntity.ok(jobService.getAllJobs());
+        return ResponseEntity.ok(jobService.getAll());
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity getJobDetails(@PathVariable("id") long id) {
+    public ResponseEntity getJobDetails(@PathVariable("id") Long id) {
         try {
-            return ResponseEntity.ok(jobService.getJob(id));
+            return ResponseEntity.ok(jobService.get(id));
         } catch (NotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
@@ -39,9 +39,18 @@ public class JobController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Job> UpdateJob(@PathVariable("id") long id, @RequestBody Job job) {
+    public ResponseEntity<Job> UpdateJob(@PathVariable("id") Long id, @RequestBody Job job) {
         try {
-            return ResponseEntity.ok(jobService.updateJob(id, job));
+            return ResponseEntity.ok(jobService.update(id, job));
+        } catch (NotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Job> UpdateCall(@PathVariable("id") Long id) {
+        try {
+            return ResponseEntity.ok(jobService.delete(id));
         } catch (NotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }

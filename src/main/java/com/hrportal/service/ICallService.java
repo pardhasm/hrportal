@@ -10,11 +10,13 @@ import java.util.List;
  */
 public interface ICallService {
 
-    List<Call> getAllCalls();
+    List<Call> getAll();
 
-    Call getCall(long id) throws NotFoundException;
+    Call get(Long id) throws NotFoundException;
 
     Call save(Call call);
 
-    Call updateCall(long id, Call call) throws NotFoundException;
+    Call update(Long id, Call call) throws NotFoundException;
+
+    Call delete(Long id) throws NotFoundException;
 }

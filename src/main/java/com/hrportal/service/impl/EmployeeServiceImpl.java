@@ -1,6 +1,8 @@
 package com.hrportal.service.impl;
 
+import com.hrportal.model.Call;
 import com.hrportal.model.Employee;
+import com.hrportal.model.RecordStatus;
 import com.hrportal.repository.EmployeeRepository;
 import com.hrportal.service.IEmployeeService;
 import javassist.NotFoundException;
@@ -19,12 +21,12 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
 
     @Override
-    public List<Employee> getAllEmployees() {
+    public List<Employee> getAll() {
         return employeeRepository.findAll();
     }
 
     @Override
-    public Employee getEmployee(long id) throws NotFoundException {
+    public Employee get(Long id) throws NotFoundException {
         Employee employee = employeeRepository.findOne(id);
         if (Objects.isNull(employee)) {
             throw new NotFoundException("Employee Not found with given id : " + id);
@@ -38,10 +40,20 @@ public class EmployeeServiceImpl implements IEmployeeService {
     }
 
     @Override
-    public Employee updateEmployee(long id, Employee employee) throws NotFoundException {
+    public Employee update(Long id, Employee employee) throws NotFoundException {
         if (!employeeRepository.exists(employee.getId())) {
             throw new NotFoundException("Employee Not found with given id : " + employee.getId());
         }
+        return employeeRepository.save(employee);
+    }
+
+    @Override
+    public Employee delete(Long id) throws NotFoundException {
+        Employee employee = employeeRepository.findOne(id);
+        if (!Objects.isNull(employee)) {
+            throw new NotFoundException("Employee Not found with given id : " + id);
+        }
+        employee.setRecordStatus(RecordStatus.INACTIVE);
         return employeeRepository.save(employee);
     }
 }

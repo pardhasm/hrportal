@@ -1,6 +1,8 @@
 package com.hrportal.service.impl;
 
+import com.hrportal.model.Call;
 import com.hrportal.model.Candidate;
+import com.hrportal.model.RecordStatus;
 import com.hrportal.repository.CandidateRepository;
 import com.hrportal.service.ICandidateService;
 import javassist.NotFoundException;
@@ -21,12 +23,12 @@ public class CandidateServiceImpl implements ICandidateService {
 
 
     @Override
-    public List<Candidate> getAllCandidates() {
+    public List<Candidate> getAll() {
         return candidateRepository.findAll();
     }
 
     @Override
-    public Candidate getCandidate(long id) throws NotFoundException {
+    public Candidate get(Long id) throws NotFoundException {
         Candidate candidate = candidateRepository.findOne(id);
         if (Objects.isNull(candidate)) {
             throw new NotFoundException("Candidate Not found with given id : " + id);
@@ -40,10 +42,20 @@ public class CandidateServiceImpl implements ICandidateService {
     }
 
     @Override
-    public Candidate updateCandidate(long id, Candidate candidate) throws NotFoundException {
+    public Candidate update(Long id, Candidate candidate) throws NotFoundException {
         if (!candidateRepository.exists(candidate.getId())) {
             throw new NotFoundException("Candidate Not found with given id : " + candidate.getId());
         }
+        return candidateRepository.save(candidate);
+    }
+
+    @Override
+    public Candidate delete(Long id) throws NotFoundException {
+        Candidate candidate = candidateRepository.findOne(id);
+        if (!Objects.isNull(candidate)) {
+            throw new NotFoundException("Candidate Not found with given id : " + id);
+        }
+        candidate.setRecordStatus(RecordStatus.INACTIVE);
         return candidateRepository.save(candidate);
     }
 }

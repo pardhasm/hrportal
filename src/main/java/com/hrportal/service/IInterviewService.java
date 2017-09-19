@@ -10,11 +10,13 @@ import java.util.List;
  */
 public interface IInterviewService {
 
-    List<Interview> getAllInterviews();
+    List<Interview> getAll();
 
-    Interview getInterview(long id) throws NotFoundException;
+    Interview get(Long id) throws NotFoundException;
 
     Interview save(Interview interview);
 
-    Interview updateInterview(long id, Interview interview) throws NotFoundException;
+    Interview update(Long id, Interview interview) throws NotFoundException;
+
+    Interview delete(Long id) throws NotFoundException;
 }

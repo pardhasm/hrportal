@@ -9,11 +9,13 @@ import java.util.List;
  * Created by pardha on 9/17/17.
  */
 public interface ICandidateService {
-    List<Candidate> getAllCandidates();
+    List<Candidate> getAll();
 
-    Candidate getCandidate(long id) throws NotFoundException;
+    Candidate get(Long id) throws NotFoundException;
 
     Candidate save(Candidate candidate);
 
-    Candidate updateCandidate(long id, Candidate candidate) throws NotFoundException;
+    Candidate update(Long id, Candidate candidate) throws NotFoundException;
+
+    Candidate delete(Long id) throws NotFoundException;
 }

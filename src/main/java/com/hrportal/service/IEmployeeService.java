@@ -10,11 +10,13 @@ import java.util.List;
  */
 public interface IEmployeeService {
 
-    List<Employee> getAllEmployees();
+    List<Employee> getAll();
 
-    Employee getEmployee(long id) throws NotFoundException;
+    Employee get(Long id) throws NotFoundException;
 
     Employee save(Employee employee);
 
-    Employee updateEmployee(long id, Employee employee) throws NotFoundException;
+    Employee update(Long id, Employee employee) throws NotFoundException;
+
+    Employee delete(Long id) throws NotFoundException;
 }
