@@ -14,7 +14,7 @@ public class CandidateController {
 
     private ICandidateService candidateService;
 
-    @RequestMapping(value="/all",method=RequestMethod.GET)
+    @RequestMapping(value="/",method=RequestMethod.GET)
     public ResponseEntity getAllCandidates() {
         return ResponseEntity.ok(candidateService.getAll());
     }

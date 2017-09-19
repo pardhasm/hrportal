@@ -17,7 +17,7 @@ public class CallController {
 
     private ICallService callService;
 
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public ResponseEntity getAllCalls() {
         return ResponseEntity.ok(callService.getAll());
     }

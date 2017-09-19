@@ -17,7 +17,7 @@ public class JobController {
 
     private IJobService jobService;
 
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public ResponseEntity getAllJobs() {
         return ResponseEntity.ok(jobService.getAll());
     }

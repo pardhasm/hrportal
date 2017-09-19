@@ -17,7 +17,7 @@ public class EmployeeController {
 
     private IEmployeeService employeeService;
 
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public ResponseEntity getAllEmployees() {
         return ResponseEntity.ok(employeeService.getAll());
     }

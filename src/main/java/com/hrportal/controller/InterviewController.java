@@ -16,7 +16,7 @@ public class InterviewController {
 
     private IInterviewService interviewService;
 
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public ResponseEntity getAllInterviews() {
         return ResponseEntity.ok(interviewService.getAll());
     }
