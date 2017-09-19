@@ -1,6 +1,5 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
 
@@ -11,7 +10,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name="DataImportFiles")
-//@NamedQuery(name="DataImportFile.findAll", query="SELECT d FROM DataImportFile d")
+//@NamedQuery(name="DataImportFileRepository.findAll", query="SELECT d FROM DataImportFileRepository d")
 public class DataImportFile extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 

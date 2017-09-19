@@ -17,12 +17,12 @@ public class InterviewController {
     private IInterviewService interviewService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ResponseEntity getAllInterviews() {
+    public ResponseEntity getAll() {
         return ResponseEntity.ok(interviewService.getAll());
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity getCallDetails(@PathVariable("id") Long id) {
+    public ResponseEntity get(@PathVariable("id") Long id) {
         try {
             return ResponseEntity.ok(interviewService.get(id));
         } catch (NotFoundException e) {
@@ -32,7 +32,7 @@ public class InterviewController {
 
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public Interview insertCall(@RequestBody Interview interview) {
+    public Interview insert(@RequestBody Interview interview) {
         return interviewService.save(interview);
 
     }
@@ -46,7 +46,7 @@ public class InterviewController {
         }
     }
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Interview> update(@PathVariable("id") Long id) {
+    public ResponseEntity<Interview> delete(@PathVariable("id") Long id) {
         try {
             return ResponseEntity.ok(interviewService.delete(id));
         } catch (NotFoundException e) {

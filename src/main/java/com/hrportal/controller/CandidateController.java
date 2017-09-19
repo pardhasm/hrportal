@@ -14,12 +14,12 @@ public class CandidateController {
     private ICandidateService candidateService;
 
     @RequestMapping(value="/",method=RequestMethod.GET)
-    public ResponseEntity getAllCandidates() {
+    public ResponseEntity getAll() {
         return ResponseEntity.ok(candidateService.getAll());
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity getCandidateDetails(@PathVariable("id") Long id) {
+    public ResponseEntity get(@PathVariable("id") Long id) {
         try {
             return ResponseEntity.ok(candidateService.get(id));
         } catch (NotFoundException e) {
@@ -29,13 +29,13 @@ public class CandidateController {
 
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public Candidate insertCandidate(@RequestBody Candidate candidate) {
+    public Candidate insert(@RequestBody Candidate candidate) {
         return candidateService.save(candidate);
 
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Candidate> UpdateCandidate(@PathVariable("id") Long id, @RequestBody Candidate candidate) {
+    public ResponseEntity<Candidate> Update(@PathVariable("id") Long id, @RequestBody Candidate candidate) {
         try {
             return ResponseEntity.ok(candidateService.update(id, candidate));
         } catch (NotFoundException e) {

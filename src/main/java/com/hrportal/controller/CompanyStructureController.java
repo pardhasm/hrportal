@@ -17,12 +17,12 @@ public class CompanyStructureController {
     private ICompanyStructureService companyStructureService;
 
     @RequestMapping(value="/",method=RequestMethod.GET)
-    public ResponseEntity getAllCompanyStructures() {
+    public ResponseEntity getAll() {
         return ResponseEntity.ok(companyStructureService.getAll());
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity getCompanyStructureDetails(@PathVariable("id") Long id) {
+    public ResponseEntity get(@PathVariable("id") Long id) {
         try {
             return ResponseEntity.ok(companyStructureService.get(id));
         } catch (NotFoundException e) {
@@ -32,13 +32,13 @@ public class CompanyStructureController {
 
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public CompanyStructure insertCompanyStructure(@RequestBody CompanyStructure companyStructure) {
+    public CompanyStructure insert(@RequestBody CompanyStructure companyStructure) {
         return companyStructureService.save(companyStructure);
 
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<CompanyStructure> updateCompanyStructure(@PathVariable("id") Long id, @RequestBody CompanyStructure companyStructure) {
+    public ResponseEntity<CompanyStructure> update(@PathVariable("id") Long id, @RequestBody CompanyStructure companyStructure) {
         try {
             return ResponseEntity.ok(companyStructureService.update(id, companyStructure));
         } catch (NotFoundException e) {
@@ -47,7 +47,7 @@ public class CompanyStructureController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<CompanyStructure> deleteCompanyStructure(@PathVariable("id") Long id) {
+    public ResponseEntity<CompanyStructure> delete(@PathVariable("id") Long id) {
         try {
             return ResponseEntity.ok(companyStructureService.delete(id));
         } catch (NotFoundException e) {
