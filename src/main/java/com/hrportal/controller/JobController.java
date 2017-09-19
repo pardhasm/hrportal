@@ -3,6 +3,7 @@ package com.hrportal.controller;
 import com.hrportal.model.Job;
 import com.hrportal.service.IJobService;
 import javassist.NotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/job")
 public class JobController {
 
+    @Autowired
     private IJobService jobService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)

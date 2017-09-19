@@ -2,7 +2,7 @@ mainModelPackages: "com.hrportal.model"
 spring:
   profiles: default
   datasource:
-    url: jdbc:mysql://localhost/hrportal
+    url: jdbc:mysql://localhost/hrportal?useSSL=false
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver

@@ -31,7 +31,7 @@ public class Maindbconfig {
         Properties props = new Properties();
         props.setProperty("hibernate.ejb.naming_strategy", "org.hibernate.cfg.ImprovedNamingStrategy");
         props.setProperty("hibernate.jdbc.time_zone", "GMT");
-        props.setProperty("hibernate.jdbc.show-sql", "false");
+        props.setProperty("hibernate.jdbc.show-sql", "true");
 
         return props;
     }
