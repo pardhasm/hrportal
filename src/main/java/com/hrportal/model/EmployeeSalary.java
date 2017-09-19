@@ -30,7 +30,6 @@ public class EmployeeSalary extends AbstractMutableEntity{
     private String details;
 
     @Column(name = "pay_frequency", length = 20)
-    @Enumerated(EnumType.STRING)
     private PayFrequency payFrequency;
 
     //bi-directional many-to-one association to CurrencyType

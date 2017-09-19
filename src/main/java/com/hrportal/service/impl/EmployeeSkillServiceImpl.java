@@ -6,6 +6,7 @@ import com.hrportal.repository.EmployeeSkillRepository;
 import com.hrportal.service.IEmployeeSkillService;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
@@ -13,6 +14,7 @@ import java.util.Objects;
 /**
  * Created by Lalith leela vishnu on 18-09-2017.
  */
+@Service
 public class EmployeeSkillServiceImpl implements IEmployeeSkillService {
 
     @Autowired

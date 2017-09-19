@@ -7,6 +7,7 @@ import com.hrportal.repository.CandidateRepository;
 import com.hrportal.service.ICandidateService;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

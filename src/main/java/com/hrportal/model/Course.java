@@ -59,7 +59,7 @@ public class Course extends AbstractMutableEntity{
 	private Employee employee;
 
 	//bi-directional many-to-one association to TrainingSession
-	@OneToMany(mappedBy="cours", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="course", fetch=FetchType.EAGER)
 	private Set<TrainingSession> trainingSessions;
 
 	public Course() {

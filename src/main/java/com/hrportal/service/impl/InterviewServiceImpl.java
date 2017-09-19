@@ -7,6 +7,7 @@ import com.hrportal.repository.InterviewRepository;
 import com.hrportal.service.IInterviewService;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
@@ -14,6 +15,7 @@ import java.util.Objects;
 /**
  * Created by Lalith leela vishnu on 17-09-2017.
  */
+@Service
 public class InterviewServiceImpl implements IInterviewService {
 
     @Autowired

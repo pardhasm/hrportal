@@ -1,12 +1,13 @@
 package com.hrportal.service.impl;
 
-import com.hrportal.model.Call;
 import com.hrportal.model.Employee;
 import com.hrportal.model.RecordStatus;
 import com.hrportal.repository.EmployeeRepository;
 import com.hrportal.service.IEmployeeService;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
@@ -14,6 +15,7 @@ import java.util.Objects;
 /**
  * Created by Lalith leela vishnu on 18-09-2017.
  */
+@Service
 public class EmployeeServiceImpl implements IEmployeeService {
 
     @Autowired
@@ -22,7 +24,8 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
     @Override
     public List<Employee> getAll() {
-        return employeeRepository.findAll();
+        List<Employee> all = employeeRepository.findAll();
+        return all;
     }
 
     @Override
