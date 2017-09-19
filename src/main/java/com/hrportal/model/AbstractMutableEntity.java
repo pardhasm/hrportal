@@ -1,10 +1,12 @@
 package com.hrportal.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.*;
 import org.joda.time.DateTime;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Version;
 
 /**
  * Created by pardha on 9/19/17.
@@ -15,19 +17,18 @@ public abstract class AbstractMutableEntity  extends AbstractImmutableEntity {
     private static final long serialVersionUID = 1L;
 
     @org.hibernate.annotations.Type(type="updatedTime")
-    @Basic(optional = false)
-    @Column(name = "updated_at", nullable = false)
-    private DateTime updatedAt;
+    @Basic(optional = true)
+    @Column(name = "updated_at", nullable = true)
+    private DateTime updatedAt = new DateTime();
 
-    @Column
-    private Long updatedBy;
+//    @Column
+//    private Long updatedBy;
 
     @Version
     @JsonIgnore
     private Long versionId;
 
     @Column(name = "record_status")
-    @Enumerated(EnumType.STRING)
     private RecordStatus recordStatus;
 
     public AbstractMutableEntity(){
@@ -43,14 +44,14 @@ public abstract class AbstractMutableEntity  extends AbstractImmutableEntity {
         this.updatedAt = updatedAt;
     }
 
-    public Long getUpdatedBy() {
-        return this.updatedBy;
-
-    }
-
-    public void setUpdatedBy(final Long updatedBy) {
-        this.updatedBy = updatedBy;
-    }
+//    public Long getUpdatedBy() {
+//        return this.updatedBy;
+//
+//    }
+//
+//    public void setUpdatedBy(final Long updatedBy) {
+//        this.updatedBy = updatedBy;
+//    }
 
     public Long getVersionId() {
         return this.versionId;
@@ -75,7 +76,7 @@ public abstract class AbstractMutableEntity  extends AbstractImmutableEntity {
         int result = super.hashCode();
         result = prime * result + ((recordStatus == null) ? 0 : recordStatus.hashCode());
         result = prime * result + ((updatedAt == null) ? 0 : updatedAt.hashCode());
-        result = prime * result + ((updatedBy == null) ? 0 : updatedBy.hashCode());
+        //result = prime * result + ((updatedBy == null) ? 0 : updatedBy.hashCode());
         result = prime * result + ((versionId == null) ? 0 : versionId.hashCode());
         return result;
     }
@@ -99,11 +100,11 @@ public abstract class AbstractMutableEntity  extends AbstractImmutableEntity {
                 return false;
         } else if (!updatedAt.equals(other.updatedAt))
             return false;
-        if (updatedBy == null) {
-            if (other.updatedBy != null)
-                return false;
-        } else if (!updatedBy.equals(other.updatedBy))
-            return false;
+//        if (updatedBy == null) {
+//            if (other.updatedBy != null)
+//                return false;
+//        } else if (!updatedBy.equals(other.updatedBy))
+//            return false;
         if (versionId == null) {
             if (other.versionId != null)
                 return false;

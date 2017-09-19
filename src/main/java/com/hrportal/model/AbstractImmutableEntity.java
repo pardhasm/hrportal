@@ -1,7 +1,8 @@
 package com.hrportal.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.annotations.*;
+import org.hibernate.annotations.Parameter;
+import org.hibernate.annotations.TypeDef;
 import org.joda.time.DateTime;
 
 import javax.persistence.Column;
@@ -23,10 +24,8 @@ public abstract class AbstractImmutableEntity extends BaseEntity {
 
     @org.hibernate.annotations.Type(type="updatedTime")
     @Column()
-    private DateTime createdAt;
+    private DateTime createdAt = new DateTime();
 
-    @Column
-    private Long createdBy;
 
     /**
      * Return the value associated with the column: createdAt.
@@ -53,10 +52,10 @@ public abstract class AbstractImmutableEntity extends BaseEntity {
      *
      * @return A Long object (this.createdBy)
      */
-    public Long getCreatedBy() {
-        return this.createdBy;
-
-    }
+//    public Long getCreatedBy() {
+//        return this.createdBy;
+//
+//    }
 
     /**
      * Set the value related to the column: createdBy.
@@ -64,16 +63,16 @@ public abstract class AbstractImmutableEntity extends BaseEntity {
      * @param createdBy
      *          the createdBy value you wish to set
      */
-    public void setCreatedBy(final Long createdBy) {
-        this.createdBy = createdBy;
-    }
+//    public void setCreatedBy(final Long createdBy) {
+//        this.createdBy = createdBy;
+//    }
 
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = super.hashCode();
         result = prime * result + ((createdAt == null) ? 0 : createdAt.hashCode());
-        result = prime * result + ((createdBy == null) ? 0 : createdBy.hashCode());
+        //result = prime * result + ((createdBy == null) ? 0 : createdBy.hashCode());
         return result;
     }
 
@@ -91,11 +90,11 @@ public abstract class AbstractImmutableEntity extends BaseEntity {
                 return false;
         } else if (!createdAt.equals(other.createdAt))
             return false;
-        if (createdBy == null) {
-            if (other.createdBy != null)
-                return false;
-        } else if (!createdBy.equals(other.createdBy))
-            return false;
+//        if (createdBy == null) {
+//            if (other.createdBy != null)
+//                return false;
+//        } else if (!createdBy.equals(other.createdBy))
+//            return false;
         return true;
     }
 
