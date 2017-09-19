@@ -12,7 +12,7 @@ import java.util.Set;
 @Entity
 @Table(name = "Languages")
 //@NamedQuery(name="Language.findAll", query="SELECT l FROM Language l")
-public class Language implements Serializable {
+public class Language extends AbstractMutableEntity{
     private static final long serialVersionUID = 1L;
 
     @Id

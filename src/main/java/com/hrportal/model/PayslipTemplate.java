@@ -12,7 +12,7 @@ import java.util.Date;
 @Entity
 @Table(name="PayslipTemplates")
 //@NamedQuery(name="PayslipTemplate.findAll", query="SELECT p FROM PayslipTemplate p")
-public class PayslipTemplate implements Serializable {
+public class PayslipTemplate extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -30,7 +30,7 @@ public class PayslipTemplate implements Serializable {
 	private String name;
 
 	@Column(length=20)
-	private String status;
+
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updated;
@@ -70,13 +70,7 @@ public class PayslipTemplate implements Serializable {
 		this.name = name;
 	}
 
-	public String getStatus() {
-		return this.status;
-	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
 
 	public Date getUpdated() {
 		return this.updated;

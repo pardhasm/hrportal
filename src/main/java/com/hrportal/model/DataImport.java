@@ -11,7 +11,7 @@ import java.util.Date;
 @Entity
 @Table(name = "DataImport")
 //@NamedQuery(name="DataImport.findAll", query="SELECT d FROM DataImport d")
-public class DataImport implements Serializable {
+public class DataImport extends AbstractMutableEntity{
     private static final long serialVersionUID = 1L;
 
     @Id

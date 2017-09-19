@@ -12,7 +12,7 @@ import java.util.Date;
 @Entity
 @Table(name="FieldNameMappings")
 //@NamedQuery(name="FieldNameMapping.findAll", query="SELECT f FROM FieldNameMapping f")
-public class FieldNameMapping implements Serializable {
+public class FieldNameMapping extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id

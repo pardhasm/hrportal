@@ -10,7 +10,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "SalaryComponent")
 //@NamedQuery(name="SalaryComponent.findAll", query="SELECT s FROM SalaryComponent s")
-public class SalaryComponent implements Serializable {
+public class SalaryComponent extends AbstractMutableEntity{
     private static final long serialVersionUID = 1L;
 
     @Id

@@ -11,13 +11,13 @@ import java.io.Serializable;
 @Entity
 @Table(name="PayrollColumns")
 //@NamedQuery(name="PayrollColumn.findAll", query="SELECT p FROM PayrollColumn p")
-public class PayrollColumn implements Serializable {
+public class PayrollColumn extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(unique=true, nullable=false)
-	private int id;
+	private Long id;
 
 	@Column(name="add_columns", length=500)
 	private String addColumns;
@@ -59,11 +59,11 @@ public class PayrollColumn implements Serializable {
 	public PayrollColumn() {
 	}
 
-	public int getId() {
+	public Long getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

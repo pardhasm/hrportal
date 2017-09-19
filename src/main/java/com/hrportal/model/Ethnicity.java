@@ -11,7 +11,7 @@ import java.util.Set;
 @Entity
 @Table(name = "Ethnicity")
 //@NamedQuery(name="Ethnicity.findAll", query="SELECT e FROM Ethnicity e")
-public class Ethnicity implements Serializable {
+public class Ethnicity extends AbstractMutableEntity{
     private static final long serialVersionUID = 1L;
 
     @Id

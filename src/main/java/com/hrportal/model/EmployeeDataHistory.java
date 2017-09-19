@@ -11,7 +11,7 @@ import java.util.Date;
 @Entity
 @Table(name = "EmployeeDataHistory")
 //@NamedQuery(name="EmployeeDataHistory.findAll", query="SELECT e FROM EmployeeDataHistory e")
-public class EmployeeDataHistory implements Serializable {
+public class EmployeeDataHistory extends AbstractMutableEntity{
     private static final long serialVersionUID = 1L;
 
     @Id

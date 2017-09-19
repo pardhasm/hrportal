@@ -11,7 +11,7 @@ import java.util.Set;
 @Entity
 @Table(name = "DeductionGroup")
 //@NamedQuery(name="DeductionGroup.findAll", query="SELECT d FROM DeductionGroup d")
-public class DeductionGroup implements Serializable {
+public class DeductionGroup extends AbstractMutableEntity{
     private static final long serialVersionUID = 1L;
 
     @Id

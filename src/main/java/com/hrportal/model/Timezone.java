@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="Timezones")
 //@NamedQuery(name="Timezone.findAll", query="SELECT t FROM Timezone t")
-public class Timezone implements Serializable {
+public class Timezone extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id

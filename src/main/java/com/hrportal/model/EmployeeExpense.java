@@ -14,7 +14,7 @@ import java.util.Date;
 @Entity
 @Table(name="EmployeeExpenses")
 //@NamedQuery(name="EmployeeExpens.findAll", query="SELECT e FROM EmployeeExpens e")
-public class EmployeeExpens implements Serializable {
+public class EmployeeExpense extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -49,9 +49,6 @@ public class EmployeeExpens implements Serializable {
 	@Column(nullable=false, length=500)
 	private String payee;
 
-	@Column(length=20)
-	private String status;
-
 	@Column(name="transaction_no", nullable=false, length=300)
 	private String transactionNo;
 
@@ -73,7 +70,7 @@ public class EmployeeExpens implements Serializable {
 	@JoinColumn(name="payment_method", nullable=false)
 	private ExpensesPaymentMethod expensesPaymentMethod;
 
-	public EmployeeExpens() {
+	public EmployeeExpense() {
 	}
 
 	public Long getId() {
@@ -156,13 +153,7 @@ public class EmployeeExpens implements Serializable {
 		this.payee = payee;
 	}
 
-	public String getStatus() {
-		return this.status;
-	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
 
 	public String getTransactionNo() {
 		return this.transactionNo;

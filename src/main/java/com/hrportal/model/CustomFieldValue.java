@@ -12,7 +12,7 @@ import java.util.Date;
 @Entity
 @Table(name="CustomFieldValues")
 //@NamedQuery(name="CustomFieldValue.findAll", query="SELECT c FROM CustomFieldValue c")
-public class CustomFieldValue implements Serializable {
+public class CustomFieldValue extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id

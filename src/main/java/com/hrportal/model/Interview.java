@@ -11,7 +11,7 @@ import java.util.Date;
 @Entity
 @Table(name = "Interviews")
 //@NamedQuery(name="Interview.findAll", query="SELECT i FROM Interview i")
-public class Interview implements Serializable {
+public class Interview extends AbstractMutableEntity{
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -37,7 +37,7 @@ public class Interview implements Serializable {
     private Date scheduled;
 
     @Column(length = 100)
-    private String status;
+
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date updated;
@@ -111,13 +111,7 @@ public class Interview implements Serializable {
         this.scheduled = scheduled;
     }
 
-    public String getStatus() {
-        return this.status;
-    }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
     public Date getUpdated() {
         return this.updated;

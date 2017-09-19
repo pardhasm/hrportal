@@ -13,7 +13,7 @@ import java.util.Date;
 @Entity
 @Table(name="Notifications")
 //@NamedQuery(name="Notification.findAll", query="SELECT n FROM Notification n")
-public class Notification implements Serializable {
+public class Notification extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -37,7 +37,7 @@ public class Notification implements Serializable {
 	private String message;
 
 	@Column(length=20)
-	private String status;
+
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date time;
@@ -109,13 +109,7 @@ public class Notification implements Serializable {
 		this.message = message;
 	}
 
-	public String getStatus() {
-		return this.status;
-	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
 
 	public Date getTime() {
 		return this.time;

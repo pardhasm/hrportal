@@ -11,7 +11,7 @@ import java.util.Date;
 @Entity
 @Table(name = "Calls")
 //@NamedQuery(name="Call.findAll", query="SELECT c FROM Call c")
-public class Call implements Serializable {
+public class Call extends AbstractMutableEntity{
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -28,8 +28,7 @@ public class Call implements Serializable {
     @Column(length = 20)
     private String phone;
 
-    @Column(length = 100)
-    private String status;
+
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date updated;
@@ -79,13 +78,7 @@ public class Call implements Serializable {
         this.phone = phone;
     }
 
-    public String getStatus() {
-        return this.status;
-    }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
     public Date getUpdated() {
         return this.updated;

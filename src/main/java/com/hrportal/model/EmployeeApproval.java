@@ -13,7 +13,7 @@ import java.util.Date;
 @Entity
 @Table(name="EmployeeApprovals")
 //@NamedQuery(name="EmployeeApproval.findAll", query="SELECT e FROM EmployeeApproval e")
-public class EmployeeApproval implements Serializable {
+public class EmployeeApproval extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -90,14 +90,6 @@ public class EmployeeApproval implements Serializable {
 
 	public void setLevel(int level) {
 		this.level = level;
-	}
-
-	public int getStatus() {
-		return this.status;
-	}
-
-	public void setStatus(int status) {
-		this.status = status;
 	}
 
 	public String getType() {

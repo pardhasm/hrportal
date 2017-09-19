@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "EmployeeSalary")
 //@NamedQuery(name="EmployeeSalary.findAll", query="SELECT e FROM EmployeeSalary e")
-public class EmployeeSalary implements Serializable {
+public class EmployeeSalary extends AbstractMutableEntity{
     private static final long serialVersionUID = 1L;
 
     @Id

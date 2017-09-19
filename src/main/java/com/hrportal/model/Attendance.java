@@ -11,7 +11,7 @@ import java.util.Date;
 @Entity
 @Table(name = "Attendance")
 //@NamedQuery(name="Attendance.findAll", query="SELECT a FROM Attendance a")
-public class Attendance implements Serializable {
+public class Attendance extends AbstractMutableEntity{
     private static final long serialVersionUID = 1L;
 
     @Id

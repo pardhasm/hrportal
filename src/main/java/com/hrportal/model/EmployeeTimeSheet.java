@@ -13,7 +13,7 @@ import java.util.Set;
 @Entity
 @Table(name="EmployeeTimeSheets")
 //@NamedQuery(name="EmployeeTimeSheet.findAll", query="SELECT e FROM EmployeeTimeSheet e")
-public class EmployeeTimeSheet implements Serializable {
+public class EmployeeTimeSheet extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -30,7 +30,7 @@ public class EmployeeTimeSheet implements Serializable {
 	private Date dateStart;
 
 	@Column(length=20)
-	private String status;
+
 
 	//bi-directional many-to-one association to EmployeeTimeEntry
 	@OneToMany(mappedBy="employeeTimeSheet", fetch=FetchType.EAGER)
@@ -68,13 +68,7 @@ public class EmployeeTimeSheet implements Serializable {
 		this.dateStart = dateStart;
 	}
 
-	public String getStatus() {
-		return this.status;
-	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
 
 	public Set<EmployeeTimeEntry> getEmployeeTimeEntries() {
 		return this.employeeTimeEntries;

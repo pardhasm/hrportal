@@ -14,7 +14,7 @@ import java.util.Date;
 @Entity
 @Table(name="EmployeeCompanyLoans")
 //@NamedQuery(name="EmployeeCompanyLoan.findAll", query="SELECT e FROM EmployeeCompanyLoan e")
-public class EmployeeCompanyLoan implements Serializable {
+public class EmployeeCompanyLoan extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -45,7 +45,7 @@ public class EmployeeCompanyLoan implements Serializable {
 	private Date startDate;
 
 	@Column(length=20)
-	private String status;
+
 
 	//bi-directional many-to-one association to CompanyLoan
 	@ManyToOne
@@ -124,13 +124,7 @@ public class EmployeeCompanyLoan implements Serializable {
 		this.startDate = startDate;
 	}
 
-	public String getStatus() {
-		return this.status;
-	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
 
 	public CompanyLoan getCompanyLoan() {
 		return this.companyLoan;

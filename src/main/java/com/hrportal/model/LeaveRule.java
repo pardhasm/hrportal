@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Entity
 @Table(name="LeaveRules")
 //@NamedQuery(name="LeaveRule.findAll", query="SELECT l FROM LeaveRule l")
-public class LeaveRule implements Serializable {
+public class LeaveRule extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id

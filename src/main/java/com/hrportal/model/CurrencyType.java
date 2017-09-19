@@ -12,7 +12,7 @@ import java.util.Set;
 @Entity
 @Table(name = "CurrencyTypes")
 //@NamedQuery(name="CurrencyType.findAll", query="SELECT c FROM CurrencyType c")
-public class CurrencyType implements Serializable {
+public class CurrencyType extends AbstractMutableEntity{
     private static final long serialVersionUID = 1L;
 
     @Id

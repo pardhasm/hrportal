@@ -10,7 +10,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "Applications")
-public class Application implements Serializable {
+public class Application extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id

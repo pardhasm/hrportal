@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "ExperienceLevel")
 //@NamedQuery(name="ExperienceLevel.findAll", query="SELECT e FROM ExperienceLevel e")
-public class ExperienceLevel implements Serializable {
+public class ExperienceLevel extends AbstractMutableEntity{
     private static final long serialVersionUID = 1L;
 
     @Id

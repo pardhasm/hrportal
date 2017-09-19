@@ -11,7 +11,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name="LeaveTypes")
-public class LeaveType implements Serializable {
+public class LeaveType extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id

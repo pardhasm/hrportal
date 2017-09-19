@@ -12,7 +12,7 @@ import java.util.Date;
 @Entity
 @Table(name="Emails")
 //@NamedQuery(name="Email.findAll", query="SELECT e FROM Email e")
-public class Email implements Serializable {
+public class Email extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -35,8 +35,6 @@ public class Email implements Serializable {
 	@Lob
 	private String params;
 
-	@Column(length=20)
-	private String status;
 
 	@Column(nullable=false, length=300)
 	private String subject;
@@ -101,13 +99,7 @@ public class Email implements Serializable {
 		this.params = params;
 	}
 
-	public String getStatus() {
-		return this.status;
-	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
 
 	public String getSubject() {
 		return this.subject;

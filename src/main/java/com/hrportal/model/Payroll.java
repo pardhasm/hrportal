@@ -12,7 +12,7 @@ import java.util.Set;
 @Entity
 @Table(name = "Payroll")
 //@NamedQuery(name="Payroll.findAll", query="SELECT p FROM Payroll p")
-public class Payroll implements Serializable {
+public class Payroll extends AbstractMutableEntity{
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -46,7 +46,7 @@ public class Payroll implements Serializable {
     private Long payslipTemplate;
 
     @Column(length = 20)
-    private String status;
+
 
     //bi-directional many-to-one association to PayrollData
     @OneToMany(mappedBy = "payrollBean", fetch = FetchType.EAGER)
@@ -127,13 +127,7 @@ public class Payroll implements Serializable {
         this.payslipTemplate = payslipTemplate;
     }
 
-    public String getStatus() {
-        return this.status;
-    }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
     public Set<PayrollData> getPayrollData() {
         return this.payrollData;

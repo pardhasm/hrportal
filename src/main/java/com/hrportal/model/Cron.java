@@ -12,7 +12,7 @@ import java.util.Date;
 @Entity
 @Table(name="Crons")
 //@NamedQuery(name="Cron.findAll", query="SELECT c FROM Cron c")
-public class Cron implements Serializable {
+public class Cron extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -32,8 +32,6 @@ public class Cron implements Serializable {
 	@Column(nullable=false, length=100)
 	private String name;
 
-	@Column(length=20)
-	private String status;
 
 	@Column(nullable=false, length=50)
 	private String time;
@@ -84,13 +82,7 @@ public class Cron implements Serializable {
 		this.name = name;
 	}
 
-	public String getStatus() {
-		return this.status;
-	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
 
 	public String getTime() {
 		return this.time;

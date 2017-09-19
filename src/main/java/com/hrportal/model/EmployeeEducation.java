@@ -12,7 +12,7 @@ import java.util.Date;
 @Entity
 @Table(name="EmployeeEducations")
 //@NamedQuery(name="EmployeeEducation.findAll", query="SELECT e FROM EmployeeEducation e")
-public class EmployeeEducation implements Serializable {
+public class EmployeeEducation extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id

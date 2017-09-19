@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "Tags")
 //@NamedQuery(name="Tag.findAll", query="SELECT t FROM Tag t")
-public class Tag implements Serializable {
+public class Tag extends AbstractMutableEntity{
     private static final long serialVersionUID = 1L;
 
     @Id

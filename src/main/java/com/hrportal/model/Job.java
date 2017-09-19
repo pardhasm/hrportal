@@ -12,7 +12,7 @@ import java.util.Set;
 @Entity
 @Table(name = "Job")
 //@NamedQuery(name="Job.findAll", query="SELECT j FROM Job j")
-public class Job implements Serializable {
+public class Job extends AbstractMutableEntity{
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -75,9 +75,6 @@ public class Job implements Serializable {
     @Column(length = 20)
     @Enumerated(EnumType.STRING)
     private Polar showSalary;
-
-    @Column(length = 20)
-    private String status;
 
     @Column(nullable = false, length = 200)
     private String title;
@@ -281,13 +278,7 @@ public class Job implements Serializable {
         this.showSalary = showSalary;
     }
 
-    public String getStatus() {
-        return this.status;
-    }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
     public String getTitle() {
         return this.title;

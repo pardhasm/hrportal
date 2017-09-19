@@ -1,7 +1,6 @@
 package com.hrportal.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
@@ -13,8 +12,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name="Courses")
-//@NamedQuery(name="Cours.findAll", query="SELECT c FROM Cours c")
-public class Cours implements Serializable {
+public class Course extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -44,8 +42,6 @@ public class Cours implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private PaymentType paymentType;
 
-	@Column(length=20)
-	private String status;
 
 	@Column(length=300)
 	private String trainer;
@@ -66,7 +62,7 @@ public class Cours implements Serializable {
 	@OneToMany(mappedBy="cours", fetch=FetchType.EAGER)
 	private Set<TrainingSession> trainingSessions;
 
-	public Cours() {
+	public Course() {
 	}
 
 	public Long getId() {
@@ -133,13 +129,7 @@ public class Cours implements Serializable {
 		this.paymentType = paymentType;
 	}
 
-	public String getStatus() {
-		return this.status;
-	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
 
 	public String getTrainer() {
 		return this.trainer;
@@ -183,14 +173,14 @@ public class Cours implements Serializable {
 
 	public TrainingSession addTrainingSession(TrainingSession trainingSession) {
 		getTrainingSessions().add(trainingSession);
-		trainingSession.setCours(this);
+		trainingSession.setCourse(this);
 
 		return trainingSession;
 	}
 
 	public TrainingSession removeTrainingSession(TrainingSession trainingSession) {
 		getTrainingSessions().remove(trainingSession);
-		trainingSession.setCours(null);
+		trainingSession.setCourse(null);
 
 		return trainingSession;
 	}

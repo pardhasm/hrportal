@@ -1,7 +1,6 @@
 package com.hrportal.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -13,7 +12,7 @@ import java.util.Set;
 @Entity
 @Table(name="TrainingSessions")
 //@NamedQuery(name="TrainingSession.findAll", query="SELECT t FROM TrainingSession t")
-public class TrainingSession implements Serializable {
+public class TrainingSession extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -54,7 +53,7 @@ public class TrainingSession implements Serializable {
 	private Date scheduled;
 
 	@Column(length=20)
-	private String status;
+
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updated;
@@ -66,7 +65,7 @@ public class TrainingSession implements Serializable {
 	//bi-directional many-to-one association to Cours
 	@ManyToOne
 	@JoinColumn(name="course", nullable=false)
-	private Cours cours;
+	private Course course;
 
 	public TrainingSession() {
 	}
@@ -143,13 +142,7 @@ public class TrainingSession implements Serializable {
 		this.scheduled = scheduled;
 	}
 
-	public String getStatus() {
-		return this.status;
-	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
 
 	public Date getUpdated() {
 		return this.updated;
@@ -181,12 +174,12 @@ public class TrainingSession implements Serializable {
 		return employeeTrainingSession;
 	}
 
-	public Cours getCours() {
-		return this.cours;
+	public Course getCourse() {
+		return this.course;
 	}
 
-	public void setCours(Cours cours) {
-		this.cours = cours;
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 
 	public AttendanceType getAttendanceType() {

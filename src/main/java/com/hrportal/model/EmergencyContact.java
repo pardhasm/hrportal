@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="EmergencyContacts")
 //@NamedQuery(name="EmergencyContact.findAll", query="SELECT e FROM EmergencyContact e")
-public class EmergencyContact implements Serializable {
+public class EmergencyContact extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id

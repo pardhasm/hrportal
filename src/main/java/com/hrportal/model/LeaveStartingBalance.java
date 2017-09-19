@@ -12,7 +12,7 @@ import java.util.Date;
 @Entity
 @Table(name = "LeaveStartingBalance")
 //@NamedQuery(name="LeaveStartingBalance.findAll", query="SELECT l FROM LeaveStartingBalance l")
-public class LeaveStartingBalance implements Serializable {
+public class LeaveStartingBalance extends AbstractMutableEntity{
     private static final long serialVersionUID = 1L;
 
     @Id

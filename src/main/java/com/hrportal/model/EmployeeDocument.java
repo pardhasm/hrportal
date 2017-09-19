@@ -12,7 +12,7 @@ import java.util.Date;
 @Entity
 @Table(name="EmployeeDocuments")
 //@NamedQuery(name="EmployeeDocument.findAll", query="SELECT e FROM EmployeeDocument e")
-public class EmployeeDocument implements Serializable {
+public class EmployeeDocument extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -35,9 +35,6 @@ public class EmployeeDocument implements Serializable {
 
 	@Lob
 	private String signature;
-
-	@Column(length=20)
-	private String status;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="valid_until", nullable=false)
@@ -104,13 +101,7 @@ public class EmployeeDocument implements Serializable {
 		this.signature = signature;
 	}
 
-	public String getStatus() {
-		return this.status;
-	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
 
 	public Date getValidUntil() {
 		return this.validUntil;

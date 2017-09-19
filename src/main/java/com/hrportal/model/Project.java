@@ -13,7 +13,7 @@ import java.util.Set;
 @Entity
 @Table(name="Projects")
 //@NamedQuery(name="Project.findAll", query="SELECT p FROM Project p")
-public class Project implements Serializable {
+public class Project extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -31,7 +31,7 @@ public class Project implements Serializable {
 	private String name;
 
 	@Column(length=20)
-	private String status;
+
 
 	//bi-directional many-to-one association to EmployeeProject
 	@OneToMany(mappedBy="projectBean", fetch=FetchType.EAGER)
@@ -81,13 +81,7 @@ public class Project implements Serializable {
 		this.name = name;
 	}
 
-	public String getStatus() {
-		return this.status;
-	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
 
 	public Set<EmployeeProject> getEmployeeProjects() {
 		return this.employeeProjects;

@@ -11,7 +11,7 @@ import java.util.Date;
 @Entity
 @Table(name = "EmployeeTimeEntry")
 //@NamedQuery(name="EmployeeTimeEntry.findAll", query="SELECT e FROM EmployeeTimeEntry e")
-public class EmployeeTimeEntry implements Serializable {
+public class EmployeeTimeEntry extends AbstractMutableEntity{
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -32,9 +32,6 @@ public class EmployeeTimeEntry implements Serializable {
 
     @Lob
     private String details;
-
-    @Column(length = 20)
-    private String status;
 
     @Column(name = "time_end", nullable = false, length = 10)
     private String timeEnd;
@@ -100,13 +97,7 @@ public class EmployeeTimeEntry implements Serializable {
         this.details = details;
     }
 
-    public String getStatus() {
-        return this.status;
-    }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
     public String getTimeEnd() {
         return this.timeEnd;

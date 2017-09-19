@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="Modules")
 //@NamedQuery(name="Module.findAll", query="SELECT m FROM Module m")
-public class Module implements Serializable {
+public class Module extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -37,8 +37,6 @@ public class Module implements Serializable {
 	@Column(nullable=false, length=100)
 	private String name;
 
-	@Column(length=20)
-	private String status;
 
 	@Column(name="update_path", length=500)
 	private String updatePath;
@@ -112,13 +110,7 @@ public class Module implements Serializable {
 		this.name = name;
 	}
 
-	public String getStatus() {
-		return this.status;
-	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
 
 	public String getUpdatePath() {
 		return this.updatePath;

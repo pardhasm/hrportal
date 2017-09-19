@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="Deductions")
 //@NamedQuery(name="Deduction.findAll", query="SELECT d FROM Deduction d")
-public class Deduction implements Serializable {
+public class Deduction extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id

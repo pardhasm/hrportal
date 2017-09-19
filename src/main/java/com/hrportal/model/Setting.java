@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="Settings")
 //@NamedQuery(name="Setting.findAll", query="SELECT s FROM Setting s")
-public class Setting implements Serializable {
+public class Setting extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id

@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Entity
 @Table(name="Files")
 //@NamedQuery(name="File.findAll", query="SELECT f FROM File f")
-public class File implements Serializable {
+public class File extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id

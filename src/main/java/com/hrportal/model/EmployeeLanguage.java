@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Entity
 @Table(name="EmployeeLanguages")
 
-public class EmployeeLanguage implements Serializable {
+public class EmployeeLanguage extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id

@@ -13,7 +13,7 @@ import java.util.Date;
 @Entity
 @Table(name="RestAccessTokens")
 //@NamedQuery(name="RestAccessToken.findAll", query="SELECT r FROM RestAccessToken r")
-public class RestAccessToken implements Serializable {
+public class RestAccessToken extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id

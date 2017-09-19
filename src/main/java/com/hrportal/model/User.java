@@ -13,7 +13,7 @@ import java.util.Set;
 @Entity
 @Table(name="Users")
 //@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
-public class User implements Serializable {
+public class User extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id

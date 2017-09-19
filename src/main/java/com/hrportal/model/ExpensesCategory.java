@@ -1,7 +1,6 @@
 package com.hrportal.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -13,7 +12,7 @@ import java.util.Set;
 @Entity
 @Table(name="ExpensesCategories")
 //@NamedQuery(name="ExpensesCategory.findAll", query="SELECT e FROM ExpensesCategory e")
-public class ExpensesCategory implements Serializable {
+public class ExpensesCategory extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -36,7 +35,7 @@ public class ExpensesCategory implements Serializable {
 
 	//bi-directional many-to-one association to EmployeeExpens
 	@OneToMany(mappedBy="expensesCategory", fetch=FetchType.EAGER)
-	private Set<EmployeeExpens> employeeExpenses;
+	private Set<EmployeeExpense> employeeExpenses;
 
 	public ExpensesCategory() {
 	}
@@ -81,26 +80,26 @@ public class ExpensesCategory implements Serializable {
 		this.updated = updated;
 	}
 
-	public Set<EmployeeExpens> getEmployeeExpenses() {
+	public Set<EmployeeExpense> getEmployeeExpenses() {
 		return this.employeeExpenses;
 	}
 
-	public void setEmployeeExpenses(Set<EmployeeExpens> employeeExpenses) {
+	public void setEmployeeExpenses(Set<EmployeeExpense> employeeExpenses) {
 		this.employeeExpenses = employeeExpenses;
 	}
 
-	public EmployeeExpens addEmployeeExpens(EmployeeExpens employeeExpens) {
-		getEmployeeExpenses().add(employeeExpens);
-		employeeExpens.setExpensesCategory(this);
+	public EmployeeExpense addEmployeeExpens(EmployeeExpense employeeExpense) {
+		getEmployeeExpenses().add(employeeExpense);
+		employeeExpense.setExpensesCategory(this);
 
-		return employeeExpens;
+		return employeeExpense;
 	}
 
-	public EmployeeExpens removeEmployeeExpens(EmployeeExpens employeeExpens) {
-		getEmployeeExpenses().remove(employeeExpens);
-		employeeExpens.setExpensesCategory(null);
+	public EmployeeExpense removeEmployeeExpens(EmployeeExpense employeeExpense) {
+		getEmployeeExpenses().remove(employeeExpense);
+		employeeExpense.setExpensesCategory(null);
 
-		return employeeExpens;
+		return employeeExpense;
 	}
 
 }

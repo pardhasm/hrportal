@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="Reports")
 //@NamedQuery(name="Report.findAll", query="SELECT r FROM Report r")
-public class Report implements Serializable {
+public class Report extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id

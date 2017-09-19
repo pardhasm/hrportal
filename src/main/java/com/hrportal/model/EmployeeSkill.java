@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="EmployeeSkills")
 //@NamedQuery(name="EmployeeSkill.findAll", query="SELECT e FROM EmployeeSkill e")
-public class EmployeeSkill implements Serializable {
+public class EmployeeSkill extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id

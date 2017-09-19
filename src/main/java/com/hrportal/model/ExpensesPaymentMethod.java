@@ -1,6 +1,5 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
@@ -13,7 +12,7 @@ import java.util.Set;
 @Entity
 @Table(name="ExpensesPaymentMethods")
 //@NamedQuery(name="ExpensesPaymentMethod.findAll", query="SELECT e FROM ExpensesPaymentMethod e")
-public class ExpensesPaymentMethod implements Serializable {
+public class ExpensesPaymentMethod extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -32,7 +31,7 @@ public class ExpensesPaymentMethod implements Serializable {
 
 	//bi-directional many-to-one association to EmployeeExpens
 	@OneToMany(mappedBy="expensesPaymentMethod", fetch=FetchType.EAGER)
-	private Set<EmployeeExpens> employeeExpenses;
+	private Set<EmployeeExpense> employeeExpenses;
 
 	public ExpensesPaymentMethod() {
 	}
@@ -69,26 +68,26 @@ public class ExpensesPaymentMethod implements Serializable {
 		this.updated = updated;
 	}
 
-	public Set<EmployeeExpens> getEmployeeExpenses() {
+	public Set<EmployeeExpense> getEmployeeExpenses() {
 		return this.employeeExpenses;
 	}
 
-	public void setEmployeeExpenses(Set<EmployeeExpens> employeeExpenses) {
+	public void setEmployeeExpenses(Set<EmployeeExpense> employeeExpenses) {
 		this.employeeExpenses = employeeExpenses;
 	}
 
-	public EmployeeExpens addEmployeeExpens(EmployeeExpens employeeExpens) {
-		getEmployeeExpenses().add(employeeExpens);
-		employeeExpens.setExpensesPaymentMethod(this);
+	public EmployeeExpense addEmployeeExpens(EmployeeExpense employeeExpense) {
+		getEmployeeExpenses().add(employeeExpense);
+		employeeExpense.setExpensesPaymentMethod(this);
 
-		return employeeExpens;
+		return employeeExpense;
 	}
 
-	public EmployeeExpens removeEmployeeExpens(EmployeeExpens employeeExpens) {
-		getEmployeeExpenses().remove(employeeExpens);
-		employeeExpens.setExpensesPaymentMethod(null);
+	public EmployeeExpense removeEmployeeExpens(EmployeeExpense employeeExpense) {
+		getEmployeeExpenses().remove(employeeExpense);
+		employeeExpense.setExpensesPaymentMethod(null);
 
-		return employeeExpens;
+		return employeeExpense;
 	}
 
 }

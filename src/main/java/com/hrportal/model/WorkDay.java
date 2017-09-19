@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Entity
 @Table(name="WorkDays")
 //@NamedQuery(name="WorkDay.findAll", query="SELECT w FROM WorkDay w")
-public class WorkDay implements Serializable {
+public class WorkDay extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -24,9 +24,6 @@ public class WorkDay implements Serializable {
 
 	@Column(nullable=false, length=100)
 	private String name;
-
-	@Column(length=20)
-	private String status;
 
 	public WorkDay() {
 	}
@@ -55,12 +52,6 @@ public class WorkDay implements Serializable {
 		this.name = name;
 	}
 
-	public String getStatus() {
-		return this.status;
-	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
 
 }

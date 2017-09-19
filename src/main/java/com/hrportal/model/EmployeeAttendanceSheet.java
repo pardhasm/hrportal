@@ -12,7 +12,7 @@ import java.util.Date;
 @Entity
 @Table(name="EmployeeAttendanceSheets")
 //@NamedQuery(name="EmployeeAttendanceSheet.findAll", query="SELECT e FROM EmployeeAttendanceSheet e")
-public class EmployeeAttendanceSheet implements Serializable {
+public class EmployeeAttendanceSheet extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -29,7 +29,7 @@ public class EmployeeAttendanceSheet implements Serializable {
 	private Date dateStart;
 
 	@Column(length=20)
-	private String status;
+
 
 	//bi-directional many-to-one association to Employee
 	@ManyToOne
@@ -63,13 +63,7 @@ public class EmployeeAttendanceSheet implements Serializable {
 		this.dateStart = dateStart;
 	}
 
-	public String getStatus() {
-		return this.status;
-	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
 
 	public Employee getEmployeeBean() {
 		return this.employeeBean;

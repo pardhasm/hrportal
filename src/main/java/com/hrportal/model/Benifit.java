@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "Benifits")
 //@NamedQuery(name="Benifit.findAll", query="SELECT b FROM Benifit b")
-public class Benifit implements Serializable {
+public class Benifit extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id

@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="EmployeeTrainingSessions")
 //@NamedQuery(name="EmployeeTrainingSession.findAll", query="SELECT e FROM EmployeeTrainingSession e")
-public class EmployeeTrainingSession implements Serializable {
+public class EmployeeTrainingSession extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -26,7 +26,7 @@ public class EmployeeTrainingSession implements Serializable {
 	private String proof;
 
 	@Column(length=20)
-	private String status;
+
 
 	//bi-directional many-to-one association to Employee
 	@ManyToOne
@@ -65,13 +65,7 @@ public class EmployeeTrainingSession implements Serializable {
 		this.proof = proof;
 	}
 
-	public String getStatus() {
-		return this.status;
-	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
 
 	public Employee getEmployeeBean() {
 		return this.employeeBean;

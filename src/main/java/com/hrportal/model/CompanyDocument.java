@@ -12,7 +12,7 @@ import java.util.Date;
 @Entity
 @Table(name="CompanyDocuments")
 //@NamedQuery(name="CompanyDocument.findAll", query="SELECT c FROM CompanyDocument c")
-public class CompanyDocument implements Serializable {
+public class CompanyDocument extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -41,9 +41,6 @@ public class CompanyDocument implements Serializable {
 
 	@Column(name="share_userlevel", length=100)
 	private String shareUserlevel;
-
-	@Column(length=20)
-	private String status;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="valid_until")
@@ -114,14 +111,6 @@ public class CompanyDocument implements Serializable {
 
 	public void setShareUserlevel(String shareUserlevel) {
 		this.shareUserlevel = shareUserlevel;
-	}
-
-	public String getStatus() {
-		return this.status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
 	}
 
 	public Date getValidUntil() {

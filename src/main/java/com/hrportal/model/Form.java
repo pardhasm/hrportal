@@ -13,7 +13,7 @@ import java.util.Set;
 @Entity
 @Table(name="Forms")
 //@NamedQuery(name="Form.findAll", query="SELECT f FROM Form f")
-public class Form implements Serializable {
+public class Form extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id

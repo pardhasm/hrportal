@@ -13,7 +13,7 @@ import java.util.Date;
 @Entity
 @Table(name="StatusChangeLogs")
 //@NamedQuery(name="StatusChangeLog.findAll", query="SELECT s FROM StatusChangeLog s")
-public class StatusChangeLog implements Serializable {
+public class StatusChangeLog extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id

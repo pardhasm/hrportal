@@ -12,7 +12,7 @@ import java.util.Date;
 @Entity
 @Table(name="Migrations")
 //@NamedQuery(name="Migration.findAll", query="SELECT m FROM Migration m")
-public class Migration implements Serializable {
+public class Migration extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -30,7 +30,7 @@ public class Migration implements Serializable {
 	private String lastError;
 
 	@Column(length=20)
-	private String status;
+
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updated;
@@ -73,13 +73,7 @@ public class Migration implements Serializable {
 		this.lastError = lastError;
 	}
 
-	public String getStatus() {
-		return this.status;
-	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
 
 	public Date getUpdated() {
 		return this.updated;

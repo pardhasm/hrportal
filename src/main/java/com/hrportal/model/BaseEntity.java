@@ -43,10 +43,6 @@ public abstract class BaseEntity implements IdEntity, Serializable {
     return result;
   }
 
-  @Override
-  public String toString() {
-    return "BaseEntity [id=" + getId() + "]";
-  }
 
   /**
    * Return the type of this class. Useful for when dealing with proxies.

@@ -1,7 +1,6 @@
 package com.hrportal.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -13,7 +12,7 @@ import java.util.Set;
 @Entity
 @Table(name = "Employees")
 //@NamedQuery(name="Employee.findAll", query="SELECT e FROM Employee e")
-public class Employee implements Serializable {
+public class Employee extends AbstractMutableEntity{
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -136,8 +135,6 @@ public class Employee implements Serializable {
     @Column(name = "ssn_num", length = 100)
     private String ssnNum;
 
-    @Column(length = 20)
-    private String status;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "termination_date")
@@ -158,7 +155,7 @@ public class Employee implements Serializable {
 
     //bi-directional many-to-one association to Cours
     @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
-    private Set<Cours> courses;
+    private Set<Course> courses;
 
     //bi-directional many-to-one association to EmergencyContact
     @OneToMany(mappedBy = "employeeBean", fetch = FetchType.EAGER)
@@ -198,7 +195,7 @@ public class Employee implements Serializable {
 
     //bi-directional many-to-one association to EmployeeExpens
     @OneToMany(mappedBy = "employeeBean", fetch = FetchType.EAGER)
-    private Set<EmployeeExpens> employeeExpenses;
+    private Set<EmployeeExpense> employeeExpenses;
 
     //bi-directional many-to-one association to EmployeeForm
     @OneToMany(mappedBy = "employeeBean", fetch = FetchType.EAGER)
@@ -623,13 +620,7 @@ public class Employee implements Serializable {
         this.ssnNum = ssnNum;
     }
 
-    public String getStatus() {
-        return this.status;
-    }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
     public Date getTerminationDate() {
         return this.terminationDate;
@@ -685,26 +676,26 @@ public class Employee implements Serializable {
         return attendance;
     }
 
-    public Set<Cours> getCourses() {
+    public Set<Course> getCourses() {
         return this.courses;
     }
 
-    public void setCourses(Set<Cours> courses) {
+    public void setCourses(Set<Course> courses) {
         this.courses = courses;
     }
 
-    public Cours addCours(Cours cours) {
-        getCourses().add(cours);
-        cours.setEmployee(this);
+    public Course addCours(Course course) {
+        getCourses().add(course);
+        course.setEmployee(this);
 
-        return cours;
+        return course;
     }
 
-    public Cours removeCours(Cours cours) {
-        getCourses().remove(cours);
-        cours.setEmployee(null);
+    public Course removeCours(Course course) {
+        getCourses().remove(course);
+        course.setEmployee(null);
 
-        return cours;
+        return course;
     }
 
     public Set<EmergencyContact> getEmergencyContacts() {
@@ -905,26 +896,26 @@ public class Employee implements Serializable {
         return employeeEthnicity;
     }
 
-    public Set<EmployeeExpens> getEmployeeExpenses() {
+    public Set<EmployeeExpense> getEmployeeExpenses() {
         return this.employeeExpenses;
     }
 
-    public void setEmployeeExpenses(Set<EmployeeExpens> employeeExpenses) {
+    public void setEmployeeExpenses(Set<EmployeeExpense> employeeExpenses) {
         this.employeeExpenses = employeeExpenses;
     }
 
-    public EmployeeExpens addEmployeeExpens(EmployeeExpens employeeExpens) {
-        getEmployeeExpenses().add(employeeExpens);
-        employeeExpens.setEmployeeBean(this);
+    public EmployeeExpense addEmployeeExpens(EmployeeExpense employeeExpense) {
+        getEmployeeExpenses().add(employeeExpense);
+        employeeExpense.setEmployeeBean(this);
 
-        return employeeExpens;
+        return employeeExpense;
     }
 
-    public EmployeeExpens removeEmployeeExpens(EmployeeExpens employeeExpens) {
-        getEmployeeExpenses().remove(employeeExpens);
-        employeeExpens.setEmployeeBean(null);
+    public EmployeeExpense removeEmployeeExpens(EmployeeExpense employeeExpense) {
+        getEmployeeExpenses().remove(employeeExpense);
+        employeeExpense.setEmployeeBean(null);
 
-        return employeeExpens;
+        return employeeExpense;
     }
 
     public Set<EmployeeForm> getEmployeeForms() {

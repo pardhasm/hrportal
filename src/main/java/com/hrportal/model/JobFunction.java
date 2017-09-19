@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "JobFunction")
 //@NamedQuery(name="JobFunction.findAll", query="SELECT j FROM JobFunction j")
-public class JobFunction implements Serializable {
+public class JobFunction extends AbstractMutableEntity{
     private static final long serialVersionUID = 1L;
 
     @Id

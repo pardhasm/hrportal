@@ -13,7 +13,7 @@ import java.util.Date;
 @Entity
 @Table(name="HoliDays")
 //@NamedQuery(name="HoliDay.findAll", query="SELECT h FROM HoliDay h")
-public class HoliDay implements Serializable {
+public class HoliDay extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -29,8 +29,6 @@ public class HoliDay implements Serializable {
 	@Column(nullable=false, length=100)
 	private String name;
 
-	@Column(length=20)
-	private String status;
 
 	public HoliDay() {
 	}
@@ -67,12 +65,6 @@ public class HoliDay implements Serializable {
 		this.name = name;
 	}
 
-	public String getStatus() {
-		return this.status;
-	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
 
 }

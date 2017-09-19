@@ -12,7 +12,7 @@ import java.util.Date;
 @Entity
 @Table(name="DataImportFiles")
 //@NamedQuery(name="DataImportFile.findAll", query="SELECT d FROM DataImportFile d")
-public class DataImportFile implements Serializable {
+public class DataImportFile extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -36,7 +36,7 @@ public class DataImportFile implements Serializable {
 	private String name;
 
 	@Column(length=15)
-	private String status;
+
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updated;
@@ -92,13 +92,7 @@ public class DataImportFile implements Serializable {
 		this.name = name;
 	}
 
-	public String getStatus() {
-		return this.status;
-	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
 
 	public Date getUpdated() {
 		return this.updated;

@@ -11,7 +11,7 @@ import java.util.Set;
 @Entity
 @Table(name = "SalaryComponentType")
 //@NamedQuery(name="SalaryComponentType.findAll", query="SELECT s FROM SalaryComponentType s")
-public class SalaryComponentType implements Serializable {
+public class SalaryComponentType extends AbstractMutableEntity{
     private static final long serialVersionUID = 1L;
 
     @Id

@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="DataEntryBackups")
 //@NamedQuery(name="DataEntryBackup.findAll", query="SELECT d FROM DataEntryBackup d")
-public class DataEntryBackup implements Serializable {
+public class DataEntryBackup extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id

@@ -12,7 +12,7 @@ import java.util.Date;
 @Entity
 @Table(name="EmployeeImmigrations")
 //@NamedQuery(name="EmployeeImmigration.findAll", query="SELECT e FROM EmployeeImmigration e")
-public class EmployeeImmigration implements Serializable {
+public class EmployeeImmigration extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -39,7 +39,7 @@ public class EmployeeImmigration implements Serializable {
 	private String documentname;
 
 	@Column(length=20)
-	private String status;
+
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updated;
@@ -117,13 +117,7 @@ public class EmployeeImmigration implements Serializable {
 		this.documentname = documentname;
 	}
 
-	public String getStatus() {
-		return this.status;
-	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
 
 	public Date getUpdated() {
 		return this.updated;

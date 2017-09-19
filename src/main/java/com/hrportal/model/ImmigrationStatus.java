@@ -11,7 +11,7 @@ import java.util.Set;
 @Entity
 @Table(name = "ImmigrationStatus")
 //@NamedQuery(name="ImmigrationStatus.findAll", query="SELECT i FROM ImmigrationStatus i")
-public class ImmigrationStatus implements Serializable {
+public class ImmigrationStatus extends AbstractMutableEntity{
     private static final long serialVersionUID = 1L;
 
     @Id

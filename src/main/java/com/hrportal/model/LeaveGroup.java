@@ -13,7 +13,7 @@ import java.util.Set;
 @Entity
 @Table(name="LeaveGroups")
 //@NamedQuery(name="LeaveGroup.findAll", query="SELECT l FROM LeaveGroup l")
-public class LeaveGroup implements Serializable {
+public class LeaveGroup extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id

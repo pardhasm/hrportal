@@ -14,7 +14,7 @@ import java.util.Date;
 @Entity
 @Table(name="EmployeeTravelRecords")
 //@NamedQuery(name="EmployeeTravelRecord.findAll", query="SELECT e FROM EmployeeTravelRecord e")
-public class EmployeeTravelRecord implements Serializable {
+public class EmployeeTravelRecord extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -48,9 +48,6 @@ public class EmployeeTravelRecord implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="return_date")
 	private Date returnDate;
-
-	@Column(length=20)
-	private String status;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="travel_date")
@@ -156,13 +153,7 @@ public class EmployeeTravelRecord implements Serializable {
 		this.returnDate = returnDate;
 	}
 
-	public String getStatus() {
-		return this.status;
-	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
 
 	public Date getTravelDate() {
 		return this.travelDate;

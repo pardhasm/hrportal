@@ -13,7 +13,7 @@ import java.util.Set;
 @Entity
 @Table(name="LeavePeriods")
 //@NamedQuery(name="LeavePeriod.findAll", query="SELECT l FROM LeavePeriod l")
-public class LeavePeriod implements Serializable {
+public class LeavePeriod extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -33,7 +33,7 @@ public class LeavePeriod implements Serializable {
 	private String name;
 
 	@Column(length=20)
-	private String status;
+
 
 	//bi-directional many-to-one association to EmployeeLeave
 	@OneToMany(mappedBy="leavePeriodBean", fetch=FetchType.EAGER)
@@ -74,13 +74,7 @@ public class LeavePeriod implements Serializable {
 		this.name = name;
 	}
 
-	public String getStatus() {
-		return this.status;
-	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
 
 	public Set<EmployeeLeave> getEmployeeLeaves() {
 		return this.employeeLeaves;

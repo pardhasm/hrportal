@@ -12,7 +12,7 @@ import java.util.Date;
 @Entity
 @Table(name="EmployeeForms")
 //@NamedQuery(name="EmployeeForm.findAll", query="SELECT e FROM EmployeeForm e")
-public class EmployeeForm implements Serializable {
+public class EmployeeForm extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -24,7 +24,7 @@ public class EmployeeForm implements Serializable {
 	private Date created;
 
 	@Column(length=20)
-	private String status;
+
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updated;
@@ -58,13 +58,7 @@ public class EmployeeForm implements Serializable {
 		this.created = created;
 	}
 
-	public String getStatus() {
-		return this.status;
-	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
 
 	public Date getUpdated() {
 		return this.updated;

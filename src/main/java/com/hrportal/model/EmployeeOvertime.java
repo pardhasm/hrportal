@@ -11,7 +11,7 @@ import java.util.Date;
 @Entity
 @Table(name = "EmployeeOvertime")
 //@NamedQuery(name="EmployeeOvertime.findAll", query="SELECT e FROM EmployeeOvertime e")
-public class EmployeeOvertime implements Serializable {
+public class EmployeeOvertime extends AbstractMutableEntity{
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -35,9 +35,9 @@ public class EmployeeOvertime implements Serializable {
     @Column(name = "start_time")
     private Date startTime;
 
-    @Column(length = 20)
+    @Column(length = 20, name = "status")
     @Enumerated(EnumType.STRING)
-    private Approval status;
+    private Approval approvalStatus;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date updated;
@@ -103,12 +103,16 @@ public class EmployeeOvertime implements Serializable {
         this.startTime = startTime;
     }
 
-    public Approval getStatus() {
-        return this.status;
+    public Approval getApprovalStatus() {
+        return approvalStatus;
     }
 
-    public void setStatus(Approval status) {
-        this.status = status;
+    public void setApprovalStatus(Approval approvalStatus) {
+        this.approvalStatus = approvalStatus;
+    }
+
+    public void setOvertimeCategory(OverTimeCategory overtimeCategory) {
+        this.overtimeCategory = overtimeCategory;
     }
 
     public Date getUpdated() {

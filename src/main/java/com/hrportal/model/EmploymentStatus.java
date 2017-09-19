@@ -12,7 +12,7 @@ import java.util.Set;
 @Entity
 @Table(name = "EmploymentStatus")
 //@NamedQuery(name="EmploymentStatus.findAll", query="SELECT e FROM EmploymentStatus e")
-public class EmploymentStatus implements Serializable {
+public class EmploymentStatus extends AbstractMutableEntity{
     private static final long serialVersionUID = 1L;
 
     @Id

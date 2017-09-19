@@ -13,7 +13,7 @@ import java.util.Set;
 @Entity
 @Table(name = "OvertimeCategories")
 //@NamedQuery(name="OvertimeCategory.findAll", query="SELECT o FROM OvertimeCategory o")
-public class OverTimeCategory implements Serializable {
+public class OverTimeCategory extends AbstractMutableEntity{
     private static final long serialVersionUID = 1L;
 
     @Id
