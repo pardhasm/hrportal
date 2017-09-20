@@ -1,7 +1,7 @@
 package com.hrportal.controller;
 
-import com.hrportal.model.Course;
-import com.hrportal.service.ICourseService;
+import com.hrportal.model.Email;
+import com.hrportal.service.IEmailService;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,21 +12,21 @@ import org.springframework.web.bind.annotation.*;
  * Created by Lalith leela vishnu on 19-09-2017.
  */
 @RestController
-@RequestMapping("/course")
-public class CourseController {
+@RequestMapping("/email")
+public class EmailController {
 
     @Autowired
-    private ICourseService courseService;
+    private IEmailService emailService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ResponseEntity getAll() {
-        return ResponseEntity.ok(courseService.getAll());
+        return ResponseEntity.ok(emailService.getAll());
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity get(@PathVariable("id") Long id) {
         try {
-            return ResponseEntity.ok(courseService.get(id));
+            return ResponseEntity.ok(emailService.get(id));
         } catch (NotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
@@ -34,28 +34,26 @@ public class CourseController {
 
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public Course insert(@RequestBody Course course) {
-        return courseService.save(course);
+    public Email insert(@RequestBody Email email) {
+        return emailService.save(email);
 
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Course> update(@PathVariable("id") Long id, @RequestBody Course course) {
+    public ResponseEntity<Email> update(@PathVariable("id") Long id, @RequestBody Email email) {
         try {
-            return ResponseEntity.ok(courseService.update(id, course));
+            return ResponseEntity.ok(emailService.update(id, email));
         } catch (NotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Course> delete(@PathVariable("id") Long id) {
+    public ResponseEntity<Email> delete(@PathVariable("id") Long id) {
         try {
-            return ResponseEntity.ok(courseService.delete(id));
+            return ResponseEntity.ok(emailService.delete(id));
         } catch (NotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
-
-
 }

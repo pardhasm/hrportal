@@ -3,6 +3,7 @@ package com.hrportal.controller;
 import com.hrportal.model.Client;
 import com.hrportal.service.IClientService;
 import javassist.NotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/client")
 public class ClientController {
 
+    @Autowired
     private IClientService clientService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)

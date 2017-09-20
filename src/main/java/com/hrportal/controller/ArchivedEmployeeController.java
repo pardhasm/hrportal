@@ -3,6 +3,7 @@ package com.hrportal.controller;
 import com.hrportal.model.ArchivedEmployee;
 import com.hrportal.service.IArchivedEmployeeService;
 import javassist.NotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/archivedEmployee")
 public class ArchivedEmployeeController {
 
+    @Autowired
     private IArchivedEmployeeService archivedEmployeeService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)

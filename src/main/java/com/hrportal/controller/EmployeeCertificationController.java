@@ -3,6 +3,7 @@ package com.hrportal.controller;
 import com.hrportal.model.EmployeeCertification;
 import com.hrportal.service.IEmployeeCertificationService;
 import javassist.NotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/employeeCertification")
 public class EmployeeCertificationController {
 
+    @Autowired
     private IEmployeeCertificationService employeeCertificationService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
