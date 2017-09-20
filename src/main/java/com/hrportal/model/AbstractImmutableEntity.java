@@ -57,12 +57,7 @@ public abstract class AbstractImmutableEntity extends BaseEntity {
 //
 //    }
 
-    /**
-     * Set the value related to the column: createdBy.
-     *
-     * @param createdBy
-     *          the createdBy value you wish to set
-     */
+
 //    public void setCreatedBy(final Long createdBy) {
 //        this.createdBy = createdBy;
 //    }
