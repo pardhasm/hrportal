@@ -31,7 +31,10 @@
             <artifactId>validation-api</artifactId>
             <version>1.0.0.GA</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-rest-core</artifactId>
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
         <dependency>
@@ -77,6 +80,7 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.5</version>
         </dependency>
+
 
         <dependency>
             <groupId>org.jadira.usertype</groupId>

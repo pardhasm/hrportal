@@ -3,6 +3,7 @@ package com.hrportal.model;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -24,7 +25,8 @@ public class Migration extends AbstractMutableEntity{
     private DateTime created;
 
 	@Column(nullable=false, length=50)
-	private String file;
+    @NotNull
+    private String file;
 
 	@Column(name="last_error", length=500)
 	private String lastError;
@@ -36,7 +38,8 @@ public class Migration extends AbstractMutableEntity{
     private DateTime updated;
 
 	@Column(nullable=false)
-	private int version;
+    @NotNull
+    private int version;
 
 	public Migration() {
 	}

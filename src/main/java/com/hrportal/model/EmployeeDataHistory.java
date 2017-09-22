@@ -27,6 +27,7 @@ public class EmployeeDataHistory extends AbstractMutableEntity{
     private String description;
 
     @Column(nullable = false, length = 100)
+    @NotNull
     private String field;
 
     @Column(name = "new_value", length = 500)
@@ -36,6 +37,7 @@ public class EmployeeDataHistory extends AbstractMutableEntity{
     private String oldValue;
 
     @Column(nullable = false, length = 100)
+    @NotNull
     private String type;
 
     @org.hibernate.annotations.Type(type = "updatedTime")

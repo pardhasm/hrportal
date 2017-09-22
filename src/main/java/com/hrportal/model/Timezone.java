@@ -1,6 +1,7 @@
 package com.hrportal.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -19,10 +20,12 @@ public class Timezone extends AbstractMutableEntity{
 	private Long id;
 
 	@Column(nullable=false, length=255)
-	private String details;
+    @NotNull
+    private String details;
 
 	@Column(nullable=false, length=100)
-	private String name;
+    @NotNull
+    private String name;
 
 	public Timezone() {
 	}

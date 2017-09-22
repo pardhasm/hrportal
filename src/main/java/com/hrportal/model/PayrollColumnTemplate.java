@@ -4,11 +4,11 @@ import javax.persistence.*;
 
 
 /**
- * The persistent class for the PayrollColumnTemplates database table.
+ * The persistent class for the PayrollColumnTemplateRepository database table.
  * 
  */
 @Entity
-@Table(name="PayrollColumnTemplates")
+@Table(name = "PayrollColumnTemplateRepository")
 //@NamedQuery(name="PayrollColumnTemplate.findAll", query="SELECT p FROM PayrollColumnTemplate p")
 public class PayrollColumnTemplate extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;

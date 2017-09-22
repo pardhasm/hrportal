@@ -35,9 +35,11 @@ public class EmployeeTimeEntry extends AbstractMutableEntity{
     private String details;
 
     @Column(name = "time_end", nullable = false, length = 10)
+    @NotNull
     private String timeEnd;
 
     @Column(name = "time_start", nullable = false, length = 10)
+    @NotNull
     private String timeStart;
 
     //bi-directional many-to-one association to EmployeeTimeSheet

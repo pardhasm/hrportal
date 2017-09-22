@@ -21,9 +21,11 @@ public class Province extends AbstractMutableEntity{
     private Long id;
 
     @Column(nullable = false, length = 2)
+    @NotNull
     private String code;
 
     @Column(nullable = false, length = 40)
+    @NotNull
     private String name;
 
     //bi-directional many-to-one association to Employee

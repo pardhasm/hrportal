@@ -1,6 +1,7 @@
 package com.hrportal.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -22,26 +23,31 @@ public class Module extends AbstractMutableEntity{
 	private String icon;
 
 	@Column(nullable=false, length=100)
-	private String label;
+    @NotNull
+    private String label;
 
 	@Column(nullable=false, length=30)
-	private String menu;
+    @NotNull
+    private String menu;
 
 	@Column(name="mod_group", nullable=false, length=30)
-	private String modGroup;
+    @NotNull
+    private String modGroup;
 
 	@Column(name="mod_order")
 	private int modOrder;
 
 	@Column(nullable=false, length=100)
-	private String name;
+    @NotNull
+    private String name;
 
 
 	@Column(name="update_path", length=500)
 	private String updatePath;
 
 	@Column(name="user_levels", nullable=false, length=500)
-	private String userLevels;
+    @NotNull
+    private String userLevels;
 
 	@Lob
 	@Column(name="user_roles")

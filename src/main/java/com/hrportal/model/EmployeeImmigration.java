@@ -3,6 +3,7 @@ package com.hrportal.model;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -36,7 +37,8 @@ public class EmployeeImmigration extends AbstractMutableEntity{
 	private String details;
 
 	@Column(nullable=false, length=150)
-	private String documentname;
+    @NotNull
+    private String documentname;
 
 	@Column(length=20)
 
@@ -46,12 +48,14 @@ public class EmployeeImmigration extends AbstractMutableEntity{
 
     @org.hibernate.annotations.Type(type = "updatedTime")
     @Column(name="valid_until", nullable=false)
+    @NotNull
     private DateTime validUntil;
 
 	//bi-directional many-to-one association to Employee
 	@ManyToOne
 	@JoinColumn(name="employee", nullable=false)
-	private Employee employeeBean;
+    @NotNull
+    private Employee employeeBean;
 
 	//bi-directional many-to-one association to ImmigrationDocument
 	@ManyToOne

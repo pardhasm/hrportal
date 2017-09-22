@@ -1,6 +1,7 @@
 package com.hrportal.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -22,10 +23,12 @@ public class Report extends AbstractMutableEntity{
 	private String details;
 
 	@Column(nullable=false, length=100)
-	private String name;
+    @NotNull
+    private String name;
 
 	@Column(nullable=false, length=15)
-	private String output;
+    @NotNull
+    private String output;
 
 	@Lob
 	private String parameters;

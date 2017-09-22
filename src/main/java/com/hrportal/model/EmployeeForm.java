@@ -3,6 +3,7 @@ package com.hrportal.model;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -32,12 +33,14 @@ public class EmployeeForm extends AbstractMutableEntity{
 	//bi-directional many-to-one association to Employee
 	@ManyToOne
 	@JoinColumn(name="employee", nullable=false)
-	private Employee employeeBean;
+    @NotNull
+    private Employee employeeBean;
 
 	//bi-directional many-to-one association to Form
 	@ManyToOne
 	@JoinColumn(name="form", nullable=false)
-	private Form formBean;
+    @NotNull
+    private Form formBean;
 
 	public EmployeeForm() {
 	}

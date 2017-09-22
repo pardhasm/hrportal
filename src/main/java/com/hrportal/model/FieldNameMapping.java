@@ -3,6 +3,7 @@ package com.hrportal.model;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -28,7 +29,8 @@ public class FieldNameMapping extends AbstractMutableEntity{
 	private Display display;
 
 	@Column(nullable=false, length=20)
-	private String name;
+    @NotNull
+    private String name;
 
 	@Column(length=200)
 	private String textMapped;
@@ -37,7 +39,8 @@ public class FieldNameMapping extends AbstractMutableEntity{
 	private String textOrig;
 
 	@Column(nullable=false, length=20)
-	private String type;
+    @NotNull
+    private String type;
 
     @org.hibernate.annotations.Type(type = "updatedTime")
     private DateTime updated;

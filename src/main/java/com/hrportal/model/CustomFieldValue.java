@@ -3,6 +3,7 @@ package com.hrportal.model;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -24,13 +25,16 @@ public class CustomFieldValue extends AbstractMutableEntity{
     private DateTime created;
 
 	@Column(nullable=false, length=60)
-	private String name;
+    @NotNull
+    private String name;
 
 	@Column(name="object_id", nullable=false, length=60)
-	private String objectId;
+    @NotNull
+    private String objectId;
 
 	@Column(nullable=false, length=20)
-	private String type;
+    @NotNull
+    private String type;
 
     @org.hibernate.annotations.Type(type = "updatedTime")
     private DateTime updated;

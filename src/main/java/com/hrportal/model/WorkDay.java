@@ -1,7 +1,7 @@
 package com.hrportal.model;
 
 import javax.persistence.*;
-
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -22,7 +22,8 @@ public class WorkDay extends AbstractMutableEntity{
     private Long country;
 
 	@Column(nullable=false, length=100)
-	private String name;
+    @NotNull
+    private String name;
 
 	public WorkDay() {
 	}

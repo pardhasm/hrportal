@@ -1,6 +1,7 @@
 package com.hrportal.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 
@@ -57,6 +58,7 @@ public class LeaveRule extends AbstractMutableEntity{
     private Long leaveGroup;
 
 	@Column(name="leave_type", nullable=false)
+    @NotNull
     private Long leaveType;
 
 	@Column(name="max_carried_forward_amount")

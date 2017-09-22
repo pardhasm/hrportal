@@ -1,6 +1,7 @@
 package com.hrportal.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 
@@ -23,7 +24,8 @@ public class CompanyLoan extends AbstractMutableEntity{
 	private String details;
 
 	@Column(nullable=false, length=100)
-	private String name;
+    @NotNull
+    private String name;
 
 	//bi-directional many-to-one association to EmployeeCompanyLoan
 	@OneToMany(mappedBy="companyLoan", fetch=FetchType.EAGER)

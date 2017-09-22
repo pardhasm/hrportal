@@ -33,6 +33,7 @@ public class AuditLog extends AbstractMutableEntity{
     private DateTime time;
 
     @Column(nullable = false, length = 100)
+    @NotNull
     private String type;
 
     //bi-directional many-to-one association to User

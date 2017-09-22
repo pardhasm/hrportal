@@ -3,6 +3,7 @@ package com.hrportal.model;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 
@@ -12,7 +13,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name="ExpensesPaymentMethods")
-//@NamedQuery(name="ExpensesPaymentMethod.findAll", query="SELECT e FROM ExpensesPaymentMethod e")
+//@NamedQuery(name="ExpensesPaymentMethodRepository.findAll", query="SELECT e FROM ExpensesPaymentMethodRepository e")
 public class ExpensesPaymentMethod extends AbstractMutableEntity{
 	private static final long serialVersionUID = 1L;
 
@@ -25,6 +26,7 @@ public class ExpensesPaymentMethod extends AbstractMutableEntity{
     private DateTime created;
 
 	@Column(nullable=false, length=500)
+	@NotNull
 	private String name;
 
     @org.hibernate.annotations.Type(type = "updatedTime")

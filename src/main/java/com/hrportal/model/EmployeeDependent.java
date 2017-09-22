@@ -3,6 +3,7 @@ package com.hrportal.model;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -27,7 +28,8 @@ public class EmployeeDependent extends AbstractMutableEntity{
 	private String idNumber;
 
 	@Column(nullable=false, length=100)
-	private String name;
+    @NotNull
+    private String name;
 
 	@Column(length=20)
 	@Enumerated(EnumType.STRING)
@@ -36,7 +38,8 @@ public class EmployeeDependent extends AbstractMutableEntity{
 	//bi-directional many-to-one association to Employee
 	@ManyToOne
 	@JoinColumn(name="employee", nullable=false)
-	private Employee employeeBean;
+    @NotNull
+    private Employee employeeBean;
 
 	public EmployeeDependent() {
 	}

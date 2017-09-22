@@ -3,7 +3,7 @@ package com.hrportal.model;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
-
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -30,7 +30,8 @@ public class ReportFile extends AbstractMutableEntity{
     private Long employee;
 
 	@Column(nullable=false, length=100)
-	private String name;
+    @NotNull
+    private String name;
 
 	public ReportFile() {
 	}

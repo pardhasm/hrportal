@@ -1,7 +1,7 @@
 package com.hrportal.model;
 
 import javax.persistence.*;
-
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -23,6 +23,7 @@ public class Permission extends AbstractMutableEntity{
 	private String meta;
 
 	@Column(name="module_id", nullable=false)
+    @NotNull
     private Long moduleId;
 
 	@Column(length=200)

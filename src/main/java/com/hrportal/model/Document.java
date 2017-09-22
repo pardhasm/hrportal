@@ -3,6 +3,7 @@ package com.hrportal.model;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 
@@ -44,7 +45,8 @@ public class Document extends AbstractMutableEntity{
 	private Polar expireNotificationWeek;
 
 	@Column(nullable=false, length=100)
-	private String name;
+    @NotNull
+    private String name;
 
 	@Column(length=20)
 	@Enumerated(EnumType.STRING)

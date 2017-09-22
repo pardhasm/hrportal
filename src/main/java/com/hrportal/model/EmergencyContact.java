@@ -1,6 +1,7 @@
 package com.hrportal.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -25,7 +26,8 @@ public class EmergencyContact extends AbstractMutableEntity{
 	private String mobilePhone;
 
 	@Column(nullable=false, length=100)
-	private String name;
+    @NotNull
+    private String name;
 
 	@Column(length=100)
 	private String relationship;

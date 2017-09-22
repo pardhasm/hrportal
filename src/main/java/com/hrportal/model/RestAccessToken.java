@@ -3,7 +3,7 @@ package com.hrportal.model;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
-
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -34,6 +34,7 @@ public class RestAccessToken extends AbstractMutableEntity{
     private DateTime updated;
 
 	@Column(nullable=false)
+    @NotNull
     private Long userId;
 
 	public RestAccessToken() {

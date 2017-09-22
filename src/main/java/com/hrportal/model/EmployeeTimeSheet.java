@@ -3,6 +3,7 @@ package com.hrportal.model;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 
@@ -23,10 +24,12 @@ public class EmployeeTimeSheet extends AbstractMutableEntity{
 
     @org.hibernate.annotations.Type(type = "updatedTime")
     @Column(name="date_end", nullable=false)
+    @NotNull
     private DateTime dateEnd;
 
     @org.hibernate.annotations.Type(type = "updatedTime")
     @Column(name="date_start", nullable=false)
+    @NotNull
     private DateTime dateStart;
 
 	@Column(length=20)

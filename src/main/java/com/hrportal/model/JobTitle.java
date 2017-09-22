@@ -1,6 +1,7 @@
 package com.hrportal.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 
@@ -20,6 +21,7 @@ public class JobTitle extends AbstractMutableEntity{
     private Long id;
 
     @Column(nullable = false, length = 10)
+    @NotNull
     private String code;
 
     @Column(length = 200)

@@ -24,6 +24,7 @@ public class EmployeeLeaveLog extends AbstractMutableEntity{
     private DateTime created;
 
     @Column(nullable = false, length = 500)
+    @NotNull
     private String data;
 
     @Column(name = "status_from", length = 20)

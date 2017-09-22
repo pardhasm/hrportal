@@ -3,6 +3,7 @@ package com.hrportal.model;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 
@@ -43,7 +44,8 @@ public class EmployeeTravelRecord extends AbstractMutableEntity{
 	private BigDecimal funding;
 
 	@Column(nullable=false, length=200)
-	private String purpose;
+    @NotNull
+    private String purpose;
 
     @org.hibernate.annotations.Type(type = "updatedTime")
     @Column(name="return_date")
@@ -54,10 +56,12 @@ public class EmployeeTravelRecord extends AbstractMutableEntity{
     private DateTime travelDate;
 
 	@Column(name="travel_from", nullable=false, length=200)
-	private String travelFrom;
+    @NotNull
+    private String travelFrom;
 
 	@Column(name="travel_to", nullable=false, length=200)
-	private String travelTo;
+    @NotNull
+    private String travelTo;
 
 	@Column(length=20)
 	private String type;
@@ -68,7 +72,8 @@ public class EmployeeTravelRecord extends AbstractMutableEntity{
 	//bi-directional many-to-one association to Employee
 	@ManyToOne
 	@JoinColumn(name="employee", nullable=false)
-	private Employee employeeBean;
+    @NotNull
+    private Employee employeeBean;
 
 	public EmployeeTravelRecord() {
 	}

@@ -22,6 +22,7 @@ public class LeaveStartingBalance extends AbstractMutableEntity{
     private Long id;
 
     @Column(nullable = false, precision = 10, scale = 3)
+    @NotNull
     private BigDecimal amount;
 
     @org.hibernate.annotations.Type(type = "updatedTime")

@@ -1,6 +1,7 @@
 package com.hrportal.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 
@@ -32,7 +33,8 @@ public class LeaveType extends AbstractMutableEntity{
 	private int carriedForwardPercentage;
 
 	@Column(name="default_per_year", nullable=false, precision=10, scale=3)
-	@Enumerated(EnumType.STRING)
+    @NotNull
+    @Enumerated(EnumType.STRING)
 	private Polar defaultPerYear;
 
 	@Column(name="employee_can_apply", length=20)
@@ -53,7 +55,8 @@ public class LeaveType extends AbstractMutableEntity{
 	private int maxCarriedForwardAmount;
 
 	@Column(nullable=false, length=100)
-	private String name;
+    @NotNull
+    private String name;
 
 	@Column(name="propotionate_on_joined_date", length=20)
 	@Enumerated(EnumType.STRING)

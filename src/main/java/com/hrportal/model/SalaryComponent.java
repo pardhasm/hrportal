@@ -1,6 +1,7 @@
 package com.hrportal.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -21,6 +22,7 @@ public class SalaryComponent extends AbstractMutableEntity{
     private String details;
 
     @Column(nullable = false, length = 100)
+    @NotNull
     private String name;
 
     //bi-directional many-to-one association to SalaryComponentType

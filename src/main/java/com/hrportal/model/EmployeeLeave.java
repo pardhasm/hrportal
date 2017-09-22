@@ -3,6 +3,7 @@ package com.hrportal.model;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 
@@ -49,12 +50,14 @@ public class EmployeeLeave extends AbstractMutableEntity{
 	//bi-directional many-to-one association to Employee
 	@ManyToOne
 	@JoinColumn(name="employee", nullable=false)
-	private Employee employeeBean;
+    @NotNull
+    private Employee employeeBean;
 
 	//bi-directional many-to-one association to LeavePeriod
 	@ManyToOne
 	@JoinColumn(name="leave_period", nullable=false)
-	private LeavePeriod leavePeriodBean;
+    @NotNull
+    private LeavePeriod leavePeriodBean;
 
 	//bi-directional many-to-one association to LeaveType
 	@ManyToOne

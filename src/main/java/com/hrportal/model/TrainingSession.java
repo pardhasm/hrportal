@@ -3,6 +3,7 @@ package com.hrportal.model;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 
@@ -44,7 +45,8 @@ public class TrainingSession extends AbstractMutableEntity{
     private DateTime dueDate;
 
 	@Column(nullable=false, length=300)
-	private String name;
+    @NotNull
+    private String name;
 
 	@Column(length=20)
 	@Enumerated(EnumType.STRING)
@@ -66,7 +68,8 @@ public class TrainingSession extends AbstractMutableEntity{
 	//bi-directional many-to-one association to Cours
 	@ManyToOne
 	@JoinColumn(name="course", nullable=false)
-	private Course course;
+    @NotNull
+    private Course course;
 
 	public TrainingSession() {
 	}

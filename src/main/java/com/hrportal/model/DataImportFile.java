@@ -3,6 +3,7 @@ package com.hrportal.model;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -33,7 +34,8 @@ public class DataImportFile extends AbstractMutableEntity{
 	private String file;
 
 	@Column(nullable=false, length=60)
-	private String name;
+    @NotNull
+    private String name;
 
 	@Column(length=15)
 

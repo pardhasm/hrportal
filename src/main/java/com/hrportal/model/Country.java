@@ -1,6 +1,7 @@
 package com.hrportal.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 
@@ -20,12 +21,14 @@ public class Country extends AbstractMutableEntity{
     private Long id;
 
     @Column(nullable = false, length = 2)
+    @NotNull
     private String code;
 
     @Column(length = 3)
     private String iso3;
 
     @Column(nullable = false, length = 80)
+    @NotNull
     private String name;
 
     @Column(length = 80)

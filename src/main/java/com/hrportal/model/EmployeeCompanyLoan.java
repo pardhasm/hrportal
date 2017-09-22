@@ -3,6 +3,7 @@ package com.hrportal.model;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 
@@ -23,7 +24,8 @@ public class EmployeeCompanyLoan extends AbstractMutableEntity{
 	private Long id;
 
 	@Column(nullable=false, precision=10, scale=2)
-	private BigDecimal amount;
+    @NotNull
+    private BigDecimal amount;
 
     private Long currency;
 

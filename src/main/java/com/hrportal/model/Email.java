@@ -3,6 +3,7 @@ package com.hrportal.model;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -43,7 +44,8 @@ public class Email extends AbstractMutableEntity{
 	private String template;
 
 	@Column(nullable=false, length=300)
-	private String toEmail;
+    @NotNull
+    private String toEmail;
 
     @org.hibernate.annotations.Type(type = "updatedTime")
     private DateTime updated;

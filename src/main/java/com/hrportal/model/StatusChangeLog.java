@@ -3,7 +3,7 @@ package com.hrportal.model;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
-
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -25,9 +25,11 @@ public class StatusChangeLog extends AbstractMutableEntity{
     private DateTime created;
 
 	@Column(nullable=false, length=500)
-	private String data;
+    @NotNull
+    private String data;
 
 	@Column(nullable=false)
+    @NotNull
     private Long element;
 
 	@Column(name="status_from", length=20)

@@ -3,6 +3,7 @@ package com.hrportal.model;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 
@@ -31,7 +32,8 @@ public class Form extends AbstractMutableEntity{
 	private String items;
 
 	@Column(nullable=false, length=50)
-	private String name;
+    @NotNull
+    private String name;
 
     @org.hibernate.annotations.Type(type = "updatedTime")
     private DateTime updated;

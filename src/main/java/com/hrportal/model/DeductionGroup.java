@@ -1,6 +1,7 @@
 package com.hrportal.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 
@@ -19,9 +20,11 @@ public class DeductionGroup extends AbstractMutableEntity{
     private Long id;
 
     @Column(nullable = false, length = 100)
+    @NotNull
     private String description;
 
     @Column(nullable = false, length = 100)
+    @NotNull
     private String name;
 
     //bi-directional many-to-one association to Deduction

@@ -1,6 +1,7 @@
 package com.hrportal.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 
@@ -20,9 +21,11 @@ public class CurrencyType extends AbstractMutableEntity{
     private Long id;
 
     @Column(nullable = false, length = 3)
+    @NotNull
     private String code;
 
     @Column(nullable = false, length = 70)
+    @NotNull
     private String name;
 
     //bi-directional many-to-one association to EmployeeSalary

@@ -3,6 +3,7 @@ package com.hrportal.model;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -21,7 +22,8 @@ public class Cron extends AbstractMutableEntity{
 	private Long id;
 
 	@Column(name="class", nullable=false, length=100)
-	private String class_;
+    @NotNull
+    private String class_;
 
 	@Column(nullable=false)
 	private int frequency;
@@ -30,11 +32,13 @@ public class Cron extends AbstractMutableEntity{
     private DateTime lastrun;
 
 	@Column(nullable=false, length=100)
-	private String name;
+    @NotNull
+    private String name;
 
 
 	@Column(nullable=false, length=50)
-	private String time;
+    @NotNull
+    private String time;
 
 	@Column(length=20)
 	private String type;

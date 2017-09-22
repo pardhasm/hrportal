@@ -24,7 +24,8 @@ public class CompanyStructure extends AbstractMutableEntity{
 	private String address;
 
 	@Column(nullable = false, length = 2)
-	private String country;
+    @NotNull
+    private String country;
 
 	@Lob
     @Column(nullable = false)
@@ -35,7 +36,8 @@ public class CompanyStructure extends AbstractMutableEntity{
 	private String heads;
 
 	@Column(nullable = false, length = 100)
-	private String timezone;
+    @NotNull
+    private String timezone;
 
 	@Lob
     @Column(nullable = false)

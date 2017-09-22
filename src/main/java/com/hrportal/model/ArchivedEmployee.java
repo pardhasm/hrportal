@@ -3,7 +3,7 @@ package com.hrportal.model;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
-
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -34,7 +34,8 @@ public class ArchivedEmployee extends AbstractMutableEntity{
 	private String employeeId;
 
 	@Column(name="first_name", nullable=false, length=100)
-	private String firstName;
+    @NotNull
+    private String firstName;
 
 	@Column(length=20)
 	@Enumerated(EnumType.STRING)
@@ -45,7 +46,8 @@ public class ArchivedEmployee extends AbstractMutableEntity{
     private DateTime joinedDate;
 
 	@Column(name="last_name", nullable=false, length=100)
-	private String lastName;
+    @NotNull
+    private String lastName;
 
 	@Column(name="nic_num", length=100)
 	private String nicNum;
@@ -57,6 +59,7 @@ public class ArchivedEmployee extends AbstractMutableEntity{
 	private String otherId;
 
 	@Column(name="ref_id", nullable=false)
+    @NotNull
     private Long refId;
 
 	@Column(name="ssn_num", length=100)

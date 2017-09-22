@@ -65,8 +65,8 @@ public class EmployeeExpense extends AbstractMutableEntity{
 	@JoinColumn(name="category", nullable=false)
 	private ExpensesCategory expensesCategory;
 
-	//bi-directional many-to-one association to ExpensesPaymentMethod
-	@ManyToOne
+    //bi-directional many-to-one association to ExpensesPaymentMethodRepository
+    @ManyToOne
 	@JoinColumn(name="payment_method", nullable=false)
 	private ExpensesPaymentMethod expensesPaymentMethod;
 

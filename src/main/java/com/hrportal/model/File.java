@@ -1,7 +1,7 @@
 package com.hrportal.model;
 
 import javax.persistence.*;
-
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -22,13 +22,16 @@ public class File extends AbstractMutableEntity{
     private Long employee;
 
 	@Column(name="file_group", nullable=false, length=100)
-	private String fileGroup;
+    @NotNull
+    private String fileGroup;
 
 	@Column(nullable=false, length=100)
-	private String filename;
+    @NotNull
+    private String filename;
 
 	@Column(nullable=false, length=100)
-	private String name;
+    @NotNull
+    private String name;
 
     private Long size;
 

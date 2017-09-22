@@ -3,6 +3,7 @@ package com.hrportal.model;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -26,12 +27,14 @@ public class DataImport extends AbstractMutableEntity{
     private DateTime created;
 
     @Column(nullable = false, length = 60)
+    @NotNull
     private String dataType;
 
     @Lob
     private String details;
 
     @Column(nullable = false, length = 60)
+    @NotNull
     private String name;
 
     @org.hibernate.annotations.Type(type = "updatedTime")
