@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 /**
  * Created by Lalith leela vishnu on 19-09-2017.
  */
@@ -34,13 +36,13 @@ public class DeductionGroupController {
 
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public DeductionGroup insert(@RequestBody DeductionGroup deductionGroup) {
+    public DeductionGroup insert(@Valid @RequestBody DeductionGroup deductionGroup) {
         return deductionGroupService.save(deductionGroup);
 
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<DeductionGroup> update(@PathVariable("id") Long id, @RequestBody DeductionGroup deductionGroup) {
+    public ResponseEntity<DeductionGroup> update(@PathVariable("id") Long id, @Valid @RequestBody DeductionGroup deductionGroup) {
         try {
             return ResponseEntity.ok(deductionGroupService.update(id, deductionGroup));
         } catch (NotFoundException e) {

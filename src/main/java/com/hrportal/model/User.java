@@ -1,8 +1,8 @@
 package com.hrportal.model;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
 import java.util.Set;
 
 
@@ -21,8 +21,8 @@ public class User extends AbstractMutableEntity{
 	@Column(unique=true, nullable=false)
 	private Long id;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date created;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime created;
 
 	@Column(name="default_module")
     private Long defaultModule;
@@ -30,13 +30,13 @@ public class User extends AbstractMutableEntity{
 	@Column(length=100)
 	private String email;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="last_login")
-	private Date lastLogin;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    @Column(name="last_login")
+    private DateTime lastLogin;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="last_update")
-	private Date lastUpdate;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    @Column(name="last_update")
+    private DateTime lastUpdate;
 
 	@Column(name="login_hash", length=64)
 	private String loginHash;
@@ -92,12 +92,12 @@ public class User extends AbstractMutableEntity{
 		this.id = id;
 	}
 
-	public Date getCreated() {
-		return this.created;
+    public DateTime getCreated() {
+        return this.created;
 	}
 
-	public void setCreated(Date created) {
-		this.created = created;
+    public void setCreated(DateTime created) {
+        this.created = created;
 	}
 
     public Long getDefaultModule() {
@@ -116,20 +116,20 @@ public class User extends AbstractMutableEntity{
 		this.email = email;
 	}
 
-	public Date getLastLogin() {
-		return this.lastLogin;
+    public DateTime getLastLogin() {
+        return this.lastLogin;
 	}
 
-	public void setLastLogin(Date lastLogin) {
-		this.lastLogin = lastLogin;
+    public void setLastLogin(DateTime lastLogin) {
+        this.lastLogin = lastLogin;
 	}
 
-	public Date getLastUpdate() {
-		return this.lastUpdate;
+    public DateTime getLastUpdate() {
+        return this.lastUpdate;
 	}
 
-	public void setLastUpdate(Date lastUpdate) {
-		this.lastUpdate = lastUpdate;
+    public void setLastUpdate(DateTime lastUpdate) {
+        this.lastUpdate = lastUpdate;
 	}
 
 	public String getLoginHash() {

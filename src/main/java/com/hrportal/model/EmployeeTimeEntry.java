@@ -1,8 +1,9 @@
 package com.hrportal.model;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -19,16 +20,16 @@ public class EmployeeTimeEntry extends AbstractMutableEntity{
     @Column(unique = true, nullable = false)
     private Long id;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date created;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime created;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @org.hibernate.annotations.Type(type = "updatedTime")
     @Column(name = "date_end")
-    private Date dateEnd;
+    private DateTime dateEnd;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @org.hibernate.annotations.Type(type = "updatedTime")
     @Column(name = "date_start")
-    private Date dateStart;
+    private DateTime dateStart;
 
     @Lob
     private String details;
@@ -42,11 +43,13 @@ public class EmployeeTimeEntry extends AbstractMutableEntity{
     //bi-directional many-to-one association to EmployeeTimeSheet
     @ManyToOne
     @JoinColumn(name = "timesheet", nullable = false)
+    @NotNull
     private EmployeeTimeSheet employeeTimeSheet;
 
     //bi-directional many-to-one association to Employee
     @ManyToOne
     @JoinColumn(name = "employee", nullable = false)
+    @NotNull
     private Employee employeeBean;
 
     //bi-directional many-to-one association to Project
@@ -65,27 +68,27 @@ public class EmployeeTimeEntry extends AbstractMutableEntity{
         this.id = id;
     }
 
-    public Date getCreated() {
+    public DateTime getCreated() {
         return this.created;
     }
 
-    public void setCreated(Date created) {
+    public void setCreated(DateTime created) {
         this.created = created;
     }
 
-    public Date getDateEnd() {
+    public DateTime getDateEnd() {
         return this.dateEnd;
     }
 
-    public void setDateEnd(Date dateEnd) {
+    public void setDateEnd(DateTime dateEnd) {
         this.dateEnd = dateEnd;
     }
 
-    public Date getDateStart() {
+    public DateTime getDateStart() {
         return this.dateStart;
     }
 
-    public void setDateStart(Date dateStart) {
+    public void setDateStart(DateTime dateStart) {
         this.dateStart = dateStart;
     }
 

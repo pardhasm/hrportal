@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 /**
  * Created by Pardha Saradhi Mavilla
  */
@@ -34,13 +36,13 @@ public class UserReportController {
 
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public UserReport insert(@RequestBody UserReport userReport) {
+    public UserReport insert(@Valid @RequestBody UserReport userReport) {
         return userReportService.save(userReport);
 
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<UserReport> update(@PathVariable("id") Long id, @RequestBody UserReport userReport) {
+    public ResponseEntity<UserReport> update(@PathVariable("id") Long id, @Valid @RequestBody UserReport userReport) {
         try {
             return ResponseEntity.ok(userReportService.update(id, userReport));
         } catch (NotFoundException e) {

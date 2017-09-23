@@ -1,8 +1,9 @@
 package com.hrportal.model;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Date;
 import java.util.Set;
 
 
@@ -26,8 +27,8 @@ public class Course extends AbstractMutableEntity{
 	@Column(precision=10, scale=2)
 	private BigDecimal cost;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date created;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime created;
 
 	@Column(length=3)
 	private String currency;
@@ -50,8 +51,8 @@ public class Course extends AbstractMutableEntity{
 	@Column(name="trainer_info")
 	private String trainerInfo;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date updated;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime updated;
 
 	//bi-directional many-to-one association to Employee
 	@ManyToOne
@@ -89,12 +90,12 @@ public class Course extends AbstractMutableEntity{
 		this.cost = cost;
 	}
 
-	public Date getCreated() {
-		return this.created;
+    public DateTime getCreated() {
+        return this.created;
 	}
 
-	public void setCreated(Date created) {
-		this.created = created;
+    public void setCreated(DateTime created) {
+        this.created = created;
 	}
 
 	public String getCurrency() {
@@ -147,12 +148,12 @@ public class Course extends AbstractMutableEntity{
 		this.trainerInfo = trainerInfo;
 	}
 
-	public Date getUpdated() {
-		return this.updated;
+    public DateTime getUpdated() {
+        return this.updated;
 	}
 
-	public void setUpdated(Date updated) {
-		this.updated = updated;
+    public void setUpdated(DateTime updated) {
+        this.updated = updated;
 	}
 
 	public Employee getEmployee() {

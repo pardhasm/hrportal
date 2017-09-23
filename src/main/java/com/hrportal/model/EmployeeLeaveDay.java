@@ -1,8 +1,8 @@
 package com.hrportal.model;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
 
 
 /**
@@ -20,9 +20,9 @@ public class EmployeeLeaveDay extends AbstractMutableEntity{
 	@Column(unique=true, nullable=false)
 	private Long id;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name="leave_date")
-	private Date leaveDate;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    @Column(name="leave_date")
+    private DateTime leaveDate;
 
 	@Column(name="leave_type", nullable=false, length=200)
 	@Enumerated(EnumType.STRING)
@@ -44,12 +44,12 @@ public class EmployeeLeaveDay extends AbstractMutableEntity{
 		this.id = id;
 	}
 
-	public Date getLeaveDate() {
-		return this.leaveDate;
+    public DateTime getLeaveDate() {
+        return this.leaveDate;
 	}
 
-	public void setLeaveDate(Date leaveDate) {
-		this.leaveDate = leaveDate;
+    public void setLeaveDate(DateTime leaveDate) {
+        this.leaveDate = leaveDate;
 	}
 
 	public LeaveTypes getLeaveType() {

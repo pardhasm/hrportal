@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 /**
  * Created by Lalith leela vishnu on 18-09-2017.
  */
@@ -34,13 +36,13 @@ public class RestAccessTokenController {
 
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public RestAccessToken insert(@RequestBody RestAccessToken restAccessToken) {
+    public RestAccessToken insert(@Valid @RequestBody RestAccessToken restAccessToken) {
         return restAccessTokenService.save(restAccessToken);
 
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<RestAccessToken> update(@PathVariable("id") Long id, @RequestBody RestAccessToken restAccessToken) {
+    public ResponseEntity<RestAccessToken> update(@PathVariable("id") Long id, @Valid @RequestBody RestAccessToken restAccessToken) {
         try {
             return ResponseEntity.ok(restAccessTokenService.update(id, restAccessToken));
         } catch (NotFoundException e) {

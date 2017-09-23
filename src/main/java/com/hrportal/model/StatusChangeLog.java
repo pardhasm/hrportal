@@ -1,8 +1,8 @@
 package com.hrportal.model;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
 
 
 
@@ -21,8 +21,8 @@ public class StatusChangeLog extends AbstractMutableEntity{
 	@Column(unique=true, nullable=false)
 	private Long id;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date created;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime created;
 
 	@Column(nullable=false, length=500)
 	private String data;
@@ -55,12 +55,12 @@ public class StatusChangeLog extends AbstractMutableEntity{
 		this.id = id;
 	}
 
-	public Date getCreated() {
-		return this.created;
+    public DateTime getCreated() {
+        return this.created;
 	}
 
-	public void setCreated(Date created) {
-		this.created = created;
+    public void setCreated(DateTime created) {
+        this.created = created;
 	}
 
 	public String getData() {

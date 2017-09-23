@@ -1,7 +1,7 @@
 package com.hrportal.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -21,11 +21,13 @@ public class EmployeeImmigrationStatus extends AbstractMutableEntity{
     //bi-directional many-to-one association to Employee
     @ManyToOne
     @JoinColumn(name = "employee", nullable = false)
+    @NotNull
     private Employee employeeBean;
 
     //bi-directional many-to-one association to ImmigrationStatus
     @ManyToOne
     @JoinColumn(name = "status", nullable = false)
+    @NotNull
     private ImmigrationStatus immigrationStatus;
 
     public EmployeeImmigrationStatus() {

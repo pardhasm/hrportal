@@ -1,8 +1,8 @@
 package com.hrportal.model;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
 
 
 /**
@@ -42,9 +42,9 @@ public class CompanyDocument extends AbstractMutableEntity{
 	@Column(name="share_userlevel", length=100)
 	private String shareUserlevel;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name="valid_until")
-	private Date validUntil;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    @Column(name="valid_until")
+    private DateTime validUntil;
 
 	public CompanyDocument() {
 	}
@@ -113,12 +113,12 @@ public class CompanyDocument extends AbstractMutableEntity{
 		this.shareUserlevel = shareUserlevel;
 	}
 
-	public Date getValidUntil() {
-		return this.validUntil;
+    public DateTime getValidUntil() {
+        return this.validUntil;
 	}
 
-	public void setValidUntil(Date validUntil) {
-		this.validUntil = validUntil;
+    public void setValidUntil(DateTime validUntil) {
+        this.validUntil = validUntil;
 	}
 
 }

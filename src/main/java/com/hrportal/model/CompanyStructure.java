@@ -1,7 +1,7 @@
 package com.hrportal.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 
@@ -27,8 +27,9 @@ public class CompanyStructure extends AbstractMutableEntity{
 	private String country;
 
 	@Lob
-	@Column(nullable = false)
-	private String description;
+    @Column(nullable = false)
+    @NotNull
+    private String description;
 
 	@Column(length = 255)
 	private String heads;
@@ -37,8 +38,9 @@ public class CompanyStructure extends AbstractMutableEntity{
 	private String timezone;
 
 	@Lob
-	@Column(nullable = false)
-	private String title;
+    @Column(nullable = false)
+    @NotNull
+    private String title;
 
 	@Column(length = 50)
 	@Enumerated(EnumType.STRING)

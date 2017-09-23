@@ -1,8 +1,8 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.util.Date;
 import java.util.Set;
 
 
@@ -21,8 +21,8 @@ public class LeaveGroup extends AbstractMutableEntity{
 	@Column(unique=true, nullable=false)
 	private Long id;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date created;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime created;
 
 	@Lob
 	private String details;
@@ -30,8 +30,8 @@ public class LeaveGroup extends AbstractMutableEntity{
 	@Column(nullable=false, length=100)
 	private String name;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date updated;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime updated;
 
 	//bi-directional many-to-one association to LeaveGroupEmployee
 	@OneToMany(mappedBy="leaveGroupBean", fetch=FetchType.EAGER)
@@ -48,12 +48,12 @@ public class LeaveGroup extends AbstractMutableEntity{
 		this.id = id;
 	}
 
-	public Date getCreated() {
-		return this.created;
+    public DateTime getCreated() {
+        return this.created;
 	}
 
-	public void setCreated(Date created) {
-		this.created = created;
+    public void setCreated(DateTime created) {
+        this.created = created;
 	}
 
 	public String getDetails() {
@@ -72,12 +72,12 @@ public class LeaveGroup extends AbstractMutableEntity{
 		this.name = name;
 	}
 
-	public Date getUpdated() {
-		return this.updated;
+    public DateTime getUpdated() {
+        return this.updated;
 	}
 
-	public void setUpdated(Date updated) {
-		this.updated = updated;
+    public void setUpdated(DateTime updated) {
+        this.updated = updated;
 	}
 
 	public Set<LeaveGroupEmployee> getLeaveGroupEmployees() {

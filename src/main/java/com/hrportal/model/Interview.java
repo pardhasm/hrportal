@@ -1,8 +1,9 @@
 package com.hrportal.model;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -19,8 +20,8 @@ public class Interview extends AbstractMutableEntity{
     @Column(unique = true, nullable = false)
     private Long id;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date created;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime created;
 
     @Column(length = 100)
     private String level;
@@ -33,14 +34,14 @@ public class Interview extends AbstractMutableEntity{
     @Lob
     private String notes;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date scheduled;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime scheduled;
 
     @Column(length = 100)
 
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date updated;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime updated;
 
     //bi-directional many-to-one association to Candidate
     @ManyToOne
@@ -50,6 +51,7 @@ public class Interview extends AbstractMutableEntity{
     //bi-directional many-to-one association to Job
     @ManyToOne
     @JoinColumn(name = "job", nullable = false)
+    @NotNull
     private Job jobBean;
 
     public Interview() {
@@ -63,11 +65,11 @@ public class Interview extends AbstractMutableEntity{
         this.id = id;
     }
 
-    public Date getCreated() {
+    public DateTime getCreated() {
         return this.created;
     }
 
-    public void setCreated(Date created) {
+    public void setCreated(DateTime created) {
         this.created = created;
     }
 
@@ -103,21 +105,20 @@ public class Interview extends AbstractMutableEntity{
         this.notes = notes;
     }
 
-    public Date getScheduled() {
+    public DateTime getScheduled() {
         return this.scheduled;
     }
 
-    public void setScheduled(Date scheduled) {
+    public void setScheduled(DateTime scheduled) {
         this.scheduled = scheduled;
     }
 
 
-
-    public Date getUpdated() {
+    public DateTime getUpdated() {
         return this.updated;
     }
 
-    public void setUpdated(Date updated) {
+    public void setUpdated(DateTime updated) {
         this.updated = updated;
     }
 

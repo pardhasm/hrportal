@@ -1,8 +1,8 @@
 package com.hrportal.model;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
 
 
 /**
@@ -20,8 +20,8 @@ public class EmployeeDependent extends AbstractMutableEntity{
 	@Column(unique=true, nullable=false)
 	private Long id;
 
-	@Temporal(TemporalType.DATE)
-	private Date dob;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime dob;
 
 	@Column(name="id_number", length=25)
 	private String idNumber;
@@ -49,12 +49,12 @@ public class EmployeeDependent extends AbstractMutableEntity{
 		this.id = id;
 	}
 
-	public Date getDob() {
-		return this.dob;
+    public DateTime getDob() {
+        return this.dob;
 	}
 
-	public void setDob(Date dob) {
-		this.dob = dob;
+    public void setDob(DateTime dob) {
+        this.dob = dob;
 	}
 
 	public String getIdNumber() {

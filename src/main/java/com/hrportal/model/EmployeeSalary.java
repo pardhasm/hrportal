@@ -1,7 +1,7 @@
 package com.hrportal.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 
@@ -24,6 +24,7 @@ public class EmployeeSalary extends AbstractMutableEntity{
     private BigDecimal amount;
 
     @Column(nullable = false)
+    @NotNull
     private Long component;
 
     @Lob
@@ -40,6 +41,7 @@ public class EmployeeSalary extends AbstractMutableEntity{
     //bi-directional many-to-one association to Employee
     @ManyToOne
     @JoinColumn(name = "employee", nullable = false)
+    @NotNull
     private Employee employeeBean;
 
     public EmployeeSalary() {

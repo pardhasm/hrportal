@@ -1,8 +1,8 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.util.Date;
 
 
 /**
@@ -29,8 +29,8 @@ public class EmployeeImmigration extends AbstractMutableEntity{
 	@Column(length=100)
 	private String attachment3;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date created;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime created;
 
 	@Lob
 	private String details;
@@ -41,12 +41,12 @@ public class EmployeeImmigration extends AbstractMutableEntity{
 	@Column(length=20)
 
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date updated;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime updated;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name="valid_until", nullable=false)
-	private Date validUntil;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    @Column(name="valid_until", nullable=false)
+    private DateTime validUntil;
 
 	//bi-directional many-to-one association to Employee
 	@ManyToOne
@@ -93,12 +93,12 @@ public class EmployeeImmigration extends AbstractMutableEntity{
 		this.attachment3 = attachment3;
 	}
 
-	public Date getCreated() {
-		return this.created;
+    public DateTime getCreated() {
+        return this.created;
 	}
 
-	public void setCreated(Date created) {
-		this.created = created;
+    public void setCreated(DateTime created) {
+        this.created = created;
 	}
 
 	public String getDetails() {
@@ -118,21 +118,20 @@ public class EmployeeImmigration extends AbstractMutableEntity{
 	}
 
 
-
-	public Date getUpdated() {
-		return this.updated;
+    public DateTime getUpdated() {
+        return this.updated;
 	}
 
-	public void setUpdated(Date updated) {
-		this.updated = updated;
+    public void setUpdated(DateTime updated) {
+        this.updated = updated;
 	}
 
-	public Date getValidUntil() {
-		return this.validUntil;
+    public DateTime getValidUntil() {
+        return this.validUntil;
 	}
 
-	public void setValidUntil(Date validUntil) {
-		this.validUntil = validUntil;
+    public void setValidUntil(DateTime validUntil) {
+        this.validUntil = validUntil;
 	}
 
 	public Employee getEmployeeBean() {

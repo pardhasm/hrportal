@@ -1,9 +1,9 @@
 package com.hrportal.model;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
 
 
 
@@ -31,8 +31,8 @@ public class EmployeeTravelRecord extends AbstractMutableEntity{
 	@Column(length=100)
 	private String attachment3;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date created;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime created;
 
     private Long currency;
 
@@ -45,13 +45,13 @@ public class EmployeeTravelRecord extends AbstractMutableEntity{
 	@Column(nullable=false, length=200)
 	private String purpose;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="return_date")
-	private Date returnDate;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    @Column(name="return_date")
+    private DateTime returnDate;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="travel_date")
-	private Date travelDate;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    @Column(name="travel_date")
+    private DateTime travelDate;
 
 	@Column(name="travel_from", nullable=false, length=200)
 	private String travelFrom;
@@ -62,8 +62,8 @@ public class EmployeeTravelRecord extends AbstractMutableEntity{
 	@Column(length=20)
 	private String type;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date updated;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime updated;
 
 	//bi-directional many-to-one association to Employee
 	@ManyToOne
@@ -105,12 +105,12 @@ public class EmployeeTravelRecord extends AbstractMutableEntity{
 		this.attachment3 = attachment3;
 	}
 
-	public Date getCreated() {
-		return this.created;
+    public DateTime getCreated() {
+        return this.created;
 	}
 
-	public void setCreated(Date created) {
-		this.created = created;
+    public void setCreated(DateTime created) {
+        this.created = created;
 	}
 
     public Long getCurrency() {
@@ -145,22 +145,21 @@ public class EmployeeTravelRecord extends AbstractMutableEntity{
 		this.purpose = purpose;
 	}
 
-	public Date getReturnDate() {
-		return this.returnDate;
+    public DateTime getReturnDate() {
+        return this.returnDate;
 	}
 
-	public void setReturnDate(Date returnDate) {
-		this.returnDate = returnDate;
+    public void setReturnDate(DateTime returnDate) {
+        this.returnDate = returnDate;
 	}
 
 
-
-	public Date getTravelDate() {
-		return this.travelDate;
+    public DateTime getTravelDate() {
+        return this.travelDate;
 	}
 
-	public void setTravelDate(Date travelDate) {
-		this.travelDate = travelDate;
+    public void setTravelDate(DateTime travelDate) {
+        this.travelDate = travelDate;
 	}
 
 	public String getTravelFrom() {
@@ -187,12 +186,12 @@ public class EmployeeTravelRecord extends AbstractMutableEntity{
 		this.type = type;
 	}
 
-	public Date getUpdated() {
-		return this.updated;
+    public DateTime getUpdated() {
+        return this.updated;
 	}
 
-	public void setUpdated(Date updated) {
-		this.updated = updated;
+    public void setUpdated(DateTime updated) {
+        this.updated = updated;
 	}
 
 	public Employee getEmployeeBean() {

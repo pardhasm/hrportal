@@ -1,7 +1,6 @@
 package com.hrportal.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 
 

@@ -1,7 +1,7 @@
 package com.hrportal.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import javax.validation.constraints.NotNull;
 
 
 
@@ -23,14 +23,17 @@ public class PayrollData extends AbstractMutableEntity{
     private String amount;
 
     @Column(nullable = false)
+    @NotNull
     private Long employee;
 
     @Column(name = "payroll_item", nullable = false)
+    @NotNull
     private int payrollItem;
 
     //bi-directional many-to-one association to Payroll
     @ManyToOne
     @JoinColumn(name = "payroll", nullable = false)
+    @NotNull
     private Payroll payrollBean;
 
     public PayrollData() {

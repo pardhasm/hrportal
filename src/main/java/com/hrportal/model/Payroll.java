@@ -1,8 +1,9 @@
 package com.hrportal.model;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 
@@ -26,21 +27,23 @@ public class Payroll extends AbstractMutableEntity{
     @Column(length = 500)
     private String columns;
 
-    @Temporal(TemporalType.DATE)
+    @org.hibernate.annotations.Type(type = "updatedTime")
     @Column(name = "date_end")
-    private Date dateEnd;
+    private DateTime dateEnd;
 
-    @Temporal(TemporalType.DATE)
+    @org.hibernate.annotations.Type(type = "updatedTime")
     @Column(name = "date_start")
-    private Date dateStart;
+    private DateTime dateStart;
 
     @Column(nullable = false)
+    @NotNull
     private Long department;
 
     @Column(length = 200)
     private String name;
 
     @Column(name = "pay_period", nullable = false)
+    @NotNull
     private Long payPeriod;
 
     private Long payslipTemplate;
@@ -79,19 +82,19 @@ public class Payroll extends AbstractMutableEntity{
         this.columns = columns;
     }
 
-    public Date getDateEnd() {
+    public DateTime getDateEnd() {
         return this.dateEnd;
     }
 
-    public void setDateEnd(Date dateEnd) {
+    public void setDateEnd(DateTime dateEnd) {
         this.dateEnd = dateEnd;
     }
 
-    public Date getDateStart() {
+    public DateTime getDateStart() {
         return this.dateStart;
     }
 
-    public void setDateStart(Date dateStart) {
+    public void setDateStart(DateTime dateStart) {
         this.dateStart = dateStart;
     }
 

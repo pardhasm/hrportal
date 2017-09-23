@@ -1,8 +1,8 @@
 package com.hrportal.model;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
 
 
 
@@ -21,9 +21,9 @@ public class ArchivedEmployee extends AbstractMutableEntity{
 	@Column(unique=true, nullable=false)
 	private Long id;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="confirmation_date")
-	private Date confirmationDate;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    @Column(name="confirmation_date")
+    private DateTime confirmationDate;
 
 	@Lob
 	private String data;
@@ -40,9 +40,9 @@ public class ArchivedEmployee extends AbstractMutableEntity{
 	@Enumerated(EnumType.STRING)
 	private Gender gender;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="joined_date")
-	private Date joinedDate;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    @Column(name="joined_date")
+    private DateTime joinedDate;
 
 	@Column(name="last_name", nullable=false, length=100)
 	private String lastName;
@@ -64,9 +64,9 @@ public class ArchivedEmployee extends AbstractMutableEntity{
 
     private Long supervisor;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="termination_date")
-	private Date terminationDate;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    @Column(name="termination_date")
+    private DateTime terminationDate;
 
 	@Column(name="work_email", length=100)
 	private String workEmail;
@@ -82,12 +82,12 @@ public class ArchivedEmployee extends AbstractMutableEntity{
 		this.id = id;
 	}
 
-	public Date getConfirmationDate() {
-		return this.confirmationDate;
+    public DateTime getConfirmationDate() {
+        return this.confirmationDate;
 	}
 
-	public void setConfirmationDate(Date confirmationDate) {
-		this.confirmationDate = confirmationDate;
+    public void setConfirmationDate(DateTime confirmationDate) {
+        this.confirmationDate = confirmationDate;
 	}
 
 	public String getData() {
@@ -130,12 +130,12 @@ public class ArchivedEmployee extends AbstractMutableEntity{
 		this.gender = gender;
 	}
 
-	public Date getJoinedDate() {
-		return this.joinedDate;
+    public DateTime getJoinedDate() {
+        return this.joinedDate;
 	}
 
-	public void setJoinedDate(Date joinedDate) {
-		this.joinedDate = joinedDate;
+    public void setJoinedDate(DateTime joinedDate) {
+        this.joinedDate = joinedDate;
 	}
 
 	public String getLastName() {
@@ -194,12 +194,12 @@ public class ArchivedEmployee extends AbstractMutableEntity{
         this.supervisor = supervisor;
 	}
 
-	public Date getTerminationDate() {
-		return this.terminationDate;
+    public DateTime getTerminationDate() {
+        return this.terminationDate;
 	}
 
-	public void setTerminationDate(Date terminationDate) {
-		this.terminationDate = terminationDate;
+    public void setTerminationDate(DateTime terminationDate) {
+        this.terminationDate = terminationDate;
 	}
 
 	public String getWorkEmail() {

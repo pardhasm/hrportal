@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 /**
  * Created by Pardha Saradhi Mavilla
  */
@@ -34,13 +36,13 @@ public class TrainingSessionController {
 
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public TrainingSession insert(@RequestBody TrainingSession trainingSession) {
+    public TrainingSession insert(@Valid @RequestBody TrainingSession trainingSession) {
         return trainingSessionService.save(trainingSession);
 
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<TrainingSession> update(@PathVariable("id") Long id, @RequestBody TrainingSession trainingSession) {
+    public ResponseEntity<TrainingSession> update(@PathVariable("id") Long id, @Valid @RequestBody TrainingSession trainingSession) {
         try {
             return ResponseEntity.ok(trainingSessionService.update(id, trainingSession));
         } catch (NotFoundException e) {

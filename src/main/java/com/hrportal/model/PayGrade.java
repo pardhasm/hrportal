@@ -1,7 +1,7 @@
 package com.hrportal.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Set;
 
@@ -37,6 +37,7 @@ public class PayGrade extends AbstractMutableEntity{
     //bi-directional many-to-one association to CurrencyType
     @ManyToOne
     @JoinColumn(name = "currency", nullable = false)
+    @NotNull
     private CurrencyType currencyType;
 
     public PayGrade() {

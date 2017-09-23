@@ -1,8 +1,8 @@
 package com.hrportal.model;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
 
 
 
@@ -23,8 +23,8 @@ public class HoliDay extends AbstractMutableEntity{
 
 	private Long country;
 
-	@Temporal(TemporalType.DATE)
-	private Date dateh;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime dateh;
 
 	@Column(nullable=false, length=100)
 	private String name;
@@ -49,12 +49,12 @@ public class HoliDay extends AbstractMutableEntity{
 		this.country = country;
 	}
 
-	public Date getDateh() {
-		return this.dateh;
+    public DateTime getDateh() {
+        return this.dateh;
 	}
 
-	public void setDateh(Date dateh) {
-		this.dateh = dateh;
+    public void setDateh(DateTime dateh) {
+        this.dateh = dateh;
 	}
 
 	public String getName() {

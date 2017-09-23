@@ -1,8 +1,9 @@
 package com.hrportal.model;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 
@@ -28,8 +29,8 @@ public class Candidate extends AbstractMutableEntity{
 
     private int age;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date birthday;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime birthday;
 
     @Lob
     private String calls;
@@ -40,13 +41,14 @@ public class Candidate extends AbstractMutableEntity{
     @Column(length = 2)
     private String country;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date created;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime created;
 
     @Column(length = 150)
     private String cv;
 
     @Column(name = "cv_title", nullable = false, length = 200)
+    @NotNull
     private String cvTitle;
 
     @Lob
@@ -67,6 +69,7 @@ public class Candidate extends AbstractMutableEntity{
     private String facebookProfileLink;
 
     @Column(name = "first_name", nullable = false, length = 100)
+    @NotNull
     private String firstName;
 
     @Column(length = 20)
@@ -99,6 +102,7 @@ public class Candidate extends AbstractMutableEntity{
     private String industry;
 
     @Column(name = "last_name", nullable = false, length = 100)
+    @NotNull
     private String lastName;
 
     @Lob
@@ -164,8 +168,8 @@ public class Candidate extends AbstractMutableEntity{
     @Column(length = 250)
     private String twitterProfileLink;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date updated;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime updated;
 
     @Lob
     @Column(name = "work_history")
@@ -218,11 +222,11 @@ public class Candidate extends AbstractMutableEntity{
         this.age = age;
     }
 
-    public Date getBirthday() {
+    public DateTime getBirthday() {
         return this.birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(DateTime birthday) {
         this.birthday = birthday;
     }
 
@@ -250,11 +254,11 @@ public class Candidate extends AbstractMutableEntity{
         this.country = country;
     }
 
-    public Date getCreated() {
+    public DateTime getCreated() {
         return this.created;
     }
 
-    public void setCreated(Date created) {
+    public void setCreated(DateTime created) {
         this.created = created;
     }
 
@@ -570,11 +574,11 @@ public class Candidate extends AbstractMutableEntity{
         this.twitterProfileLink = twitterProfileLink;
     }
 
-    public Date getUpdated() {
+    public DateTime getUpdated() {
         return this.updated;
     }
 
-    public void setUpdated(Date updated) {
+    public void setUpdated(DateTime updated) {
         this.updated = updated;
     }
 

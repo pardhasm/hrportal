@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 /**
  * Created by Lalith leela vishnu on 18-09-2017.
  */
@@ -34,13 +36,13 @@ public class SettingController {
 
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public Setting insert(@RequestBody Setting setting) {
+    public Setting insert(@Valid @RequestBody Setting setting) {
         return settingService.save(setting);
 
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Setting> update(@PathVariable("id") Long id, @RequestBody Setting setting) {
+    public ResponseEntity<Setting> update(@PathVariable("id") Long id, @Valid @RequestBody Setting setting) {
         try {
             return ResponseEntity.ok(settingService.update(id, setting));
         } catch (NotFoundException e) {

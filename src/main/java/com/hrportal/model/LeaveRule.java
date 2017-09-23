@@ -1,7 +1,6 @@
 package com.hrportal.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.math.BigDecimal;
 
 
@@ -74,6 +73,10 @@ public class LeaveRule extends AbstractMutableEntity{
 	public LeaveRule() {
 	}
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
 	public Long getId() {
 		return this.id;
 	}
@@ -81,8 +84,6 @@ public class LeaveRule extends AbstractMutableEntity{
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-
 
 	public int getCarriedForwardLeaveAvailability() {
 		return this.carriedForwardLeaveAvailability;
@@ -155,10 +156,6 @@ public class LeaveRule extends AbstractMutableEntity{
 	public void setMaxCarriedForwardAmount(int maxCarriedForwardAmount) {
 		this.maxCarriedForwardAmount = maxCarriedForwardAmount;
 	}
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
 
     public Polar getApplyBeyondCurrent() {
         return applyBeyondCurrent;

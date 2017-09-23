@@ -1,8 +1,9 @@
 package com.hrportal.model;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -28,8 +29,8 @@ public class AuditLog extends AbstractMutableEntity{
     @Column(length = 100)
     private String ip;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date time;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime time;
 
     @Column(nullable = false, length = 100)
     private String type;
@@ -37,6 +38,7 @@ public class AuditLog extends AbstractMutableEntity{
     //bi-directional many-to-one association to User
     @ManyToOne
     @JoinColumn(name = "user", nullable = false)
+    @NotNull
     private User userBean;
 
     public AuditLog() {
@@ -74,11 +76,11 @@ public class AuditLog extends AbstractMutableEntity{
         this.ip = ip;
     }
 
-    public Date getTime() {
+    public DateTime getTime() {
         return this.time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(DateTime time) {
         this.time = time;
     }
 

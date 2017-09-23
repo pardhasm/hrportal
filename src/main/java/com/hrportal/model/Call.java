@@ -1,8 +1,9 @@
 package com.hrportal.model;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -19,8 +20,8 @@ public class Call extends AbstractMutableEntity{
     @Column(unique = true, nullable = false)
     private Long id;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date created;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime created;
 
     @Lob
     private String notes;
@@ -29,9 +30,8 @@ public class Call extends AbstractMutableEntity{
     private String phone;
 
 
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date updated;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime updated;
 
     //bi-directional many-to-one association to Candidate
     @ManyToOne
@@ -41,6 +41,7 @@ public class Call extends AbstractMutableEntity{
     //bi-directional many-to-one association to Job
     @ManyToOne
     @JoinColumn(name = "job", nullable = false)
+    @NotNull
     private Job jobBean;
 
     public Call() {
@@ -54,11 +55,11 @@ public class Call extends AbstractMutableEntity{
         this.id = id;
     }
 
-    public Date getCreated() {
+    public DateTime getCreated() {
         return this.created;
     }
 
-    public void setCreated(Date created) {
+    public void setCreated(DateTime created) {
         this.created = created;
     }
 
@@ -79,12 +80,11 @@ public class Call extends AbstractMutableEntity{
     }
 
 
-
-    public Date getUpdated() {
+    public DateTime getUpdated() {
         return this.updated;
     }
 
-    public void setUpdated(Date updated) {
+    public void setUpdated(DateTime updated) {
         this.updated = updated;
     }
 

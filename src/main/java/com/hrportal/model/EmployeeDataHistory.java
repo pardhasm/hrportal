@@ -1,8 +1,9 @@
 package com.hrportal.model;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -19,8 +20,8 @@ public class EmployeeDataHistory extends AbstractMutableEntity{
     @Column(unique = true, nullable = false)
     private Long id;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date created;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime created;
 
     @Column(length = 800)
     private String description;
@@ -37,12 +38,13 @@ public class EmployeeDataHistory extends AbstractMutableEntity{
     @Column(nullable = false, length = 100)
     private String type;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date updated;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime updated;
 
     //bi-directional many-to-one association to Employee
     @ManyToOne
     @JoinColumn(name = "employee", nullable = false)
+    @NotNull
     private Employee employeeBean;
 
     //bi-directional many-to-one association to User
@@ -61,11 +63,11 @@ public class EmployeeDataHistory extends AbstractMutableEntity{
         this.id = id;
     }
 
-    public Date getCreated() {
+    public DateTime getCreated() {
         return this.created;
     }
 
-    public void setCreated(Date created) {
+    public void setCreated(DateTime created) {
         this.created = created;
     }
 
@@ -109,11 +111,11 @@ public class EmployeeDataHistory extends AbstractMutableEntity{
         this.type = type;
     }
 
-    public Date getUpdated() {
+    public DateTime getUpdated() {
         return this.updated;
     }
 
-    public void setUpdated(Date updated) {
+    public void setUpdated(DateTime updated) {
         this.updated = updated;
     }
 

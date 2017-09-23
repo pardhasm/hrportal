@@ -1,8 +1,8 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.util.Date;
 import java.util.Set;
 
 
@@ -21,13 +21,13 @@ public class EmployeeTimeSheet extends AbstractMutableEntity{
 	@Column(unique=true, nullable=false)
 	private Long id;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name="date_end", nullable=false)
-	private Date dateEnd;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    @Column(name="date_end", nullable=false)
+    private DateTime dateEnd;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name="date_start", nullable=false)
-	private Date dateStart;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    @Column(name="date_start", nullable=false)
+    private DateTime dateStart;
 
 	@Column(length=20)
 
@@ -52,20 +52,20 @@ public class EmployeeTimeSheet extends AbstractMutableEntity{
 		this.id = id;
 	}
 
-	public Date getDateEnd() {
-		return this.dateEnd;
+    public DateTime getDateEnd() {
+        return this.dateEnd;
 	}
 
-	public void setDateEnd(Date dateEnd) {
-		this.dateEnd = dateEnd;
+    public void setDateEnd(DateTime dateEnd) {
+        this.dateEnd = dateEnd;
 	}
 
-	public Date getDateStart() {
-		return this.dateStart;
+    public DateTime getDateStart() {
+        return this.dateStart;
 	}
 
-	public void setDateStart(Date dateStart) {
-		this.dateStart = dateStart;
+    public void setDateStart(DateTime dateStart) {
+        this.dateStart = dateStart;
 	}
 
 

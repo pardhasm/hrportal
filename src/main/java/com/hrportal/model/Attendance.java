@@ -1,8 +1,9 @@
 package com.hrportal.model;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -19,20 +20,21 @@ public class Attendance extends AbstractMutableEntity{
     @Column(unique = true, nullable = false)
     private Long id;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @org.hibernate.annotations.Type(type = "updatedTime")
     @Column(name = "in_time")
-    private Date inTime;
+    private DateTime inTime;
 
     @Column(length = 500)
     private String note;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @org.hibernate.annotations.Type(type = "updatedTime")
     @Column(name = "out_time")
-    private Date outTime;
+    private DateTime outTime;
 
     //bi-directional many-to-one association to Employee
     @ManyToOne
     @JoinColumn(name = "employee", nullable = false)
+    @NotNull
     private Employee employeeBean;
 
     public Attendance() {
@@ -46,11 +48,11 @@ public class Attendance extends AbstractMutableEntity{
         this.id = id;
     }
 
-    public Date getInTime() {
+    public DateTime getInTime() {
         return this.inTime;
     }
 
-    public void setInTime(Date inTime) {
+    public void setInTime(DateTime inTime) {
         this.inTime = inTime;
     }
 
@@ -62,11 +64,11 @@ public class Attendance extends AbstractMutableEntity{
         this.note = note;
     }
 
-    public Date getOutTime() {
+    public DateTime getOutTime() {
         return this.outTime;
     }
 
-    public void setOutTime(Date outTime) {
+    public void setOutTime(DateTime outTime) {
         this.outTime = outTime;
     }
 

@@ -1,8 +1,8 @@
 package com.hrportal.model;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
 
 
 
@@ -25,8 +25,8 @@ public class EmployeeApproval extends AbstractMutableEntity{
 
     private Long approver;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date created;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime created;
 
 	@Column(nullable=false)
     private Long element;
@@ -38,8 +38,8 @@ public class EmployeeApproval extends AbstractMutableEntity{
 	@Column(nullable=false, length=100)
 	private String type;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date updated;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime updated;
 
 	public EmployeeApproval() {
 	}
@@ -68,12 +68,12 @@ public class EmployeeApproval extends AbstractMutableEntity{
         this.approver = approver;
 	}
 
-	public Date getCreated() {
-		return this.created;
+    public DateTime getCreated() {
+        return this.created;
 	}
 
-	public void setCreated(Date created) {
-		this.created = created;
+    public void setCreated(DateTime created) {
+        this.created = created;
 	}
 
     public Long getElement() {
@@ -100,12 +100,12 @@ public class EmployeeApproval extends AbstractMutableEntity{
 		this.type = type;
 	}
 
-	public Date getUpdated() {
-		return this.updated;
+    public DateTime getUpdated() {
+        return this.updated;
 	}
 
-	public void setUpdated(Date updated) {
-		this.updated = updated;
+    public void setUpdated(DateTime updated) {
+        this.updated = updated;
 	}
 
 }

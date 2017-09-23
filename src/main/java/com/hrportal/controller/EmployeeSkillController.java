@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 /**
  * Created by Lalith leela vishnu on 18-09-2017.
  */
@@ -34,13 +36,13 @@ public class EmployeeSkillController {
 
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public EmployeeSkill insert(@RequestBody EmployeeSkill employeeSkill) {
+    public EmployeeSkill insert(@Valid @RequestBody EmployeeSkill employeeSkill) {
         return employeeSkillService.save(employeeSkill);
 
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<EmployeeSkill> update(@PathVariable("id") Long id, @RequestBody EmployeeSkill employeeSkill) {
+    public ResponseEntity<EmployeeSkill> update(@PathVariable("id") Long id, @Valid @RequestBody EmployeeSkill employeeSkill) {
         try {
             return ResponseEntity.ok(employeeSkillService.update(id, employeeSkill));
         } catch (NotFoundException e) {

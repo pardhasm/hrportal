@@ -1,8 +1,9 @@
 package com.hrportal.model;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -19,8 +20,8 @@ public class EmployeeLeaveLog extends AbstractMutableEntity{
     @Column(unique = true, nullable = false)
     private Long id;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date created;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime created;
 
     @Column(nullable = false, length = 500)
     private String data;
@@ -36,6 +37,7 @@ public class EmployeeLeaveLog extends AbstractMutableEntity{
     //bi-directional many-to-one association to EmployeeLeave
     @ManyToOne
     @JoinColumn(name = "employee_leave", nullable = false)
+    @NotNull
     private EmployeeLeave employeeLeaveBean;
 
     //bi-directional many-to-one association to User
@@ -46,6 +48,10 @@ public class EmployeeLeaveLog extends AbstractMutableEntity{
     public EmployeeLeaveLog() {
     }
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
     public Long getId() {
         return this.id;
     }
@@ -54,11 +60,11 @@ public class EmployeeLeaveLog extends AbstractMutableEntity{
         this.id = id;
     }
 
-    public Date getCreated() {
+    public DateTime getCreated() {
         return this.created;
     }
 
-    public void setCreated(Date created) {
+    public void setCreated(DateTime created) {
         this.created = created;
     }
 
@@ -84,10 +90,6 @@ public class EmployeeLeaveLog extends AbstractMutableEntity{
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
     }
 
     public Approval getStatusFrom() {

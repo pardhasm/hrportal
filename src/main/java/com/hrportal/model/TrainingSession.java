@@ -1,7 +1,8 @@
 package com.hrportal.model;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.util.Date;
 import java.util.Set;
 
 
@@ -27,8 +28,8 @@ public class TrainingSession extends AbstractMutableEntity{
 	@Enumerated(EnumType.STRING)
 	private AttendanceType attendanceType;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date created;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime created;
 
 	@Column(length=500)
 	private String deliveryLocation;
@@ -39,8 +40,8 @@ public class TrainingSession extends AbstractMutableEntity{
 	@Lob
 	private String description;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dueDate;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime dueDate;
 
 	@Column(nullable=false, length=300)
 	private String name;
@@ -49,14 +50,14 @@ public class TrainingSession extends AbstractMutableEntity{
 	@Enumerated(EnumType.STRING)
 	private Polar requireProof;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date scheduled;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime scheduled;
 
 	@Column(length=20)
 
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date updated;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime updated;
 
 	//bi-directional many-to-one association to EmployeeTrainingSession
 	@OneToMany(mappedBy="trainingSessionBean", fetch=FetchType.EAGER)
@@ -86,12 +87,12 @@ public class TrainingSession extends AbstractMutableEntity{
 		this.attachment = attachment;
 	}
 
-	public Date getCreated() {
-		return this.created;
+    public DateTime getCreated() {
+        return this.created;
 	}
 
-	public void setCreated(Date created) {
-		this.created = created;
+    public void setCreated(DateTime created) {
+        this.created = created;
 	}
 
 	public String getDeliveryLocation() {
@@ -110,12 +111,12 @@ public class TrainingSession extends AbstractMutableEntity{
 		this.description = description;
 	}
 
-	public Date getDueDate() {
-		return this.dueDate;
+    public DateTime getDueDate() {
+        return this.dueDate;
 	}
 
-	public void setDueDate(Date dueDate) {
-		this.dueDate = dueDate;
+    public void setDueDate(DateTime dueDate) {
+        this.dueDate = dueDate;
 	}
 
 	public String getName() {
@@ -134,22 +135,21 @@ public class TrainingSession extends AbstractMutableEntity{
 		this.requireProof = requireProof;
 	}
 
-	public Date getScheduled() {
-		return this.scheduled;
+    public DateTime getScheduled() {
+        return this.scheduled;
 	}
 
-	public void setScheduled(Date scheduled) {
-		this.scheduled = scheduled;
+    public void setScheduled(DateTime scheduled) {
+        this.scheduled = scheduled;
 	}
 
 
-
-	public Date getUpdated() {
-		return this.updated;
+    public DateTime getUpdated() {
+        return this.updated;
 	}
 
-	public void setUpdated(Date updated) {
-		this.updated = updated;
+    public void setUpdated(DateTime updated) {
+        this.updated = updated;
 	}
 
 	public Set<EmployeeTrainingSession> getEmployeeTrainingSessions() {

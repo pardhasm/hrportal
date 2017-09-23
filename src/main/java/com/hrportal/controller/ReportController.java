@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 /**
  * Created by Lalith leela vishnu on 18-09-2017.
  */
@@ -34,13 +36,13 @@ public class ReportController {
 
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public Report insert(@RequestBody Report report) {
+    public Report insert(@Valid @RequestBody Report report) {
         return reportService.save(report);
 
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Report> update(@PathVariable("id") Long id, @RequestBody Report report) {
+    public ResponseEntity<Report> update(@PathVariable("id") Long id, @Valid @RequestBody Report report) {
         try {
             return ResponseEntity.ok(reportService.update(id, report));
         } catch (NotFoundException e) {

@@ -1,8 +1,9 @@
 package com.hrportal.model;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -19,37 +20,39 @@ public class EmployeeOvertime extends AbstractMutableEntity{
     @Column(unique = true, nullable = false)
     private Long id;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date created;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime created;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @org.hibernate.annotations.Type(type = "updatedTime")
     @Column(name = "end_time")
-    private Date endTime;
+    private DateTime endTime;
 
     @Lob
     private String notes;
 
     private Long project;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @org.hibernate.annotations.Type(type = "updatedTime")
     @Column(name = "start_time")
-    private Date startTime;
+    private DateTime startTime;
 
     @Column(length = 20, name = "status")
     @Enumerated(EnumType.STRING)
     private Approval approvalStatus;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date updated;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime updated;
 
     //bi-directional many-to-one association to Employee
     @ManyToOne
     @JoinColumn(name = "employee", nullable = false)
+    @NotNull
     private Employee employeeBean;
 
     //bi-directional many-to-one association to OvertimeCategory
     @ManyToOne
     @JoinColumn(name = "category", nullable = false)
+    @NotNull
     private OverTimeCategory overtimeCategory;
 
     public EmployeeOvertime() {
@@ -63,19 +66,19 @@ public class EmployeeOvertime extends AbstractMutableEntity{
         this.id = id;
     }
 
-    public Date getCreated() {
+    public DateTime getCreated() {
         return this.created;
     }
 
-    public void setCreated(Date created) {
+    public void setCreated(DateTime created) {
         this.created = created;
     }
 
-    public Date getEndTime() {
+    public DateTime getEndTime() {
         return this.endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(DateTime endTime) {
         this.endTime = endTime;
     }
 
@@ -95,11 +98,11 @@ public class EmployeeOvertime extends AbstractMutableEntity{
         this.project = project;
     }
 
-    public Date getStartTime() {
+    public DateTime getStartTime() {
         return this.startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(DateTime startTime) {
         this.startTime = startTime;
     }
 
@@ -111,15 +114,11 @@ public class EmployeeOvertime extends AbstractMutableEntity{
         this.approvalStatus = approvalStatus;
     }
 
-    public void setOvertimeCategory(OverTimeCategory overtimeCategory) {
-        this.overtimeCategory = overtimeCategory;
-    }
-
-    public Date getUpdated() {
+    public DateTime getUpdated() {
         return this.updated;
     }
 
-    public void setUpdated(Date updated) {
+    public void setUpdated(DateTime updated) {
         this.updated = updated;
     }
 
@@ -133,6 +132,10 @@ public class EmployeeOvertime extends AbstractMutableEntity{
 
     public OverTimeCategory getOvertimeCategory() {
         return this.overtimeCategory;
+    }
+
+    public void setOvertimeCategory(OverTimeCategory overtimeCategory) {
+        this.overtimeCategory = overtimeCategory;
     }
 
     public void setOverTimeCategory(OverTimeCategory overtimeCategory) {

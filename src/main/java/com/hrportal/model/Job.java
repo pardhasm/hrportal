@@ -1,8 +1,8 @@
 package com.hrportal.model;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
 import java.util.Set;
 
 
@@ -26,8 +26,8 @@ public class Job extends AbstractMutableEntity{
     @Lob
     private String benefits;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date closingDate;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime closingDate;
 
     @Column(length = 20)
     private String code;
@@ -118,11 +118,11 @@ public class Job extends AbstractMutableEntity{
         this.benefits = benefits;
     }
 
-    public Date getClosingDate() {
+    public DateTime getClosingDate() {
         return this.closingDate;
     }
 
-    public void setClosingDate(Date closingDate) {
+    public void setClosingDate(DateTime closingDate) {
         this.closingDate = closingDate;
     }
 

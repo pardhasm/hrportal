@@ -1,8 +1,8 @@
 package com.hrportal.model;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
 
 
 /**
@@ -22,8 +22,8 @@ public class DataImport extends AbstractMutableEntity{
     @Lob
     private String columns;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date created;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime created;
 
     @Column(nullable = false, length = 60)
     private String dataType;
@@ -34,8 +34,8 @@ public class DataImport extends AbstractMutableEntity{
     @Column(nullable = false, length = 60)
     private String name;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date updated;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime updated;
 
     public DataImport() {
     }
@@ -56,11 +56,11 @@ public class DataImport extends AbstractMutableEntity{
         this.columns = columns;
     }
 
-    public Date getCreated() {
+    public DateTime getCreated() {
         return this.created;
     }
 
-    public void setCreated(Date created) {
+    public void setCreated(DateTime created) {
         this.created = created;
     }
 
@@ -88,11 +88,11 @@ public class DataImport extends AbstractMutableEntity{
         this.name = name;
     }
 
-    public Date getUpdated() {
+    public DateTime getUpdated() {
         return this.updated;
     }
 
-    public void setUpdated(Date updated) {
+    public void setUpdated(DateTime updated) {
         this.updated = updated;
     }
 

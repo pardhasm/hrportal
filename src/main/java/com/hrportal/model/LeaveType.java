@@ -1,7 +1,6 @@
 package com.hrportal.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Set;
 
 
@@ -73,6 +72,10 @@ public class LeaveType extends AbstractMutableEntity{
 
 	public LeaveType() {
 	}
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
 	public Long getId() {
 		return this.id;
@@ -199,10 +202,6 @@ public class LeaveType extends AbstractMutableEntity{
 
 	public void setSendNotificationEmails(Polar sendNotificationEmails) {
 		this.sendNotificationEmails = sendNotificationEmails;
-	}
-
-	public static long getSerialVersionUID() {
-		return serialVersionUID;
 	}
 
 	public Polar getSupervisorLeaveAssign() {

@@ -1,8 +1,8 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.util.Date;
 
 
 /**
@@ -23,9 +23,9 @@ public class EmployeeDocument extends AbstractMutableEntity{
 	@Column(length=100)
 	private String attachment;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name="date_added", nullable=false)
-	private Date dateAdded;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    @Column(name="date_added", nullable=false)
+    private DateTime dateAdded;
 
 	@Lob
 	private String details;
@@ -36,9 +36,9 @@ public class EmployeeDocument extends AbstractMutableEntity{
 	@Lob
 	private String signature;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name="valid_until", nullable=false)
-	private Date validUntil;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    @Column(name="valid_until", nullable=false)
+    private DateTime validUntil;
 
 	//bi-directional many-to-one association to Document
 	@ManyToOne
@@ -69,12 +69,12 @@ public class EmployeeDocument extends AbstractMutableEntity{
 		this.attachment = attachment;
 	}
 
-	public Date getDateAdded() {
-		return this.dateAdded;
+    public DateTime getDateAdded() {
+        return this.dateAdded;
 	}
 
-	public void setDateAdded(Date dateAdded) {
-		this.dateAdded = dateAdded;
+    public void setDateAdded(DateTime dateAdded) {
+        this.dateAdded = dateAdded;
 	}
 
 	public String getDetails() {
@@ -102,13 +102,12 @@ public class EmployeeDocument extends AbstractMutableEntity{
 	}
 
 
-
-	public Date getValidUntil() {
-		return this.validUntil;
+    public DateTime getValidUntil() {
+        return this.validUntil;
 	}
 
-	public void setValidUntil(Date validUntil) {
-		this.validUntil = validUntil;
+    public void setValidUntil(DateTime validUntil) {
+        this.validUntil = validUntil;
 	}
 
 	public Document getDocumentBean() {

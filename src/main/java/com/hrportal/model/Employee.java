@@ -1,7 +1,8 @@
 package com.hrportal.model;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.util.Date;
 import java.util.Set;
 
 
@@ -32,15 +33,15 @@ public class Employee extends AbstractMutableEntity{
 
     private Long approver3;
 
-    @Temporal(TemporalType.DATE)
-    private Date birthday;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime birthday;
 
     @Column(length = 150)
     private String city;
 
-    @Temporal(TemporalType.DATE)
+    @org.hibernate.annotations.Type(type = "updatedTime")
     @Column(name = "confirmation_date")
-    private Date confirmationDate;
+    private DateTime confirmationDate;
 
     @Column(length = 250)
     private String custom1;
@@ -75,9 +76,9 @@ public class Employee extends AbstractMutableEntity{
     @Column(name = "driving_license", length = 100)
     private String drivingLicense;
 
-    @Temporal(TemporalType.DATE)
+    @org.hibernate.annotations.Type(type = "updatedTime")
     @Column(name = "driving_license_exp_date")
-    private Date drivingLicenseExpDate;
+    private DateTime drivingLicenseExpDate;
 
     @Column(name = "employee_id", length = 50)
     private String employeeId;
@@ -100,9 +101,9 @@ public class Employee extends AbstractMutableEntity{
     @Column(name = "indirect_supervisors", length = 250)
     private String indirectSupervisors;
 
-    @Temporal(TemporalType.DATE)
+    @org.hibernate.annotations.Type(type = "updatedTime")
     @Column(name = "joined_date")
-    private Date joinedDate;
+    private DateTime joinedDate;
 
     @Column(name = "last_name", length = 100)
     private String lastName;
@@ -136,9 +137,9 @@ public class Employee extends AbstractMutableEntity{
     private String ssnNum;
 
 
-    @Temporal(TemporalType.DATE)
+    @org.hibernate.annotations.Type(type = "updatedTime")
     @Column(name = "termination_date")
-    private Date terminationDate;
+    private DateTime terminationDate;
 
     @Column(name = "work_email", length = 100)
     private String workEmail;
@@ -356,11 +357,11 @@ public class Employee extends AbstractMutableEntity{
         this.approver3 = approver3;
     }
 
-    public Date getBirthday() {
+    public DateTime getBirthday() {
         return this.birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(DateTime birthday) {
         this.birthday = birthday;
     }
 
@@ -372,11 +373,11 @@ public class Employee extends AbstractMutableEntity{
         this.city = city;
     }
 
-    public Date getConfirmationDate() {
+    public DateTime getConfirmationDate() {
         return this.confirmationDate;
     }
 
-    public void setConfirmationDate(Date confirmationDate) {
+    public void setConfirmationDate(DateTime confirmationDate) {
         this.confirmationDate = confirmationDate;
     }
 
@@ -468,11 +469,11 @@ public class Employee extends AbstractMutableEntity{
         this.drivingLicense = drivingLicense;
     }
 
-    public Date getDrivingLicenseExpDate() {
+    public DateTime getDrivingLicenseExpDate() {
         return this.drivingLicenseExpDate;
     }
 
-    public void setDrivingLicenseExpDate(Date drivingLicenseExpDate) {
+    public void setDrivingLicenseExpDate(DateTime drivingLicenseExpDate) {
         this.drivingLicenseExpDate = drivingLicenseExpDate;
     }
 
@@ -532,11 +533,11 @@ public class Employee extends AbstractMutableEntity{
         this.indirectSupervisors = indirectSupervisors;
     }
 
-    public Date getJoinedDate() {
+    public DateTime getJoinedDate() {
         return this.joinedDate;
     }
 
-    public void setJoinedDate(Date joinedDate) {
+    public void setJoinedDate(DateTime joinedDate) {
         this.joinedDate = joinedDate;
     }
 
@@ -621,12 +622,11 @@ public class Employee extends AbstractMutableEntity{
     }
 
 
-
-    public Date getTerminationDate() {
+    public DateTime getTerminationDate() {
         return this.terminationDate;
     }
 
-    public void setTerminationDate(Date terminationDate) {
+    public void setTerminationDate(DateTime terminationDate) {
         this.terminationDate = terminationDate;
     }
 

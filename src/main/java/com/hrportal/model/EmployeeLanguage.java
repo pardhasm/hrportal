@@ -1,7 +1,6 @@
 package com.hrportal.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 
 /**
@@ -48,16 +47,16 @@ public class EmployeeLanguage extends AbstractMutableEntity{
 	public EmployeeLanguage() {
 	}
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
 	public Long getId() {
 		return this.id;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public static long getSerialVersionUID() {
-		return serialVersionUID;
 	}
 
 	public Proficiency getReading() {

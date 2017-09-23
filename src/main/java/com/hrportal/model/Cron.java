@@ -1,8 +1,8 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.util.Date;
 
 
 /**
@@ -26,8 +26,8 @@ public class Cron extends AbstractMutableEntity{
 	@Column(nullable=false)
 	private int frequency;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date lastrun;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime lastrun;
 
 	@Column(nullable=false, length=100)
 	private String name;
@@ -66,12 +66,12 @@ public class Cron extends AbstractMutableEntity{
 		this.frequency = frequency;
 	}
 
-	public Date getLastrun() {
-		return this.lastrun;
+    public DateTime getLastrun() {
+        return this.lastrun;
 	}
 
-	public void setLastrun(Date lastrun) {
-		this.lastrun = lastrun;
+    public void setLastrun(DateTime lastrun) {
+        this.lastrun = lastrun;
 	}
 
 	public String getName() {

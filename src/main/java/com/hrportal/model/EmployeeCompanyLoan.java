@@ -1,8 +1,9 @@
 package com.hrportal.model;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Date;
 
 
 
@@ -29,9 +30,9 @@ public class EmployeeCompanyLoan extends AbstractMutableEntity{
 	@Lob
 	private String details;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name="last_installment_date", nullable=false)
-	private Date lastInstallmentDate;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    @Column(name="last_installment_date", nullable=false)
+    private DateTime lastInstallmentDate;
 
 	@Column(name="monthly_installment", nullable=false, precision=10, scale=2)
 	private BigDecimal monthlyInstallment;
@@ -39,9 +40,9 @@ public class EmployeeCompanyLoan extends AbstractMutableEntity{
 	@Column(name="period_months")
     private Long periodMonths;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name="start_date", nullable=false)
-	private Date startDate;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    @Column(name="start_date", nullable=false)
+    private DateTime startDate;
 
 
 	//bi-directional many-to-one association to CompanyLoan
@@ -89,12 +90,12 @@ public class EmployeeCompanyLoan extends AbstractMutableEntity{
 		this.details = details;
 	}
 
-	public Date getLastInstallmentDate() {
-		return this.lastInstallmentDate;
+    public DateTime getLastInstallmentDate() {
+        return this.lastInstallmentDate;
 	}
 
-	public void setLastInstallmentDate(Date lastInstallmentDate) {
-		this.lastInstallmentDate = lastInstallmentDate;
+    public void setLastInstallmentDate(DateTime lastInstallmentDate) {
+        this.lastInstallmentDate = lastInstallmentDate;
 	}
 
 	public BigDecimal getMonthlyInstallment() {
@@ -113,12 +114,12 @@ public class EmployeeCompanyLoan extends AbstractMutableEntity{
         this.periodMonths = periodMonths;
 	}
 
-	public Date getStartDate() {
-		return this.startDate;
+    public DateTime getStartDate() {
+        return this.startDate;
 	}
 
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
+    public void setStartDate(DateTime startDate) {
+        this.startDate = startDate;
 	}
 
 

@@ -1,9 +1,10 @@
 package com.hrportal.model;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.io.Serializable;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.util.Date;
 
 
 /**
@@ -23,22 +24,24 @@ public class LeaveStartingBalance extends AbstractMutableEntity{
     @Column(nullable = false, precision = 10, scale = 3)
     private BigDecimal amount;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date created;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime created;
 
     private Long employee;
 
     @Column(name = "leave_period", nullable = false)
+    @NotNull
     private Long leavePeriod;
 
     @Column(name = "leave_type", nullable = false)
+    @NotNull
     private Long leaveType;
 
     @Lob
     private String note;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date updated;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime updated;
 
     public LeaveStartingBalance() {
     }
@@ -59,11 +62,11 @@ public class LeaveStartingBalance extends AbstractMutableEntity{
         this.amount = amount;
     }
 
-    public Date getCreated() {
+    public DateTime getCreated() {
         return this.created;
     }
 
-    public void setCreated(Date created) {
+    public void setCreated(DateTime created) {
         this.created = created;
     }
 
@@ -99,11 +102,11 @@ public class LeaveStartingBalance extends AbstractMutableEntity{
         this.note = note;
     }
 
-    public Date getUpdated() {
+    public DateTime getUpdated() {
         return this.updated;
     }
 
-    public void setUpdated(Date updated) {
+    public void setUpdated(DateTime updated) {
         this.updated = updated;
     }
 

@@ -1,8 +1,8 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.util.Date;
 import java.util.Set;
 
 
@@ -33,15 +33,15 @@ public class Client extends AbstractMutableEntity{
 	@Column(name="contact_number", length=25)
 	private String contactNumber;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date created;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime created;
 
 	@Lob
 	private String details;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name="first_contact_date")
-	private Date firstContactDate;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    @Column(name="first_contact_date")
+    private DateTime firstContactDate;
 
 	@Column(nullable=false, length=100)
 	private String name;
@@ -96,12 +96,12 @@ public class Client extends AbstractMutableEntity{
 		this.contactNumber = contactNumber;
 	}
 
-	public Date getCreated() {
-		return this.created;
+    public DateTime getCreated() {
+        return this.created;
 	}
 
-	public void setCreated(Date created) {
-		this.created = created;
+    public void setCreated(DateTime created) {
+        this.created = created;
 	}
 
 	public String getDetails() {
@@ -112,12 +112,12 @@ public class Client extends AbstractMutableEntity{
 		this.details = details;
 	}
 
-	public Date getFirstContactDate() {
-		return this.firstContactDate;
+    public DateTime getFirstContactDate() {
+        return this.firstContactDate;
 	}
 
-	public void setFirstContactDate(Date firstContactDate) {
-		this.firstContactDate = firstContactDate;
+    public void setFirstContactDate(DateTime firstContactDate) {
+        this.firstContactDate = firstContactDate;
 	}
 
 	public String getName() {

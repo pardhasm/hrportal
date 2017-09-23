@@ -5,8 +5,8 @@ public class ErrorDto {
     private String message;
     private String internalMessage;
 
-    public ErrorDto(String code, String message) {
-        this.code = code;
+    public ErrorDto(com.hrportal.constants.ErrorCode code, String message) {
+        this.code = code.getValue();
         this.message = message;
     }
 

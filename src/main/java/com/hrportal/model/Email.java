@@ -1,8 +1,8 @@
 package com.hrportal.model;
 
-import java.io.Serializable;
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.util.Date;
 
 
 /**
@@ -26,8 +26,8 @@ public class Email extends AbstractMutableEntity{
 	@Column(length=500)
 	private String cclist;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date created;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime created;
 
 	@Column(length=500)
 	private String error;
@@ -45,8 +45,8 @@ public class Email extends AbstractMutableEntity{
 	@Column(nullable=false, length=300)
 	private String toEmail;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date updated;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime updated;
 
 	public Email() {
 	}
@@ -75,12 +75,12 @@ public class Email extends AbstractMutableEntity{
 		this.cclist = cclist;
 	}
 
-	public Date getCreated() {
-		return this.created;
+    public DateTime getCreated() {
+        return this.created;
 	}
 
-	public void setCreated(Date created) {
-		this.created = created;
+    public void setCreated(DateTime created) {
+        this.created = created;
 	}
 
 	public String getError() {
@@ -125,12 +125,12 @@ public class Email extends AbstractMutableEntity{
 		this.toEmail = toEmail;
 	}
 
-	public Date getUpdated() {
-		return this.updated;
+    public DateTime getUpdated() {
+        return this.updated;
 	}
 
-	public void setUpdated(Date updated) {
-		this.updated = updated;
+    public void setUpdated(DateTime updated) {
+        this.updated = updated;
 	}
 
 }

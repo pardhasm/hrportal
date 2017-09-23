@@ -1,8 +1,8 @@
 package com.hrportal.model;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
 
 
 
@@ -24,8 +24,8 @@ public class ReportFile extends AbstractMutableEntity{
 	@Column(nullable=false, length=100)
 	private String attachment;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date created;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime created;
 
     private Long employee;
 
@@ -51,12 +51,12 @@ public class ReportFile extends AbstractMutableEntity{
 		this.attachment = attachment;
 	}
 
-	public Date getCreated() {
-		return this.created;
+    public DateTime getCreated() {
+        return this.created;
 	}
 
-	public void setCreated(Date created) {
-		this.created = created;
+    public void setCreated(DateTime created) {
+        this.created = created;
 	}
 
     public Long getEmployee() {

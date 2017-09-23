@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/candidate")
 public class CandidateController {
@@ -31,13 +33,13 @@ public class CandidateController {
 
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public Candidate insert(@RequestBody Candidate candidate) {
+    public Candidate insert(@Valid @RequestBody Candidate candidate) {
         return candidateService.save(candidate);
 
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Candidate> Update(@PathVariable("id") Long id, @RequestBody Candidate candidate) {
+    public ResponseEntity<Candidate> Update(@PathVariable("id") Long id, @Valid @RequestBody Candidate candidate) {
         try {
             return ResponseEntity.ok(candidateService.update(id, candidate));
         } catch (NotFoundException e) {

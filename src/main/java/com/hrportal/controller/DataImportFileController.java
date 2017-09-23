@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 /**
  * Created by Lalith leela vishnu on 19-09-2017.
  */
@@ -34,13 +36,13 @@ public class DataImportFileController {
 
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public DataImportFile insert(@RequestBody DataImportFile dataImportFile) {
+    public DataImportFile insert(@Valid @RequestBody DataImportFile dataImportFile) {
         return dataImportFileService.save(dataImportFile);
 
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<DataImportFile> update(@PathVariable("id") Long id, @RequestBody DataImportFile dataImportFile) {
+    public ResponseEntity<DataImportFile> update(@PathVariable("id") Long id, @Valid @RequestBody DataImportFile dataImportFile) {
         try {
             return ResponseEntity.ok(dataImportFileService.update(id, dataImportFile));
         } catch (NotFoundException e) {

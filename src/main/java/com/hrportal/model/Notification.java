@@ -1,8 +1,8 @@
 package com.hrportal.model;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
 
 
 
@@ -39,8 +39,8 @@ public class Notification extends AbstractMutableEntity{
 	@Column(length=20)
 
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date time;
+    @org.hibernate.annotations.Type(type = "updatedTime")
+    private DateTime time;
 
 	@Column(length=100)
 	private String type;
@@ -110,13 +110,12 @@ public class Notification extends AbstractMutableEntity{
 	}
 
 
-
-	public Date getTime() {
-		return this.time;
+    public DateTime getTime() {
+        return this.time;
 	}
 
-	public void setTime(Date time) {
-		this.time = time;
+    public void setTime(DateTime time) {
+        this.time = time;
 	}
 
 	public String getType() {

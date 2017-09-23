@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 /**
  * Created by Lalith leela vishnu on 19-09-2017.
  */
@@ -34,13 +36,13 @@ public class CustomFieldValueController {
 
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public CustomFieldValue insert(@RequestBody CustomFieldValue customFieldValue) {
+    public CustomFieldValue insert(@Valid @RequestBody CustomFieldValue customFieldValue) {
         return customFieldValueService.save(customFieldValue);
 
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<CustomFieldValue> update(@PathVariable("id") Long id, @RequestBody CustomFieldValue customFieldValue) {
+    public ResponseEntity<CustomFieldValue> update(@PathVariable("id") Long id, @Valid @RequestBody CustomFieldValue customFieldValue) {
         try {
             return ResponseEntity.ok(customFieldValueService.update(id, customFieldValue));
         } catch (NotFoundException e) {

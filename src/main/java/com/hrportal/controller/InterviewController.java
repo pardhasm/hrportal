@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 /**
  * Created by Lalith leela vishnu on 17-09-2017.
  */
@@ -34,13 +36,13 @@ public class InterviewController {
 
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public Interview insert(@RequestBody Interview interview) {
+    public Interview insert(@Valid @RequestBody Interview interview) {
         return interviewService.save(interview);
 
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Interview> update(@PathVariable("id") Long id, @RequestBody Interview interview) {
+    public ResponseEntity<Interview> update(@PathVariable("id") Long id, @Valid @RequestBody Interview interview) {
         try {
             return ResponseEntity.ok(interviewService.update(id, interview));
         } catch (NotFoundException e) {

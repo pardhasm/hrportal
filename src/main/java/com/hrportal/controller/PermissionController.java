@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 /**
  * Created by Lalith leela vishnu on 18-09-2017.
  */
@@ -34,13 +36,13 @@ public class PermissionController {
 
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public Permission insert(@RequestBody Permission permission) {
+    public Permission insert(@Valid @RequestBody Permission permission) {
         return permissionService.save(permission);
 
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Permission> update(@PathVariable("id") Long id, @RequestBody Permission permission) {
+    public ResponseEntity<Permission> update(@PathVariable("id") Long id, @Valid @RequestBody Permission permission) {
         try {
             return ResponseEntity.ok(permissionService.update(id, permission));
         } catch (NotFoundException e) {

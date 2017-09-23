@@ -1,9 +1,5 @@
 package com.hrportal.controller;
 
-/**
- * Created by Lalith leela vishnu on 17-09-2017.
- */
-
 import com.hrportal.model.Call;
 import com.hrportal.service.ICallService;
 import javassist.NotFoundException;
@@ -11,6 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+
+/**
+ * Created by Lalith leela vishnu on 17-09-2017.
+ */
 
 @RestController
 @RequestMapping("/call")
@@ -35,13 +37,13 @@ public class CallController {
 
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public Call insert(@RequestBody Call call) {
+    public Call insert(@Valid @RequestBody Call call) {
         return callService.save(call);
 
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Call> update(@PathVariable("id") Long id, @RequestBody Call call) {
+    public ResponseEntity<Call> update(@PathVariable("id") Long id, @Valid @RequestBody Call call) {
         try {
             return ResponseEntity.ok(callService.update(id, call));
         } catch (NotFoundException e) {

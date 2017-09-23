@@ -1,7 +1,7 @@
 package com.hrportal.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 
@@ -33,6 +33,7 @@ public class Province extends AbstractMutableEntity{
     //bi-directional many-to-one association to Country
     @ManyToOne
     @JoinColumn(name = "country", nullable = false)
+    @NotNull
     private Country countryBean;
 
     public Province() {
